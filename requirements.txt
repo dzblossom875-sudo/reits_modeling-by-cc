@@ -1,0 +1,20 @@
+# REITs估值建模Agent - Python依赖
+
+# 文档解析
+PyPDF2>=3.0.0
+pdfplumber>=0.10.0
+python-docx>=1.1.0
+
+# Excel处理
+openpyxl>=3.1.0
+pandas>=2.0.0
+
+# 数值计算
+numpy>=1.24.0
+numpy-financial>=1.0.0
+
+# 可视化
+matplotlib>=3.7.0
+
+# 工具
+python-dateutil>=2.8.0

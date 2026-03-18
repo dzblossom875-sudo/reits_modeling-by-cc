@@ -1,0 +1,45 @@
+{
+  "projects": [
+    {
+      "name": "南京汉庭酒店",
+      "adr": 350.0,
+      "occupancy_rate": 0.78,
+      "room_count": 150,
+      "hotel_revenue": 1941.0,
+      "gop": 841.0,
+      "commercial_net": 70.0,
+      "other_expenses": 150.0,
+      "capex": 80.0,
+      "annual_noicf": 681.0
+    },
+    {
+      "name": "南京全季酒店",
+      "adr": 520.0,
+      "occupancy_rate": 0.82,
+      "room_count": 180,
+      "hotel_revenue": 3615.0,
+      "gop": 1415.0,
+      "commercial_net": 105.0,
+      "other_expenses": 278.0,
+      "capex": 150.0,
+      "annual_noicf": 1092.0
+    },
+    {
+      "name": "南京桔子酒店",
+      "adr": 450.0,
+      "occupancy_rate": 0.75,
+      "room_count": 165,
+      "hotel_revenue": 2675.0,
+      "gop": 1025.0,
+      "commercial_net": 88.0,
+      "other_expenses": 221.0,
+      "capex": 120.0,
+      "annual_noicf": 772.0
+    }
+  ],
+  "summary": {
+    "total_noicf": 2545.0,
+    "dcf_valuation": 77187.01470323873,
+    "total_room_count": 495
+  }
+}

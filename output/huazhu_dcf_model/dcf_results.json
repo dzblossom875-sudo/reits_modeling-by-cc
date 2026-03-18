@@ -1,0 +1,586 @@
+{
+  "fund_info": {
+    "name": "华泰紫金华住安住封闭式商业不动产证券投资基金",
+    "manager": "华泰证券(上海)资产管理有限公司",
+    "total_raise": 13.2,
+    "asset_original_value": 12.46,
+    "asset_nav_2025": 10.7,
+    "asset_valuation": 15.91
+  },
+  "dcf_inputs": {
+    "discount_rate": 0.0575,
+    "discount_rate_percent": "5.75%",
+    "revenue_growth": 0.01,
+    "revenue_growth_percent": "1.0%",
+    "historical_growth": -0.0275702882293003,
+    "historical_growth_percent": "-2.8%",
+    "growth_note": "历史ADR负增长，采用1%温和增长假设",
+    "valuation_method": "报酬率全周期DCF法（持有到期，残值归零）"
+  },
+  "dcf_results": {
+    "projects": [
+      {
+        "name": "广州项目（美居+全季）",
+        "remaining_years": 19.28,
+        "base_noi": 8249.23,
+        "base_capex": 141.63,
+        "base_fcf": 8107.6,
+        "valuation": 112548.81,
+        "pv_cash_flows": 112548.81,
+        "cash_flows": [
+          {
+            "year": 1,
+            "noi": 8249.23,
+            "capex": 141.63,
+            "fcf": 8107.6,
+            "growth_rate": 0.0,
+            "cumulative_growth": 1.0,
+            "discount_factor": 1.0575,
+            "pv": 7666.76
+          },
+          {
+            "year": 2,
+            "noi": 8414.21,
+            "capex": 145.16,
+            "fcf": 8269.05,
+            "growth_rate": 0.02,
+            "cumulative_growth": 1.02,
+            "discount_factor": 1.1183,
+            "pv": 7394.27
+          },
+          {
+            "year": 3,
+            "noi": 8582.5,
+            "capex": 148.77,
+            "fcf": 8433.73,
+            "growth_rate": 0.02,
+            "cumulative_growth": 1.0404,
+            "discount_factor": 1.1826,
+            "pv": 7131.46
+          },
+          {
+            "year": 4,
+            "noi": 8839.97,
+            "capex": 151.75,
+            "fcf": 8688.23,
+            "growth_rate": 0.03,
+            "cumulative_growth": 1.0716,
+            "discount_factor": 1.2506,
+            "pv": 6947.2
+          },
+          {
+            "year": 5,
+            "noi": 9105.17,
+            "capex": 154.78,
+            "fcf": 8950.39,
+            "growth_rate": 0.03,
+            "cumulative_growth": 1.1038,
+            "discount_factor": 1.3225,
+            "pv": 6767.69
+          },
+          {
+            "year": 6,
+            "noi": 9378.33,
+            "capex": 157.88,
+            "fcf": 9220.45,
+            "growth_rate": 0.03,
+            "cumulative_growth": 1.1369,
+            "discount_factor": 1.3986,
+            "pv": 6592.8
+          },
+          {
+            "year": 7,
+            "noi": 9659.68,
+            "capex": 161.03,
+            "fcf": 9498.64,
+            "growth_rate": 0.03,
+            "cumulative_growth": 1.171,
+            "discount_factor": 1.479,
+            "pv": 6422.42
+          },
+          {
+            "year": 8,
+            "noi": 9949.47,
+            "capex": 164.25,
+            "fcf": 9785.21,
+            "growth_rate": 0.03,
+            "cumulative_growth": 1.2061,
+            "discount_factor": 1.564,
+            "pv": 6256.44
+          },
+          {
+            "year": 9,
+            "noi": 10247.95,
+            "capex": 167.54,
+            "fcf": 10080.41,
+            "growth_rate": 0.03,
+            "cumulative_growth": 1.2423,
+            "discount_factor": 1.654,
+            "pv": 6094.74
+          },
+          {
+            "year": 10,
+            "noi": 10555.39,
+            "capex": 170.89,
+            "fcf": 10384.5,
+            "growth_rate": 0.03,
+            "cumulative_growth": 1.2796,
+            "discount_factor": 1.7491,
+            "pv": 5937.2
+          },
+          {
+            "year": 11,
+            "noi": 10792.89,
+            "capex": 174.31,
+            "fcf": 10618.58,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.3084,
+            "discount_factor": 1.8496,
+            "pv": 5740.93
+          },
+          {
+            "year": 12,
+            "noi": 11035.73,
+            "capex": 177.79,
+            "fcf": 10857.93,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.3378,
+            "discount_factor": 1.956,
+            "pv": 5551.15
+          },
+          {
+            "year": 13,
+            "noi": 11284.03,
+            "capex": 181.35,
+            "fcf": 11102.68,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.3679,
+            "discount_factor": 2.0684,
+            "pv": 5367.64
+          },
+          {
+            "year": 14,
+            "noi": 11537.92,
+            "capex": 184.98,
+            "fcf": 11352.95,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.3987,
+            "discount_factor": 2.1874,
+            "pv": 5190.19
+          },
+          {
+            "year": 15,
+            "noi": 11797.53,
+            "capex": 188.68,
+            "fcf": 11608.85,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.4301,
+            "discount_factor": 2.3132,
+            "pv": 5018.61
+          },
+          {
+            "year": 16,
+            "noi": 12062.97,
+            "capex": 192.45,
+            "fcf": 11870.52,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.4623,
+            "discount_factor": 2.4462,
+            "pv": 4852.7
+          },
+          {
+            "year": 17,
+            "noi": 12334.39,
+            "capex": 196.3,
+            "fcf": 12138.09,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.4952,
+            "discount_factor": 2.5868,
+            "pv": 4692.28
+          },
+          {
+            "year": 18,
+            "noi": 12611.91,
+            "capex": 200.22,
+            "fcf": 12411.69,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.5289,
+            "discount_factor": 2.7356,
+            "pv": 4537.16
+          },
+          {
+            "year": 19,
+            "noi": 12895.68,
+            "capex": 204.23,
+            "fcf": 12691.45,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.5633,
+            "discount_factor": 2.8929,
+            "pv": 4387.17
+          }
+        ]
+      },
+      {
+        "name": "上海项目（桔子水晶）",
+        "remaining_years": 30.65,
+        "base_noi": 1790.99,
+        "base_capex": 38.92,
+        "base_fcf": 1752.07,
+        "valuation": 32589.43,
+        "pv_cash_flows": 32589.43,
+        "cash_flows": [
+          {
+            "year": 1,
+            "noi": 1790.99,
+            "capex": 38.92,
+            "fcf": 1752.07,
+            "growth_rate": 0.0,
+            "cumulative_growth": 1.0,
+            "discount_factor": 1.0575,
+            "pv": 1656.8
+          },
+          {
+            "year": 2,
+            "noi": 1808.9,
+            "capex": 39.89,
+            "fcf": 1769.01,
+            "growth_rate": 0.01,
+            "cumulative_growth": 1.01,
+            "discount_factor": 1.1183,
+            "pv": 1581.87
+          },
+          {
+            "year": 3,
+            "noi": 1845.08,
+            "capex": 40.88,
+            "fcf": 1804.2,
+            "growth_rate": 0.02,
+            "cumulative_growth": 1.0302,
+            "discount_factor": 1.1826,
+            "pv": 1525.61
+          },
+          {
+            "year": 4,
+            "noi": 1900.43,
+            "capex": 41.7,
+            "fcf": 1858.73,
+            "growth_rate": 0.03,
+            "cumulative_growth": 1.0611,
+            "discount_factor": 1.2506,
+            "pv": 1486.26
+          },
+          {
+            "year": 5,
+            "noi": 1957.44,
+            "capex": 42.53,
+            "fcf": 1914.91,
+            "growth_rate": 0.03,
+            "cumulative_growth": 1.0929,
+            "discount_factor": 1.3225,
+            "pv": 1447.93
+          },
+          {
+            "year": 6,
+            "noi": 2016.17,
+            "capex": 43.38,
+            "fcf": 1972.78,
+            "growth_rate": 0.03,
+            "cumulative_growth": 1.1257,
+            "discount_factor": 1.3986,
+            "pv": 1410.58
+          },
+          {
+            "year": 7,
+            "noi": 2076.65,
+            "capex": 44.25,
+            "fcf": 2032.4,
+            "growth_rate": 0.03,
+            "cumulative_growth": 1.1595,
+            "discount_factor": 1.479,
+            "pv": 1374.19
+          },
+          {
+            "year": 8,
+            "noi": 2138.95,
+            "capex": 45.13,
+            "fcf": 2093.82,
+            "growth_rate": 0.03,
+            "cumulative_growth": 1.1943,
+            "discount_factor": 1.564,
+            "pv": 1338.74
+          },
+          {
+            "year": 9,
+            "noi": 2203.12,
+            "capex": 46.04,
+            "fcf": 2157.08,
+            "growth_rate": 0.03,
+            "cumulative_growth": 1.2301,
+            "discount_factor": 1.654,
+            "pv": 1304.2
+          },
+          {
+            "year": 10,
+            "noi": 2269.21,
+            "capex": 46.96,
+            "fcf": 2222.25,
+            "growth_rate": 0.03,
+            "cumulative_growth": 1.267,
+            "discount_factor": 1.7491,
+            "pv": 1270.55
+          },
+          {
+            "year": 11,
+            "noi": 2320.27,
+            "capex": 47.9,
+            "fcf": 2272.37,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.2955,
+            "discount_factor": 1.8496,
+            "pv": 1228.56
+          },
+          {
+            "year": 12,
+            "noi": 2372.48,
+            "capex": 48.86,
+            "fcf": 2323.62,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.3247,
+            "discount_factor": 1.956,
+            "pv": 1187.96
+          },
+          {
+            "year": 13,
+            "noi": 2425.86,
+            "capex": 49.83,
+            "fcf": 2376.02,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.3545,
+            "discount_factor": 2.0684,
+            "pv": 1148.7
+          },
+          {
+            "year": 14,
+            "noi": 2480.44,
+            "capex": 50.83,
+            "fcf": 2429.61,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.385,
+            "discount_factor": 2.1874,
+            "pv": 1110.74
+          },
+          {
+            "year": 15,
+            "noi": 2536.25,
+            "capex": 51.85,
+            "fcf": 2484.4,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.4161,
+            "discount_factor": 2.3132,
+            "pv": 1074.03
+          },
+          {
+            "year": 16,
+            "noi": 2593.31,
+            "capex": 52.88,
+            "fcf": 2540.43,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.448,
+            "discount_factor": 2.4462,
+            "pv": 1038.54
+          },
+          {
+            "year": 17,
+            "noi": 2651.66,
+            "capex": 53.94,
+            "fcf": 2597.72,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.4806,
+            "discount_factor": 2.5868,
+            "pv": 1004.21
+          },
+          {
+            "year": 18,
+            "noi": 2711.33,
+            "capex": 55.02,
+            "fcf": 2656.31,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.5139,
+            "discount_factor": 2.7356,
+            "pv": 971.03
+          },
+          {
+            "year": 19,
+            "noi": 2772.33,
+            "capex": 56.12,
+            "fcf": 2716.21,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.5479,
+            "discount_factor": 2.8929,
+            "pv": 938.94
+          },
+          {
+            "year": 20,
+            "noi": 2834.71,
+            "capex": 57.24,
+            "fcf": 2777.47,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.5828,
+            "discount_factor": 3.0592,
+            "pv": 907.91
+          },
+          {
+            "year": 21,
+            "noi": 2898.49,
+            "capex": 58.39,
+            "fcf": 2840.1,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.6184,
+            "discount_factor": 3.2351,
+            "pv": 877.9
+          },
+          {
+            "year": 22,
+            "noi": 2963.71,
+            "capex": 59.55,
+            "fcf": 2904.15,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.6548,
+            "discount_factor": 3.4211,
+            "pv": 848.89
+          },
+          {
+            "year": 23,
+            "noi": 3030.39,
+            "capex": 60.75,
+            "fcf": 2969.64,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.692,
+            "discount_factor": 3.6178,
+            "pv": 820.83
+          },
+          {
+            "year": 24,
+            "noi": 3098.57,
+            "capex": 61.96,
+            "fcf": 3036.61,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.7301,
+            "discount_factor": 3.8259,
+            "pv": 793.71
+          },
+          {
+            "year": 25,
+            "noi": 3168.29,
+            "capex": 63.2,
+            "fcf": 3105.09,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.769,
+            "discount_factor": 4.0458,
+            "pv": 767.48
+          },
+          {
+            "year": 26,
+            "noi": 3239.58,
+            "capex": 64.46,
+            "fcf": 3175.11,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.8088,
+            "discount_factor": 4.2785,
+            "pv": 742.11
+          },
+          {
+            "year": 27,
+            "noi": 3312.47,
+            "capex": 65.75,
+            "fcf": 3246.71,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.8495,
+            "discount_factor": 4.5245,
+            "pv": 717.59
+          },
+          {
+            "year": 28,
+            "noi": 3387.0,
+            "capex": 67.07,
+            "fcf": 3319.93,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.8911,
+            "discount_factor": 4.7847,
+            "pv": 693.87
+          },
+          {
+            "year": 29,
+            "noi": 3463.21,
+            "capex": 68.41,
+            "fcf": 3394.8,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.9337,
+            "discount_factor": 5.0598,
+            "pv": 670.94
+          },
+          {
+            "year": 30,
+            "noi": 3541.13,
+            "capex": 69.78,
+            "fcf": 3471.35,
+            "growth_rate": 0.0225,
+            "cumulative_growth": 1.9772,
+            "discount_factor": 5.3507,
+            "pv": 648.76
+          }
+        ]
+      }
+    ],
+    "total_valuation": 145138.24,
+    "total_pv_cash_flows": 145138.24,
+    "kpis": {
+      "total_rooms": 1044,
+      "value_per_room": 1390213.03,
+      "implied_cap_rate": 0.0624,
+      "annual_yield": 0.0624
+    },
+    "comparison": {
+      "dcf_valuation_billion": 14.51,
+      "fund_raise_billion": 13.2,
+      "asset_valuation_billion": 15.91,
+      "vs_fund_raise": 1.31,
+      "vs_asset_valuation": -1.4
+    }
+  },
+  "sensitivity": {
+    "discount_rate_sensitivity": {
+      "4.50%": 163971.24,
+      "5.00%": 156021.14,
+      "5.50%": 148635.11,
+      "5.75%": 145138.24,
+      "6.00%": 141764.37,
+      "6.50%": 135364.96,
+      "7.00%": 129397.29
+    },
+    "growth_rate_sensitivity": {
+      "0.0%": 145138.24,
+      "0.5%": 145138.24,
+      "1.0%": 145138.24,
+      "1.5%": 145138.24,
+      "2.0%": 145138.24
+    },
+    "base_valuation": 145138.24
+  },
+  "extraction_source": {
+    "project_definition": 19,
+    "project_details": [
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70
+    ],
+    "financial_indicators": [
+      163,
+      164
+    ]
+  }
+}

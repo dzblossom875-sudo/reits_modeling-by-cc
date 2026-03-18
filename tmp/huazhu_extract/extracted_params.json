@@ -1,0 +1,206 @@
+{
+  "project_name": "华泰紫金华住安住封闭式商业不动产REIT",
+  "fund_info": {
+    "name": "华泰紫金华住安住封闭式商业不动产证券投资基金",
+    "manager": "华泰证券(上海)资产管理有限公司",
+    "total_raise": 13.2,
+    "asset_original_value": 12.46,
+    "asset_nav_2025": 10.7,
+    "asset_valuation": 15.91
+  },
+  "projects": [
+    {
+      "name": "广州天河体育中心美居酒店",
+      "brand": "美居",
+      "location": "广东省广州市天河区天河北路365号201房",
+      "rooms": 335,
+      "floor": "夹层、4-5层、9-12层、14-27层",
+      "adr_2025": 495.58,
+      "adr_2024": 502.25,
+      "adr_2023": 522.03,
+      "occupancy_2025": 0.9246,
+      "occupancy_2024": 0.9622,
+      "occupancy_2023": 0.9169,
+      "revpar_2025": 458.21,
+      "building_area": 42774.94,
+      "land_area": 6057,
+      "operation_start": "2022年4月",
+      "remaining_years": 19.28
+    },
+    {
+      "name": "广州天河体育中心全季酒店",
+      "brand": "全季",
+      "location": "广东省广州市天河区天河北路365号201房",
+      "rooms": 441,
+      "floor": "3层、6-8层、29-43层",
+      "adr_2025": 443.91,
+      "adr_2024": 471.71,
+      "adr_2023": 485.27,
+      "occupancy_2025": 0.9496,
+      "occupancy_2024": 0.9754,
+      "occupancy_2023": 0.91,
+      "revpar_2025": 421.52,
+      "building_area": 42774.94,
+      "operation_start": "2022年8月",
+      "remaining_years": 19.28
+    },
+    {
+      "name": "上海江桥万达桔子水晶酒店",
+      "brand": "桔子水晶",
+      "location": "上海市嘉定区鹤旋东路188弄1、鹤旋东路190_208（双号）",
+      "rooms": 268,
+      "floor": "地上11层、地下2层",
+      "adr_2025": 359.71,
+      "adr_2024": 372.82,
+      "adr_2023": 369.61,
+      "occupancy_2025": 0.9036,
+      "occupancy_2024": 0.8307,
+      "occupancy_2023": 0.8082,
+      "revpar_2025": 325.04,
+      "building_area": 13295.65,
+      "land_area": 16638,
+      "operation_start": "2022年3月",
+      "remaining_years": 30.65
+    }
+  ],
+  "source_pages": {
+    "project_definition": 19,
+    "project_details": [
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70
+    ],
+    "financial_indicators": [
+      163,
+      164
+    ]
+  },
+  "extraction_date": "2026-03-17",
+  "confidence": "high",
+  "total_rooms": 1044,
+  "weighted_adr": 438.88,
+  "weighted_occupancy": 0.9298,
+  "financial_data": {
+    "广州项目": {
+      "revenue_2025": {
+        "total_revenue": 13187.36,
+        "room_revenue": 12015.67,
+        "fb_revenue": 536.8,
+        "rent_revenue": 377.07,
+        "property_mgmt_revenue": 75.9,
+        "other_revenue": 181.92
+      },
+      "operating_expenses_2025": {
+        "depreciation": 5421.06,
+        "labor": 1312.98,
+        "franchise_fee": 1176.36,
+        "supplies": 680.46,
+        "utilities": 462.47,
+        "asset_mgmt_fee": 434.61,
+        "sales_commission": 465.47,
+        "cleaning": 201.86,
+        "maintenance": 116.22,
+        "professional_fee": 93.32,
+        "property_fee": 378.93,
+        "it_fee": 47.16,
+        "office": 8.9,
+        "project_mgmt_fee": 11.1,
+        "others": 274.87,
+        "total": 11085.75
+      },
+      "taxes_2025": {
+        "property_tax": 813.428,
+        "land_use_tax": 42.812000000000005,
+        "total_taxes": 856.24
+      },
+      "gop_2025": 8800,
+      "gop_2025_source": "第162页管理报表（已修正，原利润表数据错误）",
+      "capex_forecast": [
+        141.63,
+        145.16,
+        148.77
+      ],
+      "annual_noicf": 7441.56,
+      "opex_cash": 5664.69,
+      "commercial_net": 74.04000000000002,
+      "other_expenses": 1290.85,
+      "capex": 141.63
+    },
+    "上海项目": {
+      "revenue_2025": {
+        "total_revenue": 3313.82,
+        "room_revenue": 3035.38,
+        "fb_revenue": 208.7,
+        "rent_revenue": 40.29,
+        "property_mgmt_revenue": 3.96,
+        "other_revenue": 25.49
+      },
+      "operating_expenses_2025": {
+        "depreciation": 802.04,
+        "labor": 446.09,
+        "franchise_fee": 345.42,
+        "supplies": 269.04,
+        "utilities": 147.24,
+        "asset_mgmt_fee": 130.77,
+        "sales_commission": 94.42,
+        "cleaning": 81.67,
+        "maintenance": 40.35,
+        "professional_fee": 37.69,
+        "property_fee": 34.9,
+        "it_fee": 11.13,
+        "office": 2.56,
+        "project_mgmt_fee": 0.49,
+        "others": 21.63,
+        "total": 2465.42
+      },
+      "taxes_2025": {
+        "property_tax": 200.0,
+        "land_use_tax": 20.0,
+        "total_taxes": 220.0
+      },
+      "gop_2025": 2000,
+      "gop_2025_source": "第162页管理报表（已修正，原利润表数据错误）",
+      "capex_forecast": [
+        38.92,
+        39.89,
+        40.88
+      ],
+      "annual_noicf": 1619.66,
+      "opex_cash": 1663.38,
+      "commercial_net": 9.350000000000001,
+      "other_expenses": 350.77,
+      "capex": 38.92
+    }
+  },
+  "total_annual_noicf": 9061.22,
+  "total_annual_noicf_note": "已修正GOP数据（广州8800万+上海2000万）",
+  "valuation_parameters": {
+    "discount_rate": 0.0575,
+    "discount_rate_percent": "5.75%",
+    "source_pages": [234, 240],
+    "description": "报酬率/折现率，适用于广州项目和上海项目DCF估值",
+    "valuation_method": "报酬率全周期DCF法",
+    "cap_rate": {
+      "guangzhou_2026": 0.0656,
+      "guangzhou_2027": 0.0678,
+      "shanghai_2026": 0.0492,
+      "shanghai_2027": 0.0501,
+      "source_page": 241,
+      "description": "资本化率(Cap Rate)，估值后倒算用于同类对比"
+    },
+    "cap_rate_percent": {
+      "广州项目": {"2026年": "6.56%", "2027年": "6.78%"},
+      "上海项目": {"2026年": "4.92%", "2027年": "5.01%"}
+    }
+  },
+  "extraction_notes": {
+    "discount_rate_location": "第234页(上海项目)、第240页(广州项目)",
+    "cap_rate_location": "第241页表格",
+    "forecast_years": "广州19.28年，上海30.65年",
+    "growth_assumption": "历史ADR负增长，采用1%温和增长假设"
+  }
+}

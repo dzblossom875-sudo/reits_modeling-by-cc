@@ -1,0 +1,626 @@
+{
+  "report_metadata": {
+    "type": "REITs Valuation Report",
+    "version": "1.0",
+    "generated_at": "2026-03-17T14:50:10.402847"
+  },
+  "base_valuation": {
+    "project_info": {
+      "name": "",
+      "asset_type": "hotel",
+      "total_area": 0.0,
+      "leasable_area": null,
+      "remaining_years": 10,
+      "location": null,
+      "completion_date": null
+    },
+    "asset_type": "hotel",
+    "scenario_name": "Base Case",
+    "npv": -294.95,
+    "irr": NaN,
+    "cap_rate": null,
+    "dcf_value": -294.95,
+    "cash_flows": [
+      {
+        "year": 1,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": -0.0,
+        "operating_expense": -0.0,
+        "management_fee": -0.0,
+        "noi": 0.0
+      },
+      {
+        "year": 2,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": -0.0,
+        "operating_expense": -0.0,
+        "management_fee": -0.0,
+        "noi": 0.0
+      },
+      {
+        "year": 3,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": -0.0,
+        "operating_expense": -0.0,
+        "management_fee": -0.0,
+        "noi": 0.0
+      },
+      {
+        "year": 4,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": -0.0,
+        "operating_expense": -0.0,
+        "management_fee": -0.0,
+        "noi": 0.0
+      },
+      {
+        "year": 5,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": -0.0,
+        "operating_expense": -0.0,
+        "management_fee": -0.0,
+        "noi": 0.0
+      },
+      {
+        "year": 6,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": -0.0,
+        "operating_expense": -0.0,
+        "management_fee": -0.0,
+        "noi": 0.0
+      },
+      {
+        "year": 7,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": -0.0,
+        "operating_expense": -0.0,
+        "management_fee": -0.0,
+        "noi": 0.0
+      },
+      {
+        "year": 8,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": -0.0,
+        "operating_expense": -0.0,
+        "management_fee": -0.0,
+        "noi": 0.0
+      },
+      {
+        "year": 9,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": -0.0,
+        "operating_expense": -0.0,
+        "management_fee": -0.0,
+        "noi": 0.0
+      },
+      {
+        "year": 10,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": -0.0,
+        "operating_expense": -0.0,
+        "management_fee": -0.0,
+        "noi": 0.0
+      }
+    ],
+    "assumptions": {
+      "forecast_years": 10,
+      "discount_rate": "5.75%",
+      "rent_growth_rate": "2.50%",
+      "occupancy_rate": "-376.00%",
+      "operating_expense_ratio": "20.00%",
+      "capex": "311.91万元",
+      "asset_type": "hotel"
+    },
+    "created_at": "2026-03-17T14:50:10.402847",
+    "calculation_notes": []
+  },
+  "scenarios": [
+    {
+      "scenario_name": "Base Case",
+      "valuation": {
+        "project_info": {
+          "name": "",
+          "asset_type": "hotel",
+          "total_area": 0.0,
+          "leasable_area": null,
+          "remaining_years": 10,
+          "location": null,
+          "completion_date": null
+        },
+        "asset_type": "hotel",
+        "scenario_name": "Base Case",
+        "npv": -294.95,
+        "irr": NaN,
+        "cap_rate": null,
+        "dcf_value": -294.95,
+        "cash_flows": [
+          {
+            "year": 1,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 2,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 3,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 4,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 5,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 6,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 7,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 8,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 9,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 10,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          }
+        ],
+        "assumptions": {
+          "forecast_years": 10,
+          "discount_rate": "5.75%",
+          "rent_growth_rate": "2.50%",
+          "occupancy_rate": "-376.00%",
+          "operating_expense_ratio": "20.00%",
+          "capex": "311.91万元",
+          "asset_type": "hotel"
+        },
+        "created_at": "2026-03-17T14:50:10.402847",
+        "calculation_notes": []
+      },
+      "vs_base_percent": null
+    },
+    {
+      "scenario_name": "Optimistic",
+      "valuation": {
+        "project_info": {
+          "name": "",
+          "asset_type": "hotel",
+          "total_area": 0.0,
+          "leasable_area": null,
+          "remaining_years": 10,
+          "location": null,
+          "completion_date": null
+        },
+        "asset_type": "hotel",
+        "scenario_name": "Optimistic",
+        "npv": -295.75,
+        "irr": NaN,
+        "cap_rate": null,
+        "dcf_value": -295.75,
+        "cash_flows": [
+          {
+            "year": 1,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 2,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 3,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 4,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 5,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 6,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 7,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 8,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 9,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 10,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          }
+        ],
+        "assumptions": {
+          "forecast_years": 10,
+          "discount_rate": "5.46%",
+          "rent_growth_rate": "3.75%",
+          "occupancy_rate": "-394.80%",
+          "operating_expense_ratio": "20.00%",
+          "capex": "311.91万元",
+          "asset_type": "hotel"
+        },
+        "created_at": "2026-03-17T14:50:10.402847",
+        "calculation_notes": []
+      },
+      "vs_base_percent": 0.0
+    },
+    {
+      "scenario_name": "Pessimistic",
+      "valuation": {
+        "project_info": {
+          "name": "",
+          "asset_type": "hotel",
+          "total_area": 0.0,
+          "leasable_area": null,
+          "remaining_years": 10,
+          "location": null,
+          "completion_date": null
+        },
+        "asset_type": "hotel",
+        "scenario_name": "Pessimistic",
+        "npv": -293.36,
+        "irr": NaN,
+        "cap_rate": null,
+        "dcf_value": -293.36,
+        "cash_flows": [
+          {
+            "year": 1,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 2,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 3,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 4,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 5,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 6,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 7,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 8,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 9,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 10,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": -0.0,
+            "operating_expense": -0.0,
+            "management_fee": -0.0,
+            "noi": 0.0
+          }
+        ],
+        "assumptions": {
+          "forecast_years": 10,
+          "discount_rate": "6.33%",
+          "rent_growth_rate": "1.25%",
+          "occupancy_rate": "-338.40%",
+          "operating_expense_ratio": "20.00%",
+          "capex": "311.91万元",
+          "asset_type": "hotel"
+        },
+        "created_at": "2026-03-17T14:50:10.402847",
+        "calculation_notes": []
+      },
+      "vs_base_percent": -0.01
+    },
+    {
+      "scenario_name": "Stress Test",
+      "valuation": {
+        "project_info": {
+          "name": "",
+          "asset_type": "hotel",
+          "total_area": 0.0,
+          "leasable_area": null,
+          "remaining_years": 10,
+          "location": null,
+          "completion_date": null
+        },
+        "asset_type": "hotel",
+        "scenario_name": "Stress Test",
+        "npv": -291.78,
+        "irr": NaN,
+        "cap_rate": null,
+        "dcf_value": -291.78,
+        "cash_flows": [
+          {
+            "year": 1,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": 0.0,
+            "operating_expense": 0.0,
+            "management_fee": 0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 2,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": 0.0,
+            "operating_expense": 0.0,
+            "management_fee": 0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 3,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": 0.0,
+            "operating_expense": 0.0,
+            "management_fee": 0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 4,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": 0.0,
+            "operating_expense": 0.0,
+            "management_fee": 0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 5,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": 0.0,
+            "operating_expense": 0.0,
+            "management_fee": 0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 6,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": 0.0,
+            "operating_expense": 0.0,
+            "management_fee": 0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 7,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": 0.0,
+            "operating_expense": 0.0,
+            "management_fee": 0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 8,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": 0.0,
+            "operating_expense": 0.0,
+            "management_fee": 0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 9,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": 0.0,
+            "operating_expense": 0.0,
+            "management_fee": 0.0,
+            "noi": 0.0
+          },
+          {
+            "year": 10,
+            "rental_income": 0.0,
+            "other_income": 0.0,
+            "total_income": 0.0,
+            "operating_expense": 0.0,
+            "management_fee": 0.0,
+            "noi": 0.0
+          }
+        ],
+        "assumptions": {
+          "forecast_years": 10,
+          "discount_rate": "6.90%",
+          "rent_growth_rate": "0.50%",
+          "occupancy_rate": "70.00%",
+          "operating_expense_ratio": "23.00%",
+          "capex": "311.91万元",
+          "asset_type": "hotel"
+        },
+        "created_at": "2026-03-17T14:50:10.403848",
+        "calculation_notes": []
+      },
+      "vs_base_percent": -0.01
+    }
+  ],
+  "sensitivity_analysis": {}
+}

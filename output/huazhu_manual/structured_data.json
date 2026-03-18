@@ -1,0 +1,311 @@
+{
+  "dashboard": {
+    "project_name": "华泰紫金南京华住酒店REIT",
+    "asset_type": "hotel",
+    "valuation_date": "2026-03-17",
+    "key_metrics": {
+      "dcf_valuation": {
+        "value": 95856.38,
+        "unit": "万元",
+        "description": "DCF估值"
+      },
+      "npv": {
+        "value": 95856.38,
+        "unit": "万元",
+        "description": "净现值(NPV)"
+      },
+      "irr": {
+        "value": 796.26,
+        "unit": "%",
+        "description": "内部收益率(IRR)"
+      },
+      "cap_rate": {
+        "value": null,
+        "unit": "%",
+        "description": "资本化率估值"
+      }
+    },
+    "project_info": {
+      "total_area": 0.0,
+      "leasable_area": null,
+      "remaining_years": 19
+    },
+    "cashflow_summary": {
+      "total_noi": 79696.71151554471,
+      "avg_annual_noi": 4194.563763976037
+    }
+  },
+  "assumptions": {
+    "assumptions": [
+      {
+        "param_name": "forecast_years",
+        "value": 19,
+        "category": "基本假设"
+      },
+      {
+        "param_name": "discount_rate",
+        "value": "5.75%",
+        "category": "资本端"
+      },
+      {
+        "param_name": "rent_growth_rate",
+        "value": "3.00%",
+        "category": "收入端"
+      },
+      {
+        "param_name": "occupancy_rate",
+        "value": "75.00%",
+        "category": "收入端"
+      },
+      {
+        "param_name": "operating_expense_ratio",
+        "value": "65.00%",
+        "category": "成本端"
+      },
+      {
+        "param_name": "capex",
+        "value": "400.00万元",
+        "category": "资本端"
+      },
+      {
+        "param_name": "asset_type",
+        "value": "hotel",
+        "category": "项目信息"
+      }
+    ],
+    "forecast_years": 10
+  },
+  "dcf": {
+    "cashflows": [
+      {
+        "year": 1,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 9065.815295625,
+        "operating_expense": 5892.77994215625,
+        "management_fee": 271.97445886875,
+        "noi": 3173.0353534687492,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^1",
+        "present_value": "=H3*I3"
+      },
+      {
+        "year": 2,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 9337.789754493751,
+        "operating_expense": 6069.563340420938,
+        "management_fee": 280.1336926348125,
+        "noi": 3268.226414072813,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^2",
+        "present_value": "=H4*I4"
+      },
+      {
+        "year": 3,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 9617.92344712856,
+        "operating_expense": 6251.650240633564,
+        "management_fee": 288.5377034138568,
+        "noi": 3366.273206494996,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^3",
+        "present_value": "=H5*I5"
+      },
+      {
+        "year": 4,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 9906.461150542418,
+        "operating_expense": 6439.199747852572,
+        "management_fee": 297.19383451627255,
+        "noi": 3467.2614026898464,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^4",
+        "present_value": "=H6*I6"
+      },
+      {
+        "year": 5,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 10203.654985058694,
+        "operating_expense": 6632.375740288152,
+        "management_fee": 306.1096495517608,
+        "noi": 3571.2792447705424,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^5",
+        "present_value": "=H7*I7"
+      },
+      {
+        "year": 6,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 10509.764634610454,
+        "operating_expense": 6831.347012496795,
+        "management_fee": 315.2929390383136,
+        "noi": 3678.4176221136586,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^6",
+        "present_value": "=H8*I8"
+      },
+      {
+        "year": 7,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 10825.057573648768,
+        "operating_expense": 7036.287422871699,
+        "management_fee": 324.751727209463,
+        "noi": 3788.770150777069,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^7",
+        "present_value": "=H9*I9"
+      },
+      {
+        "year": 8,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 11149.80930085823,
+        "operating_expense": 7247.3760455578495,
+        "management_fee": 334.49427902574683,
+        "noi": 3902.4332553003796,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^8",
+        "present_value": "=H10*I10"
+      },
+      {
+        "year": 9,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 11484.303579883977,
+        "operating_expense": 7464.797326924586,
+        "management_fee": 344.5291073965193,
+        "noi": 4019.5062529593915,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^9",
+        "present_value": "=H11*I11"
+      },
+      {
+        "year": 10,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 11828.832687280497,
+        "operating_expense": 7688.741246732324,
+        "management_fee": 354.8649806184149,
+        "noi": 4140.0914405481735,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^10",
+        "present_value": "=H12*I12"
+      },
+      {
+        "year": 11,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 12183.697667898912,
+        "operating_expense": 7919.403484134293,
+        "management_fee": 365.51093003696735,
+        "noi": 4264.294183764619,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^11",
+        "present_value": "=H13*I13"
+      },
+      {
+        "year": 12,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 12549.20859793588,
+        "operating_expense": 8156.985588658322,
+        "management_fee": 376.4762579380764,
+        "noi": 4392.223009277558,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^12",
+        "present_value": "=H14*I14"
+      },
+      {
+        "year": 13,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 12925.684855873957,
+        "operating_expense": 8401.695156318072,
+        "management_fee": 387.77054567621866,
+        "noi": 4523.989699555885,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^13",
+        "present_value": "=H15*I15"
+      },
+      {
+        "year": 14,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 13313.455401550176,
+        "operating_expense": 8653.746011007615,
+        "management_fee": 399.40366204650525,
+        "noi": 4659.709390542561,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^14",
+        "present_value": "=H16*I16"
+      },
+      {
+        "year": 15,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 13712.859063596683,
+        "operating_expense": 8913.358391337844,
+        "management_fee": 411.38577190790045,
+        "noi": 4799.500672258839,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^15",
+        "present_value": "=H17*I17"
+      },
+      {
+        "year": 16,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 14124.244835504582,
+        "operating_expense": 9180.759143077978,
+        "management_fee": 423.72734506513746,
+        "noi": 4943.485692426604,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^16",
+        "present_value": "=H18*I18"
+      },
+      {
+        "year": 17,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 14547.97218056972,
+        "operating_expense": 9456.181917370319,
+        "management_fee": 436.4391654170916,
+        "noi": 5091.790263199402,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^17",
+        "present_value": "=H19*I19"
+      },
+      {
+        "year": 18,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 14984.411345986811,
+        "operating_expense": 9739.867374891428,
+        "management_fee": 449.5323403796043,
+        "noi": 5244.543971095383,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^18",
+        "present_value": "=H20*I20"
+      },
+      {
+        "year": 19,
+        "rental_income": 0.0,
+        "other_income": 0.0,
+        "total_income": 15433.94368636642,
+        "operating_expense": 10032.063396138174,
+        "management_fee": 463.01831059099254,
+        "noi": 5401.880290228246,
+        "discount_factor": "=1/(1+Assumptions!$C$5)^19",
+        "present_value": "=H21*I21"
+      }
+    ],
+    "terminal_value": {
+      "final_year_noi": 5401.880290228246,
+      "terminal_growth": 0.02,
+      "discount_rate": 0.075,
+      "terminal_value_formula": "=5401.880290228246*(1+0.02)/(0.075-0.02)"
+    },
+    "npv_formula": "=SUM(J3:J12)+TerminalValue/(1+Assumptions!$C$5)^10"
+  },
+  "data": {
+    "extraction_timestamp": "2026-03-17T15:04:43.944011",
+    "calculation_notes": [],
+    "raw_params": {
+      "forecast_years": 19,
+      "discount_rate": "5.75%",
+      "rent_growth_rate": "3.00%",
+      "occupancy_rate": "75.00%",
+      "operating_expense_ratio": "65.00%",
+      "capex": "400.00万元",
+      "asset_type": "hotel"
+    }
+  }
+}
