@@ -1,0 +1,286 @@
+{
+  "report_title": "NOI计算与招募说明书数据比对分析报告",
+  "fund_name": "华泰紫金华住安住REIT",
+  "comparison_date": "2025",
+  "projects": [
+    {
+      "project_name": "广州项目",
+      "brand": "美居+全季",
+      "total_rooms": 776,
+      "detailed_calculations": {
+        "room_revenue": {
+          "formula": "ADR(468.52) × 房间数(776) × OCC(0.935) × 天数(365) / 10000",
+          "calculated": 12407.79,
+          "prospectus": 12015.67,
+          "difference": 392.12,
+          "diff_pct": 3.26
+        },
+        "ota_revenue": {
+          "formula": "客房收入(12407.79) × OTA比例(0.0)",
+          "calculated": 0.0,
+          "prospectus": 0,
+          "difference": 0.0,
+          "diff_pct": 0,
+          "note": "招募说明书显示OTA占比为0"
+        },
+        "fb_revenue": {
+          "formula": "客房收入(12407.79) × 餐饮比例(0.0447)",
+          "calculated": 554.63,
+          "prospectus": 536.8,
+          "difference": 17.83,
+          "diff_pct": 3.32
+        },
+        "other_revenue": {
+          "formula": "客房收入(12407.79) × 其他收入比例(0.0151)",
+          "calculated": 187.36,
+          "prospectus": 181.92,
+          "difference": 5.44,
+          "diff_pct": 2.99
+        },
+        "commercial_revenue": {
+          "formula": "租金收入(377.07) + 物业费(75.9)",
+          "calculated": 452.97,
+          "prospectus": 452.97,
+          "difference": 0,
+          "diff_pct": 0,
+          "rental_income": 377.07,
+          "mgmt_fee_income": 75.9
+        },
+        "total_hotel_revenue": {
+          "calculated": 13149.77,
+          "prospectus": 12734.39,
+          "difference": 415.38,
+          "diff_pct": 3.26
+        },
+        "total_income": {
+          "calculated": 13602.74,
+          "prospectus": 13187.36,
+          "difference": 415.38,
+          "diff_pct": 3.15
+        },
+        "operating_expenses": {
+          "detail": {
+            "labor_cost": {
+              "name": "人工成本",
+              "value": 1312.98
+            },
+            "fb_cost": {
+              "name": "餐饮成本",
+              "value": 268.4
+            },
+            "cleaning_supplies": {
+              "name": "清洁物料",
+              "value": 180.0
+            },
+            "consumables": {
+              "name": "耗材",
+              "value": 120.0
+            },
+            "utilities": {
+              "name": "能源费用",
+              "value": 580.0
+            },
+            "maintenance": {
+              "name": "维护费",
+              "value": 350.0
+            },
+            "marketing": {
+              "name": "营销推广",
+              "value": 450.0
+            },
+            "data_system": {
+              "name": "数据系统",
+              "value": 150.0
+            },
+            "other": {
+              "name": "其他费用",
+              "value": 200.0
+            }
+          },
+          "total_calculated": 3611.38,
+          "historical_ratio": 0.3
+        },
+        "property_expense": {
+          "formula": "建筑面积(42774.94) × 单价(8.5) × 12 / 10000",
+          "calculated": 436.3,
+          "prospectus": 436.3,
+          "difference": -0.0,
+          "diff_pct": -0.0
+        },
+        "insurance": {
+          "calculated": 45.0,
+          "prospectus": 45.0,
+          "difference": 0
+        },
+        "tax_vat": {
+          "vat_hotel": 788.99,
+          "vat_commercial": 33.94,
+          "surcharge": 98.75,
+          "total": 921.67
+        },
+        "tax_property": {
+          "hotel_from_value": 0.05,
+          "commercial_from_rent": 45.25,
+          "total": 45.3
+        },
+        "tax_land": {
+          "unit_rate": 20.0,
+          "land_area": 3500,
+          "total": 7.0
+        },
+        "tax_total": {
+          "calculated": 973.98,
+          "note": "招募说明书Page 172显示成本合计11085.75万元，包含折旧5421.06万元"
+        },
+        "management_fee": {
+          "gop": 9538.39,
+          "rate": 0.03,
+          "calculated": 286.15
+        },
+        "total_expenses": {
+          "calculated": 5352.81,
+          "note": "不含折旧（折旧已从GOP中剔除）"
+        },
+        "capex": {
+          "value": 141.63,
+          "source": "招募说明书预测"
+        },
+        "noi": {
+          "formula": "总收入 - 总费用 - Capex",
+          "calculated": 8108.3,
+          "note": "需与招募说明书NOI进行比对"
+        }
+      },
+      "key_differences": []
+    },
+    {
+      "project_name": "上海项目",
+      "brand": "桔子水晶",
+      "total_rooms": 268,
+      "detailed_calculations": {
+        "room_revenue": {
+          "formula": "ADR(359.71) × 房间数(268) × OCC(0.9036) × 天数(365) / 10000",
+          "calculated": 3179.48,
+          "prospectus": 3035.38,
+          "difference": 144.1,
+          "diff_pct": 4.75
+        },
+        "ota_revenue": {
+          "calculated": 0.0,
+          "prospectus": 0,
+          "difference": 0.0,
+          "note": "OTA占比为0"
+        },
+        "fb_revenue": {
+          "calculated": 218.75,
+          "prospectus": 208.7,
+          "difference": 10.05,
+          "diff_pct": 4.81
+        },
+        "other_revenue": {
+          "calculated": 26.71,
+          "prospectus": 25.49,
+          "difference": 1.22,
+          "diff_pct": 4.78
+        },
+        "commercial_revenue": {
+          "calculated": 44.25,
+          "prospectus": 44.25,
+          "rental_income": 40.29,
+          "mgmt_fee_income": 3.96
+        },
+        "total_hotel_revenue": {
+          "calculated": 3424.94,
+          "prospectus": 3269.87
+        },
+        "total_income": {
+          "calculated": 3469.19,
+          "prospectus": 3313.82,
+          "difference": 155.37,
+          "diff_pct": 4.69
+        },
+        "operating_expenses": {
+          "detail": {
+            "labor_cost": {
+              "name": "人工成本",
+              "value": 380.0
+            },
+            "fb_cost": {
+              "name": "餐饮成本",
+              "value": 104.35
+            },
+            "cleaning_supplies": {
+              "name": "清洁物料",
+              "value": 65.0
+            },
+            "consumables": {
+              "name": "耗材",
+              "value": 45.0
+            },
+            "utilities": {
+              "name": "能源费用",
+              "value": 220.0
+            },
+            "maintenance": {
+              "name": "维护费",
+              "value": 140.0
+            },
+            "marketing": {
+              "name": "营销推广",
+              "value": 180.0
+            },
+            "data_system": {
+              "name": "数据系统",
+              "value": 60.0
+            },
+            "other": {
+              "name": "其他费用",
+              "value": 80.0
+            }
+          },
+          "total_calculated": 1274.35
+        },
+        "property_expense": {
+          "calculated": 143.59,
+          "prospectus": 143.59
+        },
+        "insurance": {
+          "value": 18.0
+        },
+        "tax_vat": {
+          "vat_hotel": 205.5,
+          "vat_commercial": 3.63,
+          "surcharge": 25.09,
+          "total": 234.22
+        },
+        "tax_property": {
+          "hotel_from_value": 0.02,
+          "commercial_from_rent": 4.83,
+          "total": 4.85
+        },
+        "tax_land": {
+          "total": 2.4
+        },
+        "tax_total": {
+          "calculated": 241.47,
+          "note": "招募说明书Page 184显示成本2465.42万元，含折旧802.04万元"
+        },
+        "management_fee": {
+          "gop": 2150.59,
+          "rate": 0.03,
+          "calculated": 64.52
+        },
+        "total_expenses": {
+          "calculated": 1741.93
+        },
+        "capex": {
+          "value": 38.92
+        },
+        "noi": {
+          "calculated": 1688.34
+        }
+      },
+      "key_differences": []
+    }
+  ]
+}

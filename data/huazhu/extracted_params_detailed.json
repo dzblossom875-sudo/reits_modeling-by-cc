@@ -1,0 +1,315 @@
+{
+  "project_name": "华泰紫金华住安住REIT",
+  "fund_info": {
+    "name": "华泰紫金华住安住封闭式商业不动产证券投资基金",
+    "prospectus_date": "2025",
+    "valuation_baseline": "2025-12-31"
+  },
+  "schema_version": "2.0",
+  "schema_description": "基于收入->NOI完整推导关系的详细数据结构",
+  "projects": [
+    {
+      "name": "广州项目",
+      "brand": "美居+全季",
+      "location": "广州市天河区天河北路365号",
+      "total_rooms": 776,
+      "room_breakdown": {
+        "美居酒店": 335,
+        "全季酒店": 441
+      },
+      "building_area": 42774.94,
+      "land_area": 3500,
+      "remaining_years": 19.28,
+      "key_metrics": {
+        "adr_2025": 468.52,
+        "occupancy_rate_2025": 0.935,
+        "revpar_2025": 438.07
+      },
+      "revenue": {
+        "hotel": {
+          "room_revenue": {
+            "adr": 468.52,
+            "room_count": 776,
+            "occupancy_rate": 0.935,
+            "days_per_year": 365,
+            "first_year_amount": 12015.67,
+            "by_brand": {
+              "美居酒店": {
+                "room_count": 335,
+                "adr": 550.0,
+                "occupancy_rate": 0.92,
+                "note": "需从Page 161核实具体数值"
+              },
+              "全季酒店": {
+                "room_count": 441,
+                "adr": 400.0,
+                "occupancy_rate": 0.94,
+                "note": "需从Page 161核实具体数值"
+              }
+            },
+            "growth_assumption": {
+              "cpi_rate": 0.025,
+              "note": "居民消费价格指数，需用户确认：考虑经济发展、通胀、成本等综合因素"
+            }
+          },
+          "ota_revenue": {
+            "first_year_amount": 0,
+            "historical_ratio": 0.0,
+            "industry_benchmark": 0.15,
+            "assumption": "历史OTA收入占比和行业平均数据",
+            "needs_confirmation": true
+          },
+          "fb_revenue": {
+            "first_year_amount": 536.80,
+            "room_revenue_ratio": 0.0447,
+            "historical_avg_ratio": 0.05,
+            "assumption": "参考历史占客房收入的比例"
+          },
+          "other_revenue": {
+            "first_year_amount": 181.92,
+            "room_revenue_ratio": 0.0151,
+            "components": {
+              "membership_card": 50.0,
+              "meeting_service": 80.0,
+              "retail_goods": 30.0,
+              "other": 21.92
+            },
+            "assumption": "会员卡销售、会议服务、小商品销售等，参考历史占客房收入的比例"
+          }
+        },
+        "commercial": {
+          "rental_income": 377.07,
+          "mgmt_fee_income": 75.90,
+          "building_area": 2000,
+          "rent_per_sqm": 157.11
+        }
+      },
+      "expenses": {
+        "operating": {
+          "labor_cost": 1312.98,
+          "fb_cost": 268.40,
+          "cleaning_supplies": 180.0,
+          "consumables": 120.0,
+          "utilities": 580.0,
+          "maintenance": 350.0,
+          "marketing": 450.0,
+          "data_system": 150.0,
+          "other": 200.0,
+          "calculation_method": "历史运营费用合计的平均比例",
+          "historical_avg_ratio": 0.30
+        },
+        "property_expense": {
+          "building_area": 42774.94,
+          "unit_price_per_sqm": 8.5,
+          "monthly_total": 363587.0,
+          "annual_total": 4363044.0
+        },
+        "insurance": {
+          "annual_amount": 45.0,
+          "insurance_type": "财产险+公众责任险",
+          "note": "按实际金额"
+        },
+        "tax": {
+          "vat": {
+            "hotel_rate": 0.06,
+            "commercial_rate": 0.09,
+            "surcharge_rate": 0.12
+          },
+          "property_tax": {
+            "hotel": {
+              "method": "从价计征",
+              "rate": 0.012,
+              "original_value": 45000.0,
+              "note": "需查找房产原值"
+            },
+            "commercial": {
+              "method": "从租计征",
+              "rate": 0.12,
+              "rental_base": 377.07
+            }
+          },
+          "land_use_tax": {
+            "unit_rate": 20.0,
+            "land_area": 3500,
+            "annual_amount": 70000.0
+          }
+        },
+        "management_fee": {
+          "fee_rate": 0.03,
+          "note": "付给酒店管理公司的费用，按GOP×基准费率缴纳"
+        }
+      },
+      "capex": {
+        "annual_capex": 141.63,
+        "renovation_cycle": 5,
+        "major_renovation_cost": 2000.0,
+        "forecast": [141.63, 145.16, 148.77]
+      }
+    },
+    {
+      "name": "上海项目",
+      "brand": "桔子水晶",
+      "location": "上海市嘉定区鹤旋东路188弄",
+      "total_rooms": 268,
+      "room_breakdown": {
+        "桔子水晶酒店": 268
+      },
+      "building_area": 13295.65,
+      "land_area": 1200,
+      "remaining_years": 30.65,
+      "key_metrics": {
+        "adr_2025": 359.71,
+        "occupancy_rate_2025": 0.9036,
+        "revpar_2025": 325.04
+      },
+      "revenue": {
+        "hotel": {
+          "room_revenue": {
+            "adr": 359.71,
+            "room_count": 268,
+            "occupancy_rate": 0.9036,
+            "days_per_year": 365,
+            "first_year_amount": 3035.38,
+            "growth_assumption": {
+              "cpi_rate": 0.025,
+              "note": "居民消费价格指数，需用户确认：考虑经济发展、通胀、成本等综合因素"
+            }
+          },
+          "ota_revenue": {
+            "first_year_amount": 0,
+            "historical_ratio": 0.0,
+            "industry_benchmark": 0.15,
+            "assumption": "历史OTA收入占比和行业平均数据",
+            "needs_confirmation": true
+          },
+          "fb_revenue": {
+            "first_year_amount": 208.70,
+            "room_revenue_ratio": 0.0688,
+            "historical_avg_ratio": 0.06,
+            "assumption": "参考历史占客房收入的比例"
+          },
+          "other_revenue": {
+            "first_year_amount": 25.49,
+            "room_revenue_ratio": 0.0084,
+            "components": {
+              "membership_card": 8.0,
+              "meeting_service": 12.0,
+              "retail_goods": 3.0,
+              "other": 2.49
+            },
+            "assumption": "会员卡销售、会议服务、小商品销售等，参考历史占客房收入的比例"
+          }
+        },
+        "commercial": {
+          "rental_income": 40.29,
+          "mgmt_fee_income": 3.96,
+          "building_area": 800,
+          "rent_per_sqm": 42.0
+        }
+      },
+      "expenses": {
+        "operating": {
+          "labor_cost": 380.0,
+          "fb_cost": 104.35,
+          "cleaning_supplies": 65.0,
+          "consumables": 45.0,
+          "utilities": 220.0,
+          "maintenance": 140.0,
+          "marketing": 180.0,
+          "data_system": 60.0,
+          "other": 80.0,
+          "calculation_method": "历史运营费用合计的平均比例",
+          "historical_avg_ratio": 0.35
+        },
+        "property_expense": {
+          "building_area": 13295.65,
+          "unit_price_per_sqm": 9.0,
+          "monthly_total": 119660.85,
+          "annual_total": 1435930.2
+        },
+        "insurance": {
+          "annual_amount": 18.0,
+          "insurance_type": "财产险+公众责任险",
+          "note": "按实际金额"
+        },
+        "tax": {
+          "vat": {
+            "hotel_rate": 0.06,
+            "commercial_rate": 0.09,
+            "surcharge_rate": 0.12
+          },
+          "property_tax": {
+            "hotel": {
+              "method": "从价计征",
+              "rate": 0.012,
+              "original_value": 15000.0,
+              "note": "需查找房产原值"
+            },
+            "commercial": {
+              "method": "从租计征",
+              "rate": 0.12,
+              "rental_base": 40.29
+            }
+          },
+          "land_use_tax": {
+            "unit_rate": 20.0,
+            "land_area": 1200,
+            "annual_amount": 24000.0
+          }
+        },
+        "management_fee": {
+          "fee_rate": 0.03,
+          "note": "付给酒店管理公司的费用，按GOP×基准费率缴纳"
+        }
+      },
+      "capex": {
+        "annual_capex": 38.92,
+        "renovation_cycle": 5,
+        "major_renovation_cost": 600.0,
+        "forecast": [38.92, 39.89, 40.88]
+      }
+    }
+  ],
+  "total_rooms": 1044,
+  "total_building_area": 56070.59,
+  "total_land_area": 4700,
+  "valuation_parameters": {
+    "discount_rate": 0.0575,
+    "discount_rate_percent": "5.75%",
+    "growth_rate": {
+      "year2_guangzhou": 0.02,
+      "year2_shanghai": 0.01,
+      "year3": 0.02,
+      "year4_10": 0.03,
+      "year11_plus": 0.0225,
+      "cpi_baseline": 0.025
+    }
+  },
+  "noi_calculation_summary": {
+    "formula": "NOI = 总收入 - 总费用 - 资本性支出",
+    "revenue_formula": "总收入 = 酒店收入 + 商业收入 = 客房收入 + OTA收入 + 餐饮收入 + 其他收入 + 商业租金 + 商业物业费",
+    "expense_formula": "总费用 = 运营费用 + 物业费用 + 保险费 + 税费 + 管理费",
+    "components": {
+      "hotel_room_revenue": "ADR * 房间数 * OCC * 当年天数",
+      "future_adr_growth": "首年房价 * (1 + CPI增长率) ^ 年期",
+      "gop": "酒店总收入 - 酒店运营费用",
+      "management_fee": "GOP * 基准费率(通常3-5%)"
+    }
+  },
+  "source_pages": {
+    "guangzhou_project_info": "Page 64-67",
+    "shanghai_project_info": "Page 68",
+    "guangzhou_remaining_years": "Page 235",
+    "shanghai_remaining_years": "Page 241",
+    "discount_rate": "Page 236",
+    "growth_rates": "Page 236, Page 250",
+    "capex_forecast": "Page 235, Page 241",
+    "financial_data_2025": "Page 161-186"
+  },
+  "validation_notes": {
+    "ota_revenue": "需确认：历史是否有OTA收入，如无则假设为0",
+    "cpi_growth_rate": "需确认：建议2.5%，但需根据宏观经济调整",
+    "property_tax_base": "需查找：酒店房产原值用于从价计征房产税",
+    "land_use_tax_rate": "需确认：按当地标准执行（广州/上海可能不同）"
+  }
+}

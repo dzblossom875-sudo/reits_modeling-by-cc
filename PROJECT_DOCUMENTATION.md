@@ -13,27 +13,44 @@ REITs_modeling by cc/
 ├── main.py                          # 框架主入口（通用REITs建模框架）
 ├── build_dcf_model.py               # ✅ 华住REIT专用DCF建模脚本（最终版）
 │
-├── src/                             # 通用框架源代码
+├── src/                             # 核心源代码
+│   ├── noi_engine.py                # NOI计算引擎
+│   ├── noi_comparison.py            # NOI比对分析
+│   ├── schemas.py                   # 数据Schema定义
 │   ├── core/                        # 核心类型定义
 │   ├── models/                      # DCF模型、情景分析、敏感性分析
 │   ├── exporters/                   # Excel/JSON导出
-│   └── ...
+│   ├── parsers/                     # 文档解析器
+│   ├── validators/                  # 参数验证、风险分析
+│   └── utils/                       # 工具函数
 │
 ├── input/                           # 输入文件
 │   └── 华住募集说明书.pdf           # 招募说明书PDF
 │
-├── tmp/huazhu_extract/              # PDF提取结果
+├── data/                            # 正式数据目录
+│   └── huazhu/                      # 华住项目数据
+│
+├── tmp/huazhu_extract/              # PDF提取结果（临时）
 │   ├── extracted_params.json        # ✅ 提取的核心参数
 │   ├── page_*.md/txt                # 单页提取文本
 │   └── tables/                      # 提取的表格
 │
-└── output/huazhu_dcf_model/         # DCF模型输出
-    ├── dcf_summary.csv              # 估值汇总表
-    ├── dcf_cashflows.csv            # 现金流明细
-    ├── dcf_sensitivity.csv          # 敏感性分析
-    ├── dcf_results.json             # 完整JSON结果
-    ├── DCF模型审计报告.md            # 模型审计文档
-    └── 估值差异分析.md               # 估值差异分析
+├── output/huazhu_dcf_model/         # DCF模型输出
+│   ├── dcf_summary.csv              # 估值汇总表
+│   ├── dcf_cashflows.csv            # 现金流明细
+│   ├── dcf_sensitivity.csv          # 敏感性分析
+│   ├── dcf_results.json             # 完整JSON结果
+│   ├── dcf_valuation_final.xlsx     # Excel估值模型
+│   └── DCF模型审计报告.md            # 模型审计文档
+│
+├── memory/                          # 项目文档与记忆
+│   ├── MEMORY.md                    # 会话记忆
+│   ├── WORKFLOW_DATA_EXTRACTION.md  # 数据提取规范
+│   ├── REITs-dcf-pitfalls.md        # 常见陷阱
+│   └── REITs-hotel-workflow.md      # 标准流程
+│
+└── archive/                         # 归档：开发过程文件
+    └── README.md                    # 归档文件说明
 ```
 
 ---
@@ -81,9 +98,8 @@ python main.py --file input/华住募集说明书.pdf
 ### 流程1: PDF数据提取（已完成）
 
 **相关文件**:
-- `extract_pdf_real.py` - PDF提取主脚本
-- `extract_and_validate.py` - 提取并验证
-- `tmp/huazhu_extract/extracted_params.json` - 提取结果
+- `src/parsers/` - PDF解析器模块
+- `tmp/huazhu_extract/extracted_params.json` - 提取结果（已归档）
 
 **提取的数据**:
 | 数据类型 | 来源页码 | 文件位置 |
@@ -251,29 +267,63 @@ valuation = Σ(PV_t)
 | 文档 | 路径 | 说明 |
 |------|------|------|
 | 项目文档 | `PROJECT_DOCUMENTATION.md` | 本文档 |
+| 会话记忆 | `memory/MEMORY.md` | 开发日志与修正记录 |
+| 数据提取规范 | `memory/WORKFLOW_DATA_EXTRACTION.md` | 三阶段工作流规范 |
 | 审计报告 | `output/huazhu_dcf_model/DCF模型审计报告.md` | 完整审计 |
-| 差异分析 | `output/huazhu_dcf_model/估值差异分析.md` | 差异项分析 |
+| NOI比对报告 | `output/NOI_comparison_report.md` | NOI计算比对分析 |
 | 估值汇总 | `output/huazhu_dcf_model/dcf_summary.csv` | 最终结果 |
 | 现金流明细 | `output/huazhu_dcf_model/dcf_cashflows.csv` | 50年明细 |
+| Excel模型 | `output/huazhu_dcf_model/dcf_valuation_final.xlsx` | Excel估值模型 |
 | JSON结果 | `output/huazhu_dcf_model/dcf_results.json` | 完整数据 |
+| 归档文件 | `archive/README.md` | 过程文件归档说明 |
 
 ---
 
-## 七、快速启动
+## 七、核心模块说明
 
-### 运行DCF建模
+### 1. DCF建模
 ```bash
-cd "D:\AI投研工具\Claude Code\REITs_modeling by cc"
 python build_dcf_model.py
 ```
+输出生成在 `output/huazhu_dcf_model/`：
+- `dcf_results.json` - 完整JSON结果
+- `dcf_valuation_final.xlsx` - Excel估值模型
+- `DCF模型审计报告.md` - 审计文档
 
-### 查看结果
-- 估值汇总: `output/huazhu_dcf_model/dcf_summary.csv`
-- 完整数据: `output/huazhu_dcf_model/dcf_results.json`
+### 2. NOI计算引擎
+```bash
+python src/noi_comparison.py
+```
+功能：
+- 从ADR/OCC计算客房收入
+- 完整收入→NOI推导链条
+- 与招募说明书逐项比对
+
+### 3. 通用框架（备用）
+```bash
+python main.py --file input/华住募集说明书.pdf
+```
 
 ---
 
-**文档版本**: v1.0
+## 八、项目演进说明
+
+### 当前架构
+- **根目录**: 仅保留最终入口脚本 (`build_dcf_model.py`, `main.py`)
+- **src/**: 核心模块代码（NOI引擎、DCF模型、解析器等）
+- **archive/**: 开发过程文件（探索脚本、测试代码等）
+
+### 已归档文件
+开发过程中的探索性脚本已移至 `archive/` 目录，包括：
+- PDF提取探索脚本
+- 早期估值模型示例
+- 测试和诊断脚本
+
+详见 `archive/README.md`
+
+---
+
+**文档版本**: v1.1
 
 **最后更新**: 2026-03-18
 
