@@ -1,18 +1,15 @@
 {
   "fund_info": {
     "name": "华泰紫金华住安住封闭式商业不动产证券投资基金",
-    "manager": "华泰证券(上海)资产管理有限公司",
-    "total_raise": 13.2,
-    "asset_original_value": 12.46,
-    "asset_nav_2025": 10.7,
-    "asset_valuation": 15.91
+    "prospectus_date": "2025",
+    "valuation_baseline": "2025-12-31"
   },
   "dcf_inputs": {
     "discount_rate": 0.0575,
     "discount_rate_percent": "5.75%",
     "revenue_growth": 0.01,
     "revenue_growth_percent": "1.0%",
-    "historical_growth": -0.0275702882293003,
+    "historical_growth": -0.028,
     "historical_growth_percent": "-2.8%",
     "growth_note": "历史ADR负增长，采用1%温和增长假设",
     "valuation_method": "报酬率全周期DCF法（持有到期，残值归零）"
@@ -218,7 +215,10 @@
             "discount_factor": 2.8929,
             "pv": 4387.17
           }
-        ]
+        ],
+        "rooms": 776,
+        "value_per_room": 1450371.26,
+        "implied_cap_rate": 0.0733
       },
       {
         "name": "上海项目（桔子水晶）",
@@ -529,58 +529,47 @@
             "discount_factor": 5.3507,
             "pv": 648.76
           }
-        ]
+        ],
+        "rooms": 268,
+        "value_per_room": 1216023.51,
+        "implied_cap_rate": 0.055
       }
     ],
     "total_valuation": 145138.24,
     "total_pv_cash_flows": 145138.24,
     "kpis": {
       "total_rooms": 1044,
-      "value_per_room": 1390213.03,
-      "implied_cap_rate": 0.0624,
-      "annual_yield": 0.0624
+      "total_base_noi": 10040.22,
+      "implied_cap_rate": 0.0692,
+      "projects": [
+        {
+          "name": "广州项目（美居+全季）",
+          "rooms": 776,
+          "value_per_room": 1450371.26,
+          "implied_cap_rate": 0.0733,
+          "base_noi": 8249.23
+        },
+        {
+          "name": "上海项目（桔子水晶）",
+          "rooms": 268,
+          "value_per_room": 1216023.51,
+          "implied_cap_rate": 0.055,
+          "base_noi": 1790.99
+        }
+      ]
     },
     "comparison": {
       "dcf_valuation_billion": 14.51,
-      "fund_raise_billion": 13.2,
       "asset_valuation_billion": 15.91,
-      "vs_fund_raise": 1.31,
-      "vs_asset_valuation": -1.4
+      "vs_asset_valuation": -1.4,
+      "fund_raise_billion": 13.2
     }
   },
-  "sensitivity": {
-    "discount_rate_sensitivity": {
-      "4.50%": 163971.24,
-      "5.00%": 156021.14,
-      "5.50%": 148635.11,
-      "5.75%": 145138.24,
-      "6.00%": 141764.37,
-      "6.50%": 135364.96,
-      "7.00%": 129397.29
-    },
-    "growth_rate_sensitivity": {
-      "0.0%": 145138.24,
-      "0.5%": 145138.24,
-      "1.0%": 145138.24,
-      "1.5%": 145138.24,
-      "2.0%": 145138.24
-    },
-    "base_valuation": 145138.24
-  },
   "extraction_source": {
-    "project_definition": 19,
-    "project_details": [
-      64,
-      65,
-      66,
-      67,
-      68,
-      69,
-      70
-    ],
-    "financial_indicators": [
-      163,
-      164
-    ]
+    "guangzhou_remaining_years": "Page 235",
+    "shanghai_remaining_years": "Page 241",
+    "discount_rate": "Page 236",
+    "growth_rates": "Page 236, Page 250",
+    "capex_forecast": "Page 235, Page 241"
   }
 }

@@ -1,0 +1,63 @@
+{
+  "project_name": "华泰紫金华住安住REIT",
+  "fund_info": {
+    "name": "华泰紫金华住安住封闭式商业不动产证券投资基金",
+    "prospectus_date": "2025",
+    "valuation_baseline": "2025-12-31"
+  },
+  "projects": [
+    {
+      "name": "广州项目",
+      "brand": "美居+全季",
+      "total_rooms": 776,
+      "room_breakdown": {
+        "美居酒店": 335,
+        "全季酒店": 441
+      },
+      "remaining_years": 19.28,
+      "adr_2023": 0,
+      "adr_2025": 0
+    },
+    {
+      "name": "上海项目",
+      "brand": "桔子水晶",
+      "total_rooms": 268,
+      "room_breakdown": {
+        "桔子水晶酒店": 268
+      },
+      "remaining_years": 30.65,
+      "adr_2023": 0,
+      "adr_2025": 0
+    }
+  ],
+  "total_rooms": 1044,
+  "total_annual_noicf": 2735.65,
+  "financial_data": {
+    "广州项目": {
+      "capex_forecast": [141.63, 145.16, 148.77],
+      "noicf_2026": 8107.60
+    },
+    "上海项目": {
+      "capex_forecast": [38.92, 39.89, 40.88],
+      "noicf_2026": 1752.07
+    }
+  },
+  "valuation_parameters": {
+    "discount_rate": 0.0575,
+    "discount_rate_percent": "5.75%",
+    "growth_rate": {
+      "year2_guangzhou": 0.02,
+      "year2_shanghai": 0.01,
+      "year3": 0.02,
+      "year4_10": 0.03,
+      "year11_plus": 0.0225
+    }
+  },
+  "source_pages": {
+    "guangzhou_remaining_years": "Page 235",
+    "shanghai_remaining_years": "Page 241",
+    "discount_rate": "Page 236",
+    "growth_rates": "Page 236, Page 250",
+    "capex_forecast": "Page 235, Page 241"
+  }
+}
