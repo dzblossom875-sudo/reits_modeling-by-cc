@@ -243,7 +243,12 @@ class NOIEngine:
     @staticmethod
     def calculate_tax_expenses(tax_data: Dict, hotel_revenue: float,
                                commercial_rent: float) -> Dict[str, float]:
-        """计算税费明细"""
+        """计算税费明细
+
+        注意：hotel_revenue是含税收入，增值税计算需先转换为不含税收入
+        不含税收入 = 含税收入 / (1 + 税率)
+        增值税 = 不含税收入 × 税率 = 含税收入 × 税率 / (1 + 税率)
+        """
         results = {}
 
         # 1. 增值税及附加
@@ -252,8 +257,11 @@ class NOIEngine:
         vat_commercial_rate = vat_data.get('commercial_rate', 0.09)
         surcharge_rate = vat_data.get('surcharge_rate', 0.12)
 
-        vat_hotel = hotel_revenue * vat_hotel_rate
-        vat_commercial = commercial_rent * vat_commercial_rate
+        # 酒店收入增值税：先转为不含税收入再计算
+        # 增值税 = 含税收入 × 税率 / (1 + 税率)
+        vat_hotel = hotel_revenue * vat_hotel_rate / (1 + vat_hotel_rate)
+        # 商业租金增值税（通常租金报价为含税价）
+        vat_commercial = commercial_rent * vat_commercial_rate / (1 + vat_commercial_rate)
         vat_total = vat_hotel + vat_commercial
         surcharge = vat_total * surcharge_rate
 
