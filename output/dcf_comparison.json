@@ -1,0 +1,36 @@
+{
+  "prospectus_noi": {
+    "total_valuation": 145138.24,
+    "projects": [
+      {
+        "name": "广州项目（美居+全季）[招募说明书Page 235]",
+        "valuation": 112548.81,
+        "base_noi": 8249.23
+      },
+      {
+        "name": "上海项目（桔子水晶）[招募说明书Page 241]",
+        "valuation": 32589.43,
+        "base_noi": 1790.99
+      }
+    ]
+  },
+  "calculated_noi": {
+    "total_valuation": 126105.95000000001,
+    "projects": [
+      {
+        "name": "广州项目（美居+全季）[计算NOI（真实数据）]",
+        "valuation": 101289.63,
+        "base_noi": 7437.63
+      },
+      {
+        "name": "上海项目（桔子水晶）[计算NOI（真实数据）]",
+        "valuation": 24816.32,
+        "base_noi": 1372.7
+      }
+    ]
+  },
+  "difference": {
+    "total_valuation": -19032.28999999998,
+    "total_pct": -13.113215373150439
+  }
+}

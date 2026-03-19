@@ -36,15 +36,17 @@
             "by_brand": {
               "美居酒店": {
                 "room_count": 335,
-                "adr": 550.0,
-                "occupancy_rate": 0.92,
-                "note": "需从Page 161核实具体数值"
+                "adr": 495.58,
+                "occupancy_rate": 0.9246,
+                "revpar": 458.21,
+                "source": "招募说明书 Page 163 表53"
               },
               "全季酒店": {
                 "room_count": 441,
-                "adr": 400.0,
-                "occupancy_rate": 0.94,
-                "note": "需从Page 161核实具体数值"
+                "adr": 443.91,
+                "occupancy_rate": 0.9496,
+                "revpar": 421.52,
+                "source": "招募说明书 Page 163 表54"
               }
             },
             "growth_assumption": {
@@ -119,8 +121,11 @@
             "hotel": {
               "method": "从价计征",
               "rate": 0.012,
-              "original_value": 45000.0,
-              "note": "需查找房产原值"
+              "deduction_rate": 0.30,
+              "original_value": 104786.15,
+              "book_value": 85206.08,
+              "valuation_value": 123500.0,
+              "source": "招募说明书 Page 241"
             },
             "commercial": {
               "method": "从租计征",
@@ -129,9 +134,10 @@
             }
           },
           "land_use_tax": {
-            "unit_rate": 20.0,
+            "unit_rate": 12.0,
             "land_area": 3500,
-            "annual_amount": 70000.0
+            "annual_amount": 42000.0,
+            "source": "招募说明书 Page 254"
           }
         },
         "management_fee": {
@@ -242,8 +248,11 @@
             "hotel": {
               "method": "从价计征",
               "rate": 0.012,
-              "original_value": 15000.0,
-              "note": "需查找房产原值"
+              "deduction_rate": 0.30,
+              "original_value": 28959.67,
+              "book_value": 25957.04,
+              "valuation_value": 35600.0,
+              "source": "招募说明书 Page 241"
             },
             "commercial": {
               "method": "从租计征",
@@ -252,9 +261,10 @@
             }
           },
           "land_use_tax": {
-            "unit_rate": 20.0,
+            "unit_rate": 3.0,
             "land_area": 1200,
-            "annual_amount": 24000.0
+            "annual_amount": 3600.0,
+            "source": "招募说明书 Page 254"
           }
         },
         "management_fee": {
@@ -283,6 +293,23 @@
       "year4_10": 0.03,
       "year11_plus": 0.0225,
       "cpi_baseline": 0.025
+    },
+    "occupancy_forecast": {
+      "guangzhou_meiju": {
+        "2026": 0.93,
+        "2027": 0.95,
+        "source": "招募说明书 Page 250"
+      },
+      "guangzhou_quanji": {
+        "2026": 0.95,
+        "2027": 0.96,
+        "source": "招募说明书 Page 250"
+      },
+      "shanghai_juzishuijing": {
+        "2026": 0.905,
+        "2027": 0.91,
+        "source": "招募说明书 Page 250"
+      }
     }
   },
   "noi_calculation_summary": {
@@ -307,9 +334,44 @@
     "financial_data_2025": "Page 161-186"
   },
   "validation_notes": {
-    "ota_revenue": "需确认：历史是否有OTA收入，如无则假设为0",
-    "cpi_growth_rate": "需确认：建议2.5%，但需根据宏观经济调整",
-    "property_tax_base": "需查找：酒店房产原值用于从价计征房产税",
-    "land_use_tax_rate": "需确认：按当地标准执行（广州/上海可能不同）"
+    "ota_revenue": "已确认：历史OTA收入为0",
+    "cpi_growth_rate": "已确认：2.5%招募说明书基准假设",
+    "property_tax_base": "已完成：广州104,786.15万元，上海28,959.67万元（Page 241）",
+    "land_use_tax_rate": "已完成：广州12.0元/㎡/年，上海3.0元/㎡/年（Page 254）"
+  },
+  "data_extraction_log": {
+    " extraction_date": "2026-03-19",
+    "extracted_items": [
+      {
+        "item": "广州美居酒店ADR/OCC",
+        "value": "ADR 495.58元, OCC 92.46%",
+        "source": "Page 163 表53"
+      },
+      {
+        "item": "广州全季酒店ADR/OCC",
+        "value": "ADR 443.91元, OCC 94.96%",
+        "source": "Page 163 表54"
+      },
+      {
+        "item": "上海桔子水晶ADR/OCC",
+        "value": "ADR 359.71元, OCC 90.36%",
+        "source": "Page 164 表55"
+      },
+      {
+        "item": "广州项目房产原值",
+        "value": "104,786.15万元",
+        "source": "Page 241"
+      },
+      {
+        "item": "上海项目房产原值",
+        "value": "28,959.67万元",
+        "source": "Page 241"
+      },
+      {
+        "item": "土地使用税税率",
+        "value": "广州12.0元/㎡/年, 上海3.0元/㎡/年",
+        "source": "Page 254"
+      }
+    ]
   }
 }

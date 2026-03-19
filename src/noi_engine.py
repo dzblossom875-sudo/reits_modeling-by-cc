@@ -275,9 +275,12 @@ class NOIEngine:
 
         # 酒店部分（从价）
         hotel_prop = prop_tax_data.get('hotel', {})
-        hotel_prop_base = hotel_prop.get('original_value', 0)
+        hotel_prop_base = hotel_prop.get('original_value', 0)  # 万元单位
         hotel_prop_rate = hotel_prop.get('rate', 0.012)
-        hotel_prop_tax = hotel_prop_base * hotel_prop_rate / 10000  # 转换为万元
+        # 注意：hotel_prop_base已经是万元单位，直接乘税率即可得到万元
+        # 公式：房产税 = 房产原值(万元) × 扣除率 × 税率
+        deduction_rate = hotel_prop.get('deduction_rate', 0.30)  # 默认扣除30%
+        hotel_prop_tax = hotel_prop_base * (1 - deduction_rate) * hotel_prop_rate
 
         # 商业部分（从租）
         commercial_prop = prop_tax_data.get('commercial', {})

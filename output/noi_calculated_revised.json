@@ -1,0 +1,40 @@
+[
+  {
+    "project_name": "广州项目",
+    "room_revenue": 12388.07,
+    "fb_revenue": 553.75,
+    "other_revenue": 187.06,
+    "commercial_revenue": 452.97,
+    "total_income": 13581.85,
+    "operating": 3611.38,
+    "property": 436.3,
+    "insurance": 45.0,
+    "tax_vat": 827.25,
+    "tax_property": 934.56,
+    "tax_land": 4.2,
+    "tax_total": 1766.01,
+    "management": 285.52,
+    "total_expense": 6144.22,
+    "capex": 141.63,
+    "noi": 7296.0
+  },
+  {
+    "project_name": "上海项目",
+    "room_revenue": 3035.38,
+    "fb_revenue": 208.83,
+    "other_revenue": 25.5,
+    "commercial_revenue": 44.25,
+    "total_income": 3313.96,
+    "operating": 1274.35,
+    "property": 143.59,
+    "insurance": 18.0,
+    "tax_vat": 196.52,
+    "tax_property": 248.57,
+    "tax_land": 0.36,
+    "tax_total": 445.45,
+    "management": 59.86,
+    "total_expense": 1941.26,
+    "capex": 38.92,
+    "noi": 1333.78
+  }
+]
