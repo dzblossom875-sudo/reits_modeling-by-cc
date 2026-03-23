@@ -2,6 +2,38 @@
 
 ---
 
+## 2026-03-24 (架构归档)
+
+### refactor: 归档Phase 3-4架构改造变更
+- **Commit**: `e597d5f`
+- **清理**:
+  - 简化 `build_dcf_model.py`（1596行→28行），业务逻辑迁移至 `src/models/`
+  - 删除过时 `PROJECT_DOCUMENTATION.md`
+  - 移动 `generate_waterfall_charts.py` / `generate_waterfall_plotly.py` 至 `scripts/`
+- **新增业态框架**:
+  - `src/models/industrial/` - 产业园REITs模型框架（DCF/NOI/Params）
+  - `src/models/logistics/` - 物流仓储REITs模型框架（DCF/NOI/Params）
+  - `src/models/hotel/` - 酒店模型补充（noi_engine, __init__）
+  - `src/models/hotel_dcf.py`, `src/models/hotel_sensitivity.py` - 酒店DCF核心模型
+- **新增可视化**:
+  - `src/financial_comparison_visualization.py` - 历史财务数据对比可视化
+  - `scripts/generate_sensitivity_charts.py` - 敏感性分析图表生成
+  - `scripts/validate_mall_dcf.py` - Mall DCF校验工具
+- **文档更新**:
+  - `memory/REITs-dcf-pitfalls.md` - 更新DCF建模避坑指南
+  - `memory/REITs-hotel-workflow.md` - 更新酒店工作流程
+  - `memory/WORKFLOW_DATA_EXTRACTION.md` - 更新数据提取规范
+  - `docs/extraction_summary_20250317.md` - 补充提取摘要
+  - `docs/框架修改 plan 260323.md` - 架构改造计划文档
+- **输出归档**:
+  - 敏感性分析图表：`output/sensitivity_charts/*.png`（7张）
+  - 财务对比表：`output/财务对比表_*.csv/md`
+  - DCF校验结果：`output/mall_dcf_validation.json`
+  - 历史数据：`output/historical_financial_3years.json`
+  - 审计报告：`output/dcf_model/DCF模型审计报告.md`
+
+---
+
 ## 2026-03-23 (架构修改 Phase 2)
 
 ### feat: 项目隔离架构 - 多项目配置管理支持
