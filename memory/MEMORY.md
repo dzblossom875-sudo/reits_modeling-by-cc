@@ -274,8 +274,19 @@ config.get_output_path("dcf_results.json", use_latest=True)
   - **避坑指南**: 停车场收入是含税整租合同需÷1.09；提成租金占比=22%/(固定+提成)不是22%×固定；物业管理费成本50%基于含税口径
   - **Git Commit**: 本次提交
 
-### 2026-03-23 (架构改造)
-- **[架构] 项目隔离配置体系**: Phase 1完成
+### 2026-03-23 (架构改造 Phase 2 完成)
+- **[架构] main.py 集成项目配置**: 完成入口文件改造
+  - **逻辑变更**: `main.py`新增`-p/--project`参数支持；集成`get_config()`自动加载项目配置；`run_hotel_pipeline()`和`interactive_mode()`新增`project_config`参数；输出目录默认使用项目配置路径（`output/{project}/`）
+  - **避坑指南**: 项目配置优先级：参数>环境变量(REITS_PROJECT)>命令行>配置文件；TTY环境自动显示项目列表供选择；未指定项目时使用配置文件active_project默认值
+  - **使用示例**:
+    ```bash
+    python main.py --project huazhu --pipeline
+    python main.py -p huarun_chengdu -i
+    REITS_PROJECT=huazhu python main.py --data data/custom/params.json --pipeline
+    ```
+  - **Git Commit**: 待提交
+
+### 2026-03-23 (架构改造 Phase 1)
   - **逻辑变更**: 创建`run_config.yaml`项目配置中心 + `src/core/project_config.py`统一配置加载器；支持active_project切换、交互式项目确认、多优先级覆盖（参数>环境变量>命令行>配置文件）
   - **避坑指南**: 调试时只需修改run_config.yaml中的active_project即可切换项目，避免数据混淆；综合体项目（huarun_chengdu）包含mall+hotel两种业态
   - **接口示例**:
@@ -294,7 +305,7 @@ config.get_output_path("dcf_results.json", use_latest=True)
 
 - **最后操作工具**: A (Claude Code)
 - **最后 Commit**: `01e3be6`
-- **待续事项**: Phase 1完成（run_config.yaml + project_config.py），下一步Phase 2：修改入口文件支持--project参数、创建输出目录隔离结构
+- **待续事项**: Phase 2完成（main.py集成--project参数、项目隔离输出目录）。下一步Phase 3：清理硬编码项目相关值、支持多业态项目
 
 ---
 

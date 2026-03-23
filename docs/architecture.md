@@ -7,25 +7,74 @@ REITs_modeling/
 ├── src/                          # 核心引擎
 │   ├── core/
 │   │   ├── config.py             # 全局配置、枚举、阈值
-│   │   └── types.py              # 数据类型定义（ExtractedParam等）
+│   │   ├── types.py              # 数据类型定义（ExtractedParam等）
+│   │   └── project_config.py     # 项目配置管理器（多项目隔离）
 │   ├── models/
 │   │   └── hotel_dcf.py          # DCF模型（NOIDeriver + HotelDCFModel）
 │   ├── exporters/                # 输出模块（Excel/JSON/Chart）
 │   ├── pipeline.py               # 流水线编排
 │   └── ...
-├── data/                         # 数据仓库（输入参数JSON、PDF）
-├── output/                       # 输出（按run_YYYYMMDD_HHMMSS分目录）
-│   └── run_20260319_194750/      # 时间戳目录
-│       ├── pipeline_full_results.json
-│       ├── DCF模型审计报告.md
-│       ├── dcf_model.xlsx
-│       └── charts/               # 图表PNG
+├── data/                         # 数据仓库（按项目分目录）
+│   ├── huazhu/                   # 华住安住REIT数据
+│   │   └── extracted_params.json
+│   └── huarun_chengdu/           # 华润成都万象城REIT数据
+│       └── extracted_params.json
+├── output/                       # 输出（按项目隔离）
+│   ├── huazhu/                   # 华住项目输出
+│   │   ├── latest/               # 最新结果软链接/复制
+│   │   └── run_YYYYMMDD_HHMMSS/  # 历史运行记录
+│   └── huarun_chengdu/           # 华润项目输出
+│       ├── latest/
+│       └── run_YYYYMMDD_HHMMSS/
+├── run_config.yaml               # 项目配置文件（active_project切换）
 ├── docs/                         # 文档
 │   ├── architecture.md           # 本文件
 │   └── lessons-learned.md        # 调试结论与避坑记录
 ├── memory/                       # 项目记忆
 ├── scripts/                      # 辅助脚本
-└── build_dcf_model.py            # 独立DCF入口（legacy）
+└── main.py                       # 统一入口（支持--project参数）
+```
+
+## 项目隔离机制
+
+### 配置层级（优先级从高到低）
+
+```
+1. 命令行参数: python main.py --project huarun_chengdu
+2. 环境变量: REITS_PROJECT=huarun_chengdu
+3. 配置文件: run_config.yaml 中的 active_project
+4. 默认值: huazhu
+```
+
+### 项目配置管理器
+
+```python
+from src.core.project_config import get_config
+
+# 自动选择（非交互式，推荐用于脚本）
+config = get_config()
+
+# 强制指定项目
+config = get_config(project_name="huarun_chengdu")
+
+# 交互式选择（TTY环境显示项目列表）
+config = get_config(auto_confirm=False)
+
+# 使用路径接口
+data_path = config.get_data_path("extracted_params.json")
+output_path = config.get_output_path("dcf_results.json", use_latest=True)
+```
+
+### 多业态支持
+
+`run_config.yaml` 支持多业态项目：
+
+```yaml
+projects:
+  huarun_chengdu:
+    asset_types: [mall, hotel]  # 商业综合体
+    data_dir: data/huarun_chengdu
+    output_dir: output/huarun_chengdu
 ```
 
 ## 数据流
@@ -33,7 +82,7 @@ REITs_modeling/
 ```
 PDF招募说明书
   ↓ extract_pdf_real.py
-extracted_params_detailed.json (所有参数在此归档)
+extracted_params_detailed.json (项目数据目录)
   ↓ pipeline.py step1
 参数提取 & 交叉验证
   ↓ pipeline.py step2
@@ -41,7 +90,9 @@ extracted_params_detailed.json (所有参数在此归档)
   ↓ pipeline.py step3 (NOIDeriver + HotelDCFModel)
 NOI推导 → DCF估值 → 敏感性分析
   ↓ pipeline.py save_results
-timestamped output/
+output/{project}/run_YYYYMMDD_HHMMSS/
+  ↓ 同步至
+output/{project}/latest/
 ```
 
 ---

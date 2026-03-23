@@ -2,6 +2,21 @@
 
 ---
 
+## 2026-03-23 (架构修改 Phase 2)
+
+### feat: 项目隔离架构 - 多项目配置管理支持
+- **文件**: `main.py`, `src/core/project_config.py`, `run_config.yaml`
+- **功能**: 支持多项目隔离（huazhu / huarun_chengdu），防止数据/模型混淆
+  - 新增 `-p/--project` 命令行参数指定项目ID
+  - 项目配置优先级：参数 > 环境变量(REITS_PROJECT) > 命令行 > 配置文件
+  - 交互式项目确认（TTY环境）：显示可用项目列表、当前选中项目、项目详情
+  - 自动创建项目隔离的输出目录结构 `output/{project}/latest/`
+  - 统一路径管理：`get_data_path()`, `get_output_path()` 自动解析项目路径
+- **单例模式**: `ProjectConfigManager` 确保配置全局唯一，避免重复加载
+- **向后兼容**: 未指定项目时仍可使用 `-o/--output` 覆盖输出目录
+
+---
+
 ## 2026-03-23 (续)
 
 ### feat: 新增NOI推导对比可视化Dashboard
