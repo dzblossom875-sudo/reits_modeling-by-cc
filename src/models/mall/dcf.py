@@ -164,12 +164,140 @@ class MallDCFModel(BaseDCF):
         return new
 
     def _get_mall_projects(self) -> List[Dict[str, Any]]:
-        if not self.detailed_data:
-            return []
-        return [
-            p for p in self.detailed_data.get("projects", [])
-            if p.get("asset_type") == "mall"
-        ]
+        """获取商业项目列表，支持从 detailed_data 或 extracted_data 读取"""
+        # 优先从 detailed_data 读取（标准流程）
+        if self.detailed_data:
+            projects = self.detailed_data.get("projects", [])
+            if projects:
+                return [p for p in projects if p.get("asset_type") == "mall"]
+
+        # 回退：从 extracted_data 构造（多业态综合体场景）
+        if self.data:
+            projects = self.data.get("projects", [])
+            fin_data = self.data.get("financial_data", {})
+
+            mall_projects = []
+            for proj in projects:
+                if proj.get("asset_type") == "mall":
+                    proj_name = proj.get("name", "")
+                    proj_fin = fin_data.get(proj_name, {})
+
+                    # 尝试从历史数据构造 Y1 预测
+                    hist = proj_fin.get("historical_revenue", {})
+
+                    # 获取最新的收入数据作为 Y1 基础
+                    def get_latest(hist_item):
+                        if not hist_item:
+                            return 0
+                        for year in ["2025", "2024", "2023", "2022"]:
+                            val = hist_item.get(f"{year}_jan_oct") or hist_item.get(year)
+                            if val:
+                                return val
+                        return 0
+
+                    # 估算全年收入（如果是1-10月数据，按12/10折算）
+                    def annualize(val, key):
+                        if "jan_oct" in str(key) or key.endswith("_jan_oct"):
+                            return val * 12 / 10
+                        return val
+
+                    # 构造 Y1 预测
+                    fixed_rent = get_latest(hist.get("fixed_rent_excl_tax"))
+                    perf_rent = get_latest(hist.get("performance_rent_excl_tax"))
+                    joint_op = get_latest(hist.get("joint_op_income_net"))
+                    prop_mgmt = get_latest(hist.get("property_mgmt_fee_excl_tax"))
+                    marketing = get_latest(hist.get("marketing_fee_excl_tax"))
+                    parking = get_latest(hist.get("parking_excl_tax"))
+                    multi_ch = get_latest(hist.get("multi_channel_excl_tax"))
+                    ice_rink = get_latest(hist.get("ice_rink_excl_tax"))
+                    other = get_latest(hist.get("other_excl_tax"))
+
+                    # 合并项目和财务数据
+                    merged = {
+                        "name": proj_name,
+                        "asset_type": "mall",
+                        "property": {
+                            "remaining_years": proj.get("remaining_years", 20.0),
+                            "gla_sqm": proj.get("gla_total_sqm", 0),
+                        },
+                        # Y1 预测数据（从历史数据推算）
+                        "y1_forecast_wan": {
+                            "fixed_rent_excl_tax": fixed_rent,
+                            "perf_rent_pct_of_rent_income": perf_rent / (fixed_rent + perf_rent) if (fixed_rent + perf_rent) > 0 else 0.2,
+                            "joint_op_pct_of_rent_income": joint_op / fixed_rent if fixed_rent > 0 else 0.01,
+                            "prop_mgmt_fee_excl_tax": prop_mgmt,
+                            "marketing_fee_excl_tax": marketing,
+                            "parking_incl_tax": parking * 1.09,  # 含税估算
+                            "multi_channel_excl_tax": multi_ch,
+                            "ice_rink_excl_tax": ice_rink,
+                            "other_excl_tax": other,
+                        },
+                        # 简化增长率假设
+                        "rent_growth_schedule": {
+                            "specialty": {"Y2": 0.05, "Y3": 0.04, "Y4": 0.04, "Y5": 0.03, "Y6": 0.03, "Y10": 0.025},
+                            "anchor": {"Y2": 0.03, "Y3": 0.03, "Y4": 0.0275, "Y5": 0.0275, "Y6": 0.0275, "Y7": 0.025, "Y10": 0.02},
+                            "cinema_supermarket": {"all_years": 0.02},
+                            "parking": {"growth_from_Y2": 0.01},
+                            "multi_channel": {"growth_from_Y3": 0.02},
+                            "ice_rink": {"growth_from_Y3": 0.01},
+                            "other": {"growth_from_Y3": 0.02},
+                            "prop_mgmt_fee": {"increase_pct_every_5yr": 0.05},
+                        },
+                        "phase_split": {"phase1_rent_fraction": 0.55, "phase2_rent_fraction": 0.45},
+                        "opex_detailed": {
+                            "marketing_promo_pct_of_rev": 0.06,
+                            "prop_mgmt_cost_pct_of_prop_mgmt_incl_tax": 0.50,
+                            "repairs_pct_of_rev": 0.005,
+                            "labor_y1_wan": 2973,
+                            "labor_growth": 0.02,
+                            "admin_y1_wan": 482,
+                            "admin_growth": 0.02,
+                            "platform_fee_y1_wan": 1297,
+                            "platform_fee_growth": 0.02,
+                            "ice_rink_cost_pct_of_revenue": 0.40,
+                            "insurance_annual_wan": 104,
+                            "capex_pct_of_revenue_excl_tax": 0.025,
+                        },
+                        "vat_rates": {
+                            "phase1_rent_simplified": 0.05,
+                            "phase2_rent_general": 0.09,
+                            "joint_op_sales": 0.13,
+                            "parking": 0.09,
+                            "services_mgmt_promo_multi_rink_other": 0.06,
+                            "surtax_on_vat": 0.12,
+                        },
+                        "taxes": {
+                            "property_tax_from_lease": 0.12,
+                            "property_tax_from_value": {"effective_rate": 0.0084},
+                            "land_use_tax": {"annual_total_wan": 110},
+                            "stamp_duty_per_mille": 1,
+                            "platform_fee_base_wan": 1297,
+                            "platform_fee_growth_rate": 0.02,
+                        },
+                        "collection_rate": {"current_year_pct": 0.99},
+                        # 从顶层合并估值结果
+                        "appraisal_value_wan": (
+                            self.data.get("valuation_results", {})
+                            .get("breakdown", {})
+                            .get("commercial_wan", 0)
+                        ),
+                        # 历史数据用于对比
+                        "historical_revenue_wan": {
+                            "fixed_rent_excl_tax": hist.get("fixed_rent_excl_tax", {}),
+                            "performance_rent_excl_tax": hist.get("performance_rent_excl_tax", {}),
+                            "joint_op_net": hist.get("joint_op_income_net", {}),
+                            "property_mgmt_fee_excl_tax": hist.get("property_mgmt_fee_excl_tax", {}),
+                            "marketing_fee_excl_tax": hist.get("marketing_fee_excl_tax", {}),
+                            "parking_excl_tax": hist.get("parking_excl_tax", {}),
+                            "multi_channel_excl_tax": hist.get("multi_channel_excl_tax", {}),
+                            "ice_rink_excl_tax": hist.get("ice_rink_excl_tax", {}),
+                            "other_excl_tax": hist.get("other_excl_tax", {}),
+                        },
+                    }
+                    mall_projects.append(merged)
+            return mall_projects
+
+        return []
 
     def get_y1_noi_breakdown(self) -> Optional[Dict[str, Any]]:
         """返回Y1 NOI推导明细（用于历史对比）"""
