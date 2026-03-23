@@ -69,6 +69,49 @@ DCF = Σ FCF_t / (1+r)^t  (含部分年, 无残值)
 
 ---
 
+## 项目架构改造 (2026-03-23)
+
+### 新增文件
+- `run_config.yaml` - 项目配置中心（active_project 切换）
+- `src/core/project_config.py` - 统一配置加载器
+
+### 配置体系
+```yaml
+projects:
+  huazhu:              # 纯酒店
+    asset_types: [hotel]
+  huarun_chengdu:      # 综合体
+    asset_types: [mall, hotel]
+
+active_project: huazhu  # 当前调试项目
+```
+
+### 项目确认机制
+```python
+from src.core.project_config import get_config
+
+# 自动模式（脚本使用）
+config = get_config(auto_confirm=True)
+
+# 交互模式（手动运行）
+config = get_config(auto_confirm=False)
+# 会显示项目列表，提示用户确认或选择
+
+# 强制指定
+config = get_config("huarun_chengdu")
+```
+
+### 路径获取
+```python
+config.get_data_path("extracted_params.json")
+# → data/huazhu/extracted_params.json
+
+config.get_output_path("dcf_results.json", use_latest=True)
+# → output/huazhu/latest/dcf_results.json
+```
+
+---
+
 ## 📅 开发日志与修正记录 (Development Log)
 
 ### [日期 YYYY-MM-DD]
@@ -231,7 +274,19 @@ DCF = Σ FCF_t / (1+r)^t  (含部分年, 无残值)
   - **避坑指南**: 停车场收入是含税整租合同需÷1.09；提成租金占比=22%/(固定+提成)不是22%×固定；物业管理费成本50%基于含税口径
   - **Git Commit**: 本次提交
 
-*最后更新: 2026-03-23*
+### 2026-03-23 (架构改造)
+- **[架构] 项目隔离配置体系**: Phase 1完成
+  - **逻辑变更**: 创建`run_config.yaml`项目配置中心 + `src/core/project_config.py`统一配置加载器；支持active_project切换、交互式项目确认、多优先级覆盖（参数>环境变量>命令行>配置文件）
+  - **避坑指南**: 调试时只需修改run_config.yaml中的active_project即可切换项目，避免数据混淆；综合体项目（huarun_chengdu）包含mall+hotel两种业态
+  - **接口示例**:
+    ```python
+    from src.core.project_config import get_config
+    config = get_config()  # 自动模式
+    config = get_config(auto_confirm=False)  # 交互确认
+    data_path = config.get_data_path("extracted_params.json")
+    output_path = config.get_output_path("dcf_results.json", use_latest=True)
+    ```
+  - **Git Commit**: 待提交
 
 ---
 
@@ -239,7 +294,7 @@ DCF = Σ FCF_t / (1+r)^t  (含部分年, 无残值)
 
 - **最后操作工具**: A (Claude Code)
 - **最后 Commit**: `01e3be6`
-- **待续事项**: Dashboard已完成基础功能；可进一步优化：①补充广州分品牌ADR/OCC真实数据替换占位值 ②添加DCF估值结果页（推导值vs招募值估值对比）③考虑接入实时PDF提取更新数据
+- **待续事项**: Phase 1完成（run_config.yaml + project_config.py），下一步Phase 2：修改入口文件支持--project参数、创建输出目录隔离结构
 
 ---
 

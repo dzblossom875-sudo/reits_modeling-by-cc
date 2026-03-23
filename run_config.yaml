@@ -1,0 +1,30 @@
+# REITs 建模项目配置文件
+# 通过修改 active_project 来切换当前调试项目
+
+projects:
+  huazhu:
+    asset_types: [hotel]
+    data_dir: data/huazhu
+    output_dir: output/huazhu
+    label: "华住安住REIT"
+    description: "酒店类REIT - 广州项目+上海项目"
+
+  huarun_chengdu:
+    asset_types: [mall, hotel]  # 综合体多业态
+    data_dir: data/huarun_chengdu
+    output_dir: output/huarun_chengdu
+    label: "华润成都万象城REIT"
+    description: "商业综合体REIT - 成都万象城+木棉花酒店"
+
+# 当前激活的项目（调试时只需修改这一行）
+# 可选值: huazhu, huarun_chengdu
+active_project: huazhu
+
+# 运行配置
+run_config:
+  # 是否自动创建缺失的输出目录
+  auto_create_dirs: true
+  # 是否保留历史运行记录（run_YYYYMMDD_HHMMSS/）
+  keep_run_history: true
+  # latest/ 目录更新方式: copy|symlink
+  latest_update_mode: copy
