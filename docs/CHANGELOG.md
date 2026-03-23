@@ -2,6 +2,24 @@
 
 ---
 
+## 2026-03-23 (续)
+
+### feat: 新增NOI推导对比可视化Dashboard
+- **文件**: `scripts/noi_dashboard.py`（新建）
+- **功能**: Streamlit交互式Dashboard，三方数据源对比（历史3年均值 / 推导值 / 招募说明书预测）
+  - 关键指标卡：历史均值NOI、推导NOI、招募预测NOI、FCF及差异率
+  - 瀑布图：收入→运营成本→物业保险→税费→管理费→NOI→Capex→FCF，可切换三种数据源
+  - 三方柱状图：关键科目并排对比
+  - 历史趋势：2023-2025折线+2026招募预测点
+  - 结构饼图：收入结构/运营成本结构
+  - 逐项明细表：含历史3年+推导+招募+差异列，按5个分类分节展示
+  - 两者对比模式：广州/上海并排瀑布图+汇总柱状图
+- **主题**: 支持Cloud Blue / 平安集团双配色，项目可选广州/上海/两者对比
+- **数据源**: `output/historical_financial_3years.json` + `output/noi_comparison_report.json` + `output/dcf_noi_comparison.json`
+- **运行**: `streamlit run scripts/noi_dashboard.py`，访问 http://localhost:8501
+
+---
+
 ## 2026-03-23
 
 ### fix: 修正商业REIT Mall NOI引擎增值税双重扣除
