@@ -6,6 +6,8 @@
 - [REITs-hotel-workflow.md](./REITs-hotel-workflow.md) - 标准工作流程与参数清单
 - [REITs-dcf-pitfalls.md](./REITs-dcf-pitfalls.md) - 常见陷阱与核对清单
 - [WORKFLOW_DATA_EXTRACTION.md](./WORKFLOW_DATA_EXTRACTION.md) - 数据提取工作流规范（第一步完整性要求）
+- [docs/architecture.md](../docs/architecture.md) - 系统架构与Immutable Rules
+- [docs/lessons-learned.md](../docs/lessons-learned.md) - 调试结论与修正全记录
 
 ### 快速参考
 
@@ -30,20 +32,33 @@ PDF读取 → 参数提取与存档 → 参数确认 → 建模 → 模型审计
 2. **Tier 2**: 财务数据（GOP、NOI/CF、Capex）
 3. **Tier 3**: 估值参数（折现率、增长率、Cap Rate）
 
-#### 核心公式
+#### 核心公式（v5.0最终版）
 ```
-NOI/CF = GOP + 商业净收入 - 其他费用 - 首年Capex
-基础NOI = 首年NOI/CF + 首年Capex
-每年FCF = 每年NOI - 当年Capex
-PV = Σ(FCF_t / (1 + r)^t)
+营业收入(不含税) = first_year_amount（ADR含6%增值税，已价税分离）
+运营成本(REITs口径) = Σ运营明细项 + 物业费(独立) + 保险(独立)
+GOP = 营业收入 - 运营成本 - 税金及附加(实际缴纳)
+管理费 = GOP × 3%（付给酒店管理公司华住）
+NOI = GOP - 管理费
+NOI/CF = NOI - Capex
+FCF_t = NOI × 累积增长因子 - Capex_t
+DCF = Σ FCF_t / (1+r)^t  (含部分年, 无残值)
 ```
+
+> 详细推导过程和调试记录见 [docs/lessons-learned.md](../docs/lessons-learned.md)
+> 不可违反的约束见 [docs/architecture.md](../docs/architecture.md) Immutable Rules
 
 #### 必须核对
 - [ ] GOP数据来源（管理报表 vs 利润表）
-- [ ] 土地使用权剩余年限（影响DCF年限）
+- [ ] 土地使用权剩余年限（影响DCF年限，含部分年）
 - [ ] 不同项目可能有不同增长率
 - [ ] 折旧不要重复扣除
 - [ ] 对比基准是资产评估值（非募集资金）
+- [ ] 增值税不重复扣除（营业收入已是不含税净额）
+- [ ] 成本口径二选一（历史利润表 vs REITs明细），不可混用
+- [ ] 管理费 = GOP×fee_rate，不用利润表"管理费用"
+- [ ] 税金及附加用实际缴纳值，推导值仅作对照
+- [ ] ADR统一6%增值税率做价税分离
+- [ ] NOI始终用推导值，不回退到招募值
 
 #### 工具链
 | 工具 | 文件 |
@@ -174,7 +189,42 @@ PV = Σ(FCF_t / (1 + r)^t)
   - **可视化类型**: 文本条形图、瀑布图、结构对比图
   - **Git Commit**: 待提交
 
-*最后更新: 2026-03-19*
+- **[可视化] Matplotlib图表生成**: 完成6张财务对比图表
+  - **逻辑变更**: 创建`generate_charts.py`，生成收入/NOI/成本结构/趋势/瀑布/汇总表共6张PNG（300dpi），修复数据key命名一致性问题（JSON存储key与脚本引用key需严格匹配）
+  - **避坑记录**: JSON数据文件的key名（如`经营现金流`）与所有引用脚本必须完全一致，`create_summary_table`中的metrics列表也需同步更新；venv激活路径`D:/AI投研工具/Claude Code/.venv/Scripts/activate`
+  - **Git Commit**: e67e0a0
+
+### 2026-03-19
+- **[调试] NOI推导引擎v5.0**: 修正多项会计口径错误
+  - **逻辑变更**:
+    1. 禁止增值税重复扣除（营业收入已是不含税净额）
+    2. 成本口径从历史利润表切换为REITs明细（运营明细+独立物业+独立保险）
+    3. 管理费从利润表"管理费用"改为GOP×3%（酒店运营管理费）
+    4. 税金及附加使用实际缴纳值，推导值仅对照
+    5. ADR统一6%增值税率做价税分离
+    6. NOI始终使用推导值，不回退到招募值
+  - **避坑记录**: 中国GAAP"营业收入"不含增值税；REITs后成本重分类，物业/保险独立合同不应再并入历史营业成本；利润表"管理费用"含公司行政，REITs后由基金承担
+  - **验证结果**: 广州NOI差异-3.2%(PASS), 上海-8.6%(标注差异仍用推导值); 总估值14.03亿vs招募15.91亿(-11.8%)
+  - **Git Commit**: 待提交
+
+- **[文档] 知识沉淀归档**: 创建调试记录和架构约束文档
+  - **逻辑变更**: 创建`docs/lessons-learned.md`（10项调试结论）和`docs/architecture.md`（10条Immutable Rules），同步更新memory三个文件
+  - **避坑记录**: 调试结论只记录通用规则，不记录具体数值；架构约束需标注违反后果
+  - **Git Commit**: 待提交
+
+### 2026-03-23
+- **[修正] 商业REIT Mall NOI引擎 — 增值税双重扣除**: 修正核心建模误差
+  - **逻辑变更**: 收入已按不含税口径列示，增值税为纯过路资金，不应计入成本；`noi_engine.py`的`total_tax`移除`vat_total`，仅保留附加税（VAT×12%）为真实税负
+  - **影响**: Y1 FCF 57,419→63,446万；模型估值 786,384→868,036万；差异从-14.6%缩小至-5.7%
+  - **避坑指南**: 商业REIT中VAT计算逻辑保留（用于附加税基数），但`total_tax`不包含`vat_total`
+  - **Git Commit**: 本次提交
+
+- **[新增] 商业REIT Mall提取模板**: `src/parsers/mall_template.py`
+  - **逻辑变更**: 创建完整的商业购物中心REITs参数提取模板（Tier1-6），涵盖基础信息/租户结构/收入参数/成本税金/估值参数/历史数据共54个字段，每个字段含提取规则和notes
+  - **避坑指南**: 停车场收入是含税整租合同需÷1.09；提成租金占比=22%/(固定+提成)不是22%×固定；物业管理费成本50%基于含税口径
+  - **Git Commit**: 本次提交
+
+*最后更新: 2026-03-23*
 
 ---
 

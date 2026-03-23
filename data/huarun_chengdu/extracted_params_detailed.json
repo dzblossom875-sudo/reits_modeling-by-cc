@@ -1,0 +1,290 @@
+{
+  "_meta": {
+    "note": "详细建模参数，用于MallDCFModel.calculate()和HotelDCFModel.calculate()",
+    "source_pages": "Page 37-91",
+    "valuation_date": "2025-10-31"
+  },
+
+  "projects": [
+    {
+      "name": "成都万象城（商业）",
+      "asset_type": "mall",
+
+      "property": {
+        "gla_sqm": 160423.79,
+        "gla_temp_sqm": 2161.15,
+        "parking_spaces": 3095,
+        "land_expiry": "2045-12-05",
+        "remaining_years": 20.10,
+        "phase1_gla_sqm": null,
+        "phase2_gla_sqm": null,
+        "note": "一期(2012)、二期(2020)，增值税口径不同"
+      },
+
+      "tenancy": {
+        "occupancy": 0.9982,
+        "fixed_rent_monthly_incl_tax_wan": 4566,
+        "avg_fixed_rent_per_sqm_per_month_incl_tax": 285,
+        "tenant_breakdown": {
+          "anchor_cinema_sqm": 14287.38,
+          "anchor_sqm": 25023.00,
+          "specialty_sqm": 120663.56,
+          "ice_rink_sqm": 2327.00
+        },
+        "industry_breakdown": {
+          "餐饮": {"sqm": 43165.50, "pct": 0.2660},
+          "服装": {"sqm": 48478.11, "pct": 0.2987},
+          "生活方式": {"sqm": 16135.00, "pct": 0.0994},
+          "娱乐运动": {"sqm": 20697.98, "pct": 0.1275},
+          "儿童": {"sqm": 8987.80, "pct": 0.0554},
+          "个人护理": {"sqm": 8084.65, "pct": 0.0498},
+          "超市": {"sqm": 6243.00, "pct": 0.0385},
+          "配饰": {"sqm": 4124.20, "pct": 0.0254},
+          "皮具": {"sqm": 3676.00, "pct": 0.0226},
+          "服务": {"sqm": 2708.70, "pct": 0.0167}
+        },
+        "top10_concentration": 0.1043,
+        "lease_3yr_plus_ratio": 0.5858
+      },
+
+      "market_rent": {
+        "anchor_incl_tax_excl_mgmt": 110,
+        "anchor_unit": "元/sqm/月，含增值税，不含物业管理费",
+        "specialty_phase1_by_floor": {
+          "B1": 420, "L1": 700, "L2": 560, "L3": 525,
+          "L4": 420, "L5": 315, "L6": 140,
+          "unit": "元/sqm/月，含增值税，不含物业管理费"
+        },
+        "note": "二期专门店租金另行确定（见报告Page 75-77）"
+      },
+
+      "vat_rates": {
+        "phase1_rent_simplified": 0.05,
+        "phase1_rent_net_rate": 0.0476,
+        "phase2_rent_general": 0.09,
+        "phase2_rent_net_rate": 0.0826,
+        "joint_op_sales": 0.13,
+        "joint_op_net_rate": 0.115,
+        "parking": 0.09,
+        "parking_net_rate": 0.0826,
+        "services_mgmt_promo_multi_rink_other": 0.06,
+        "services_net_rate": 0.0566,
+        "surtax_on_vat": 0.12
+      },
+
+      "taxes": {
+        "property_tax_from_lease": 0.12,
+        "property_tax_from_value": {
+          "deduction_rate": 0.30,
+          "tax_rate": 0.012,
+          "effective_rate": 0.0084
+        },
+        "land_use_tax": {
+          "unit_rate_per_sqm_per_year": 16,
+          "land_area_sqm": 69048.90,
+          "annual_total_wan": 110.478
+        },
+        "stamp_duty_per_mille": 1,
+        "platform_fee_base_wan": 1297.36,
+        "platform_fee_growth_rate": 0.02,
+        "note": "店总费用300+商标使用费377.36+物业酬金620=1297.36万/年"
+      },
+
+      "opex": {
+        "ice_rink_cost_pct_of_revenue": 0.40,
+        "insurance_annual_wan": 104.51,
+        "capex_pct_of_revenue_excl_tax": 0.025
+      },
+
+      "historical_revenue_wan": {
+        "fixed_rent_excl_tax": {"2022": 39515, "2023": 43501, "2024": 47072, "2025_jan_oct": 40974},
+        "performance_rent_excl_tax": {"2024": 10616, "2025_jan_oct": 10391},
+        "joint_op_net": {"2024": 2451, "2025_jan_oct": 1991},
+        "property_mgmt_fee_excl_tax": {"2024": 13700, "2025_jan_oct": 11778},
+        "marketing_fee_excl_tax": {"2024": 1486, "2025_jan_oct": 1281},
+        "parking_excl_tax": {"2024": 1736, "2025_jan_oct": 1509},
+        "multi_channel_excl_tax": {"2024": 3937, "2025_jan_oct": 3414},
+        "ice_rink_excl_tax": {"2024": 951, "2025_jan_oct": 690},
+        "other_excl_tax": {"2024": 1182, "2025_jan_oct": 1067}
+      },
+
+      "growth_assumptions": {
+        "fixed_rent_historical_cagr_3yr": 0.0914,
+        "note": "估价报告未明确披露预测增长率，需参考历史增长率+市场判断设定"
+      },
+
+      "y1_forecast_wan": {
+        "_note": "Y1=2026全年。固定租金由capex反推: capex2026=2327.90=2.5%×rev → 总收入=93116万。各项拆解如下:",
+        "total_revenue_excl_tax": 93116,
+        "fixed_rent_excl_tax": 53152,
+        "perf_rent_pct_of_rent_income": 0.22,
+        "_perf_rent_formula": "提成=22%×(固定+提成) → 提成=22/78×固定=28.2%×固定=15015万",
+        "joint_op_pct_of_rent_income": 0.01,
+        "_joint_op_formula": "联营=1%×(固定+提成) → 联营=1%×(53152+15015)=682万",
+        "prop_mgmt_fee_excl_tax": 14134,
+        "_prop_mgmt_basis": "2025年1-10月11778万年化×12/10，与110元/sqm/mo标准相近",
+        "marketing_fee_excl_tax": 1537,
+        "_marketing_basis": "2025年1-10月1281万年化",
+        "parking_incl_tax": 3201.19,
+        "_parking_note": "2026年整租合同，含税3201.19万，增值税率9%",
+        "multi_channel_excl_tax": 3742,
+        "_multi_channel_note": "2023-2025年均值，2027年起+2%/年",
+        "ice_rink_excl_tax": 797,
+        "_ice_rink_note": "2025年全年预计797万，2027年起+1%/年",
+        "other_excl_tax": 1140,
+        "_other_note": "2023-2025年均值，2027年起+2%/年"
+      },
+
+      "phase_split": {
+        "phase1_rent_fraction": 0.55,
+        "phase2_rent_fraction": 0.45,
+        "_note": "一期(2012)约占固定租金收入55%，二期(2020)约占45%，用于分摊增值税税率"
+      },
+
+      "rent_growth_schedule": {
+        "_note": "报告Page 81: 各年初递增率。year_idx=1为Y1基准(不增长)，year_idx=2起递增",
+        "specialty": {
+          "Y2": 0.050, "Y3": 0.040, "Y4": 0.040, "Y5": 0.030,
+          "Y6": 0.030, "Y7": 0.030, "Y8": 0.030, "Y9": 0.030,
+          "Y10": 0.025, "Y11_plus": 0.025
+        },
+        "anchor": {
+          "Y2": 0.030, "Y3": 0.030, "Y4": 0.0275, "Y5": 0.0275,
+          "Y6": 0.0275, "Y7": 0.025, "Y8": 0.025, "Y9": 0.025,
+          "Y10": 0.020, "Y11_plus": 0.020
+        },
+        "cinema_supermarket": {
+          "all_years": 0.020
+        },
+        "prop_mgmt_fee": {
+          "increase_pct_every_5yr": 0.05,
+          "_note": "每5年递增5%，Y6/Y11/Y16适用"
+        },
+        "marketing_fee": {
+          "growth": 0.0,
+          "_note": "不设递增"
+        },
+        "parking": {
+          "growth_from_Y2": 0.010
+        },
+        "multi_channel": {
+          "growth_from_Y3": 0.020,
+          "_note": "Y1/Y2保持3742万，Y3起+2%/年"
+        },
+        "ice_rink": {
+          "growth_from_Y3": 0.010,
+          "_note": "Y1/Y2保持797万，Y3起+1%/年"
+        },
+        "other": {
+          "growth_from_Y3": 0.020,
+          "_note": "Y1/Y2保持1140万，Y3起+2%/年"
+        }
+      },
+
+      "opex_detailed": {
+        "marketing_promo_pct_of_rev": 0.060,
+        "prop_mgmt_cost_pct_of_prop_mgmt_incl_tax": 0.50,
+        "repairs_pct_of_rev": 0.005,
+        "labor_y1_wan": 2973,
+        "labor_growth": 0.020,
+        "admin_y1_wan": 482,
+        "admin_growth": 0.020,
+        "platform_fee_y1_wan": 1297.36,
+        "platform_fee_growth": 0.020,
+        "ice_rink_cost_pct_of_revenue": 0.40,
+        "insurance_annual_wan": 104.51,
+        "capex_pct_of_revenue_excl_tax": 0.025,
+        "_note": "各项说明见报告Page 82-83"
+      },
+
+      "collection_rate": {
+        "current_year_pct": 0.99,
+        "deferred_to_next_year_pct": 0.01,
+        "_note": "当年收99%，1%延至下年收"
+      },
+
+      "appraisal_value_wan": 920500
+    },
+
+    {
+      "name": "木棉花酒店",
+      "asset_type": "hotel",
+
+      "property": {
+        "gfa_sqm": 19455.99,
+        "rooms": 198,
+        "land_area_sqm": 3749.4,
+        "land_expiry": "2045-12-05",
+        "remaining_years": 20.10,
+        "built_date": "2022-11",
+        "open_date": "2023-03",
+        "age_at_valuation_years": 3.0
+      },
+
+      "room_revenue": {
+        "adr_excl_tax": {"2023": 805, "2024": 841, "2025": 840},
+        "occupancy": {"2023": 0.67, "2024": 0.75, "2025": 0.80},
+        "adr_growth_forecast": 0.02,
+        "occupancy_forecast": {
+          "year1": 0.80, "year2": 0.81, "year3": 0.83,
+          "year4": 0.84, "year5_plus": 0.85
+        },
+        "revenue_mix_forecast": {
+          "2025_nov_dec": {"room": 0.776, "fb": 0.221, "other": 0.003},
+          "2026": {"room": 0.770, "fb": 0.228, "other": 0.002},
+          "2027": {"room": 0.770, "fb": 0.229, "other": 0.001},
+          "2028": {"room": 0.770, "fb": 0.229, "other": 0.001},
+          "2029": {"room": 0.765, "fb": 0.234, "other": 0.001},
+          "2030": {"room": 0.765, "fb": 0.234, "other": 0.001},
+          "2031_plus": {"room": 0.760, "fb": 0.239, "other": 0.001}
+        }
+      },
+
+      "cost_structure": {
+        "operating_costs": {
+          "room_cost_pct_of_room_rev": {
+            "year1": 0.24, "year2": 0.23, "year3": 0.22,
+            "year4": 0.21, "year5_plus": 0.205
+          },
+          "fb_cost_pct_of_fb_rev": {
+            "year1": 0.85, "year2": 0.80, "year3": 0.79,
+            "year4": 0.78, "year5": 0.77, "year6": 0.76, "year7_plus": 0.75
+          },
+          "other_op_cost_pct_of_other_rev": {
+            "year1": 0.90, "year2_plus": 0.75
+          }
+        },
+        "undistributed_operating_expenses": {
+          "admin_general_pct": 0.08,
+          "admin_growth_from_yr3": 0.02,
+          "marketing_pct": 0.045,
+          "it_info_pct": {
+            "year1_3": 0.038, "year4_5": 0.037, "year6": 0.036, "year7_plus": 0.035
+          },
+          "property_ops_maintenance_pct": {
+            "year1_2": 0.040, "year3": 0.041, "year4": 0.042,
+            "year5": 0.043, "year6": 0.044, "year7_plus": 0.045
+          },
+          "energy_pct": 0.050
+        },
+        "non_operating_expenses": {
+          "vat_surtax_pct_of_vat": 0.12,
+          "base_mgmt_license_fee_pct": 0.02,
+          "incentive_mgmt_fee": "根据企业未来经营预测",
+          "property_tax_from_value_pct": 0.0084,
+          "land_use_tax_per_sqm": 16,
+          "land_area_sqm": 3749.4,
+          "insurance_pct": 0.002,
+          "capex_pct": 0.03
+        }
+      },
+
+      "valuation": {
+        "discount_rate": 0.065,
+        "income_period_years": 20.10,
+        "appraised_value_wan": 30000,
+        "appraised_value_rmb": 300000000
+      }
+    }
+  ]
+}

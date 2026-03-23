@@ -1,0 +1,171 @@
+{
+  "_meta": {
+    "source": "成都万象城及木棉花酒店估价报告@20251031.pdf",
+    "appraiser": "戴德梁行（Cushman & Wakefield）",
+    "valuation_date": "2025-10-31",
+    "extracted_by": "pdf_parser",
+    "extraction_date": "2026-03-23",
+    "report_pages": 101
+  },
+
+  "fund_info": {
+    "name": "华润成都万象城REIT",
+    "owner": "华润置地（成都）发展有限公司",
+    "client": "中信证券股份有限公司",
+    "location": "成都市成华区，双成路与双成二路交汇处"
+  },
+
+  "projects": [
+    {
+      "name": "成都万象城（商业）",
+      "asset_type": "mall",
+      "phase": "一期+二期",
+      "phase_detail": {
+        "phase1_open": "2012-05",
+        "phase2_open": "2020-12"
+      },
+      "gfa_sqm": 293797.49,
+      "gla_fixed_sqm": 160423.79,
+      "gla_temp_sqm": 2161.15,
+      "gla_total_sqm": 162584.94,
+      "parking_gfa_sqm": 168936.67,
+      "parking_spaces": 3095,
+      "land_area_allocated_sqm": 69048.90,
+      "land_expiry": "2045-12-05",
+      "remaining_years": 20.10,
+      "occupancy_at_valuation": 0.9982,
+      "total_tenants": 772
+    },
+    {
+      "name": "木棉花酒店",
+      "asset_type": "hotel",
+      "gfa_sqm": 19455.99,
+      "rooms": 198,
+      "land_area_allocated_sqm": 3749.4,
+      "land_expiry": "2045-12-05",
+      "remaining_years": 20.10,
+      "built_date": "2022-11",
+      "open_date": "2023-03",
+      "star_rating": "高端",
+      "brand_type": "精品商务"
+    }
+  ],
+
+  "valuation_results": {
+    "total_rmb": 9505000000,
+    "total_wan": 950500,
+    "total_billion": 9.505,
+    "unit_per_sqm": 19712,
+    "breakdown": {
+      "commercial_mall_parking_rmb": 9205000000,
+      "commercial_wan": 920500,
+      "commercial_unit_per_sqm": 19893,
+      "hotel_rmb": 300000000,
+      "hotel_wan": 30000,
+      "hotel_unit_per_sqm": 15419
+    },
+    "method": "收益法（报酬资本化法，持有至到期，无残值）"
+  },
+
+  "valuation_parameters": {
+    "discount_rate": 0.065,
+    "discount_rate_basis": {
+      "risk_free_rate": 0.018,
+      "real_estate_risk_premium_base": 0.035,
+      "subject_adjustment": 0.012,
+      "total": 0.065
+    },
+    "income_period_years": 20.10,
+    "land_expiry": "2045-12-05",
+    "model": "DCF_hold_to_maturity"
+  },
+
+  "financial_data": {
+    "成都万象城（商业）": {
+      "asset_type": "mall",
+      "noicf_appraised": null,
+      "appraisal_value_wan": 920500,
+      "historical_revenue": {
+        "fixed_rent_excl_tax": {
+          "2022": 39515,
+          "2023": 43501,
+          "2024": 47072,
+          "2025_jan_oct": 40974,
+          "cagr_3yr": 0.0914,
+          "unit": "万元，不含税"
+        },
+        "performance_rent_excl_tax": {
+          "2024": 10616,
+          "2025_jan_oct": 10391,
+          "unit": "万元，不含税"
+        },
+        "joint_op_income_net": {
+          "2024": 2451,
+          "2025_jan_oct": 1991,
+          "note": "净额"
+        },
+        "property_mgmt_fee_excl_tax": {
+          "2024": 13700,
+          "2025_jan_oct": 11778
+        },
+        "marketing_fee_excl_tax": {
+          "2024": 1486,
+          "2025_jan_oct": 1281
+        },
+        "parking_excl_tax": {
+          "2024": 1736,
+          "2025_jan_oct": 1509
+        },
+        "multi_channel_excl_tax": {
+          "2024": 3937,
+          "2025_jan_oct": 3414
+        },
+        "ice_rink_excl_tax": {
+          "2024": 951,
+          "2025_jan_oct": 690
+        },
+        "other_excl_tax": {
+          "2024": 1182,
+          "2025_jan_oct": 1067
+        }
+      },
+      "capex_forecast": {
+        "2025_nov_dec": 380.69,
+        "2026": 2327.90,
+        "2027": 2408.86,
+        "basis": "不含税运营收入的2.50%",
+        "unit": "万元，不含税"
+      }
+    },
+    "木棉花酒店": {
+      "asset_type": "hotel",
+      "appraisal_value_wan": 30000,
+      "historical_adr_excl_tax": {
+        "2023": 805,
+        "2024": 841,
+        "2025": 840,
+        "unit": "元/间/夜，不含税"
+      },
+      "historical_occupancy": {
+        "2023": 0.67,
+        "2024": 0.75,
+        "2025": 0.80
+      }
+    }
+  },
+
+  "source_pages": {
+    "project_overview": "Page 3, 6",
+    "valuation_result_summary": "Page 30, 92",
+    "commercial_revenue_history": "Page 37-40",
+    "commercial_rent_levels": "Page 70-76",
+    "commercial_discount_rate": "Page 85-86",
+    "commercial_capex": "Page 83",
+    "commercial_tax_rates": "Page 84-85",
+    "commercial_income_period": "Page 85",
+    "hotel_adr_occupancy": "Page 87-88",
+    "hotel_cost_structure": "Page 89-90",
+    "hotel_discount_rate": "Page 90",
+    "hotel_valuation": "Page 91"
+  }
+}
