@@ -284,7 +284,7 @@ config.get_output_path("dcf_results.json", use_latest=True)
     python main.py -p huarun_chengdu -i
     REITS_PROJECT=huazhu python main.py --data data/custom/params.json --pipeline
     ```
-  - **Git Commit**: 待提交
+  - **Git Commit**: 7675afc
 
 ### 2026-03-23 (架构改造 Phase 1)
   - **逻辑变更**: 创建`run_config.yaml`项目配置中心 + `src/core/project_config.py`统一配置加载器；支持active_project切换、交互式项目确认、多优先级覆盖（参数>环境变量>命令行>配置文件）
@@ -304,7 +304,7 @@ config.get_output_path("dcf_results.json", use_latest=True)
 ## 📌 当前状态
 
 - **最后操作工具**: A (Claude Code)
-- **最后 Commit**: `01e3be6`
+- **最后 Commit**: `7675afc`
 - **待续事项**: Phase 2完成（main.py集成--project参数、项目隔离输出目录）。下一步Phase 3：清理硬编码项目相关值、支持多业态项目
 
 ---
