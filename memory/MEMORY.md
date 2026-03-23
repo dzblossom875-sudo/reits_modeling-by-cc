@@ -286,6 +286,32 @@ config.get_output_path("dcf_results.json", use_latest=True)
     ```
   - **Git Commit**: 7675afc
 
+### 2026-03-24 (架构改造 Phase 4 完成)
+- **[新增] 综合体多业态DCF模型**: 支持mall+hotel合并计算
+  - **逻辑变更**:
+    1. 创建`MultiAssetDCFModel` - 自动识别项目中的多种业态，分别调用对应模型计算后合并输出
+    2. 更新`build_dcf_model()`工厂函数 - 支持"mixed"资产类型路由
+    3. 扩展`MallDCFModel._get_mall_projects()` - 支持从extracted_data直接构造（非detailed_data），自动从历史收入数据推算Y1预测
+    4. 修复`HotelProjectConfig.base_capex` - 支持字典和列表格式的capex_forecast
+    5. 修复`HotelDCFModel._get_configs()` - 只处理asset_type=hotel的项目
+    6. 新增招募说明书估值回退机制 - 当某业态计算为0但招募说明书有估值时，自动添加回退项目
+  - **避坑指南**: 综合体项目的数据格式与单业态不同，financial_data中可能只有历史数据无预测参数；MallNOIDeriver需要完整的y1_forecast_wan和增长率schedule，缺失时需从历史数据推算简化版本
+  - **测试结果（华润成都万象城）**:
+    - 商业部分（模型计算）: 67.04亿元，Y1 NOI 4.89亿元
+    - 酒店部分（回退）: 3.00亿元（招募说明书估值）
+    - 总计: 70.04亿元 vs 招募说明书95.05亿元（-26.3%）
+  - **Git Commit**: 96bffbc
+
+### 2026-03-23 (架构改造 Phase 3 完成)
+- **[重构] 清理硬编码项目值**: 从代码中移除所有项目特异性硬编码
+  - **逻辑变更**:
+    1. `src/pipeline.py:48` - 移除 `["广州项目", "上海项目"]` 硬编码，改为从 `historical_data` 动态读取项目列表
+    2. `src/models/hotel_dcf.py:453-458` - 移除 `project_mapping` 硬编码默认值，改为从 `projects` 数组动态构建配置
+    3. `src/models/hotel/params.py:47-62` - 重构 `GrowthSchedule.from_dict()`，移除 `year2_shanghai/year2_guangzhou` 硬编码，改为从 `growth_rate.project_overrides` 动态读取
+  - **避坑指南**: 所有项目特异性数据必须在数据文件中定义，禁止在业态代码中硬编码；零默认值策略强制数据完整性
+  - **数据格式**: `growth_rate` 现支持 `year_ranges/rates/project_overrides` 结构化配置
+  - **Git Commit**: 待提交
+
 ### 2026-03-23 (架构改造 Phase 1)
   - **逻辑变更**: 创建`run_config.yaml`项目配置中心 + `src/core/project_config.py`统一配置加载器；支持active_project切换、交互式项目确认、多优先级覆盖（参数>环境变量>命令行>配置文件）
   - **避坑指南**: 调试时只需修改run_config.yaml中的active_project即可切换项目，避免数据混淆；综合体项目（huarun_chengdu）包含mall+hotel两种业态
@@ -301,11 +327,11 @@ config.get_output_path("dcf_results.json", use_latest=True)
 
 ---
 
-## 📌 当前状态
+## 单前状态
 
 - **最后操作工具**: A (Claude Code)
-- **最后 Commit**: `7675afc`
-- **待续事项**: Phase 2完成（main.py集成--project参数、项目隔离输出目录）。下一步Phase 3：清理硬编码项目相关值、支持多业态项目
+- **最后 Commit**: `96bffbc`
+- **待续事项**: 架构改造全部完成（Phase 1-4）。综合体多业态DCF模型已支持华润成都万象城(mall+hotel)合并计算。下一步可选：优化mall模型参数使估值更接近招募说明书，或完善酒店部分数据提取。
 
 ---
 
