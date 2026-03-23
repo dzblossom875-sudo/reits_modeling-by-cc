@@ -23,6 +23,16 @@ class ParamCategory(str, Enum):
     CAPITAL = "capital"       # 资本端
 
 
+class SourceCategory(str, Enum):
+    """参数来源分类"""
+    PROSPECTUS = "prospectus"     # 来自招募说明书
+    INDUSTRY = "industry"         # 行业数据/常识
+    ASSUMPTION = "assumption"     # 用户假设/模型假设
+
+
+COMPARISON_THRESHOLD = 0.05  # 5%差异阈值
+
+
 # 预测年限
 FORECAST_YEARS = 10
 

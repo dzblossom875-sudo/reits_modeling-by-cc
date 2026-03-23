@@ -7,7 +7,7 @@ from typing import Dict, List, Optional, Any, Union
 from datetime import datetime
 from enum import Enum
 
-from .config import AssetType, ParamCategory
+from .config import AssetType, ParamCategory, SourceCategory
 
 
 @dataclass
@@ -55,8 +55,10 @@ class ExtractedParam:
     source: str                            # 来源（页码/章节/表格）
     confidence: float = 1.0                # 置信度（0-1）
     category: Optional[ParamCategory] = None  # 参数类别
+    source_category: Optional[SourceCategory] = None  # 来源分类
     unit: Optional[str] = None             # 单位（元/㎡/月、%等）
     notes: Optional[str] = None            # 备注说明
+    page_number: Optional[int] = None      # 招募说明书页码
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -66,8 +68,10 @@ class ExtractedParam:
             "source": self.source,
             "confidence": self.confidence,
             "category": self.category.value if self.category else None,
+            "source_category": self.source_category.value if self.source_category else None,
             "unit": self.unit,
             "notes": self.notes,
+            "page_number": self.page_number,
         }
 
 

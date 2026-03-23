@@ -17,7 +17,7 @@
   "dcf_results": {
     "projects": [
       {
-        "name": "广州项目（美居+全季）",
+        "name": "广州项目（美居+全季）[招募说明书Page 235]",
         "remaining_years": 19.28,
         "base_noi": 8249.23,
         "base_capex": 141.63,
@@ -221,7 +221,7 @@
         "implied_cap_rate": 0.0733
       },
       {
-        "name": "上海项目（桔子水晶）",
+        "name": "上海项目（桔子水晶）[招募说明书Page 241]",
         "remaining_years": 30.65,
         "base_noi": 1790.99,
         "base_capex": 38.92,
@@ -543,14 +543,14 @@
       "implied_cap_rate": 0.0692,
       "projects": [
         {
-          "name": "广州项目（美居+全季）",
+          "name": "广州项目（美居+全季）[招募说明书Page 235]",
           "rooms": 776,
           "value_per_room": 1450371.26,
           "implied_cap_rate": 0.0733,
           "base_noi": 8249.23
         },
         {
-          "name": "上海项目（桔子水晶）",
+          "name": "上海项目（桔子水晶）[招募说明书Page 241]",
           "rooms": 268,
           "value_per_room": 1216023.51,
           "implied_cap_rate": 0.055,

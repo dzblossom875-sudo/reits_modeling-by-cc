@@ -1,0 +1,1447 @@
+{
+  "step1_extraction": {
+    "total_params": 24,
+    "params": [
+      {
+        "name": "折现率",
+        "value": 0.0575,
+        "source_category": "prospectus",
+        "page": 236
+      },
+      {
+        "name": "增长率_year2_guangzhou",
+        "value": 0.02,
+        "source_category": "prospectus",
+        "page": 236
+      },
+      {
+        "name": "增长率_year2_shanghai",
+        "value": 0.01,
+        "source_category": "prospectus",
+        "page": 236
+      },
+      {
+        "name": "增长率_year3",
+        "value": 0.02,
+        "source_category": "prospectus",
+        "page": 236
+      },
+      {
+        "name": "增长率_year4_10",
+        "value": 0.03,
+        "source_category": "prospectus",
+        "page": 236
+      },
+      {
+        "name": "增长率_year11_plus",
+        "value": 0.0225,
+        "source_category": "prospectus",
+        "page": 236
+      },
+      {
+        "name": "广州项目_总房间数",
+        "value": 776,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "广州项目_剩余年限",
+        "value": 19.28,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "广州项目_ADR_2025",
+        "value": 0,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "广州项目_room_revenue",
+        "value": 12015.67,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "广州项目_fb_revenue",
+        "value": 536.8,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "广州项目_other_revenue",
+        "value": 181.92,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "广州项目_adr_2025",
+        "value": 468.52,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "广州项目_occupancy_rate_2025",
+        "value": 0.935,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "广州项目_revpar_2025",
+        "value": 438.07,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "上海项目_总房间数",
+        "value": 268,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "上海项目_剩余年限",
+        "value": 30.65,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "上海项目_ADR_2025",
+        "value": 0,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "上海项目_room_revenue",
+        "value": 3035.38,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "上海项目_fb_revenue",
+        "value": 208.7,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "上海项目_other_revenue",
+        "value": 25.49,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "上海项目_adr_2025",
+        "value": 359.71,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "上海项目_occupancy_rate_2025",
+        "value": 0.9036,
+        "source_category": "prospectus"
+      },
+      {
+        "name": "上海项目_revpar_2025",
+        "value": 325.04,
+        "source_category": "prospectus"
+      }
+    ],
+    "by_source": {
+      "prospectus": 24,
+      "industry": 0,
+      "assumption": 0
+    }
+  },
+  "step2_comparison": {
+    "projects": [
+      {
+        "project_name": "广州项目",
+        "items": [
+          {
+            "category": "收入",
+            "item": "客房收入",
+            "calculated": 12407.79,
+            "prospectus": 12015.67,
+            "difference": 392.12,
+            "diff_pct": 3.26,
+            "exceeds_threshold": false,
+            "note": "ADR(468.52) x 房间(776) x OCC(0.935) x 365天"
+          },
+          {
+            "category": "收入",
+            "item": "餐饮收入",
+            "calculated": 554.63,
+            "prospectus": 536.8,
+            "difference": 17.83,
+            "diff_pct": 3.32,
+            "exceeds_threshold": false,
+            "note": "客房收入 x 餐饮比例(0.0447)"
+          },
+          {
+            "category": "收入",
+            "item": "其他收入",
+            "calculated": 187.36,
+            "prospectus": 181.92,
+            "difference": 5.44,
+            "diff_pct": 2.99,
+            "exceeds_threshold": false,
+            "note": "客房收入 x 其他比例(0.0151)"
+          },
+          {
+            "category": "收入",
+            "item": "OTA收入",
+            "calculated": 0.0,
+            "prospectus": 0,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "收入",
+            "item": "商业租金",
+            "calculated": 377.07,
+            "prospectus": 377.07,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "收入",
+            "item": "商业物业费",
+            "calculated": 75.9,
+            "prospectus": 75.9,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "收入",
+            "item": "总收入",
+            "calculated": 13602.74,
+            "prospectus": 13602.74,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "支出",
+            "item": "运营费用合计",
+            "calculated": 3611.38,
+            "prospectus": 3611.38,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "支出",
+            "item": "物业费用",
+            "calculated": 436.3,
+            "prospectus": 436.3,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "支出",
+            "item": "保险费",
+            "calculated": 45.0,
+            "prospectus": 45.0,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "支出",
+            "item": "增值税及附加",
+            "calculated": 921.67,
+            "prospectus": 921.67,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "支出",
+            "item": "房产税",
+            "calculated": 45.37,
+            "prospectus": 45.37,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "支出",
+            "item": "土地使用税",
+            "calculated": 4.2,
+            "prospectus": 4.2,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "支出",
+            "item": "管理费",
+            "calculated": 286.15,
+            "prospectus": 286.15,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "资本支出",
+            "item": "Capex",
+            "calculated": 141.63,
+            "prospectus": 141.63,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "汇总",
+            "item": "NOI/CF",
+            "calculated": 8111.03,
+            "prospectus": 8111.03,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          }
+        ],
+        "threshold_breaches": [],
+        "investigations": [],
+        "all_within_threshold": true
+      },
+      {
+        "project_name": "上海项目",
+        "items": [
+          {
+            "category": "收入",
+            "item": "客房收入",
+            "calculated": 3179.48,
+            "prospectus": 3035.38,
+            "difference": 144.1,
+            "diff_pct": 4.75,
+            "exceeds_threshold": false,
+            "note": "ADR(359.71) x 房间(268) x OCC(0.9036) x 365天"
+          },
+          {
+            "category": "收入",
+            "item": "餐饮收入",
+            "calculated": 218.75,
+            "prospectus": 208.7,
+            "difference": 10.05,
+            "diff_pct": 4.81,
+            "exceeds_threshold": false,
+            "note": "客房收入 x 餐饮比例(0.0688)"
+          },
+          {
+            "category": "收入",
+            "item": "其他收入",
+            "calculated": 26.71,
+            "prospectus": 25.49,
+            "difference": 1.22,
+            "diff_pct": 4.78,
+            "exceeds_threshold": false,
+            "note": "客房收入 x 其他比例(0.0084)"
+          },
+          {
+            "category": "收入",
+            "item": "OTA收入",
+            "calculated": 0.0,
+            "prospectus": 0,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "收入",
+            "item": "商业租金",
+            "calculated": 40.29,
+            "prospectus": 40.29,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "收入",
+            "item": "商业物业费",
+            "calculated": 3.96,
+            "prospectus": 3.96,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "收入",
+            "item": "总收入",
+            "calculated": 3469.19,
+            "prospectus": 3469.19,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "支出",
+            "item": "运营费用合计",
+            "calculated": 1274.35,
+            "prospectus": 1274.35,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "支出",
+            "item": "物业费用",
+            "calculated": 143.59,
+            "prospectus": 143.59,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "支出",
+            "item": "保险费",
+            "calculated": 18.0,
+            "prospectus": 18.0,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "支出",
+            "item": "增值税及附加",
+            "calculated": 234.22,
+            "prospectus": 234.22,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "支出",
+            "item": "房产税",
+            "calculated": 4.87,
+            "prospectus": 4.87,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "支出",
+            "item": "土地使用税",
+            "calculated": 0.36,
+            "prospectus": 0.36,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "支出",
+            "item": "管理费",
+            "calculated": 64.52,
+            "prospectus": 64.52,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "资本支出",
+            "item": "Capex",
+            "calculated": 38.92,
+            "prospectus": 38.92,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          },
+          {
+            "category": "汇总",
+            "item": "NOI/CF",
+            "calculated": 1690.36,
+            "prospectus": 1690.36,
+            "difference": 0.0,
+            "diff_pct": 0.0,
+            "exceeds_threshold": false,
+            "note": ""
+          }
+        ],
+        "threshold_breaches": [],
+        "investigations": [],
+        "all_within_threshold": true
+      }
+    ]
+  },
+  "step3_dcf": {
+    "dcf_results": {
+      "projects": [
+        {
+          "name": "广州项目",
+          "remaining_years": 19.28,
+          "base_noi": 8249.23,
+          "base_capex": 141.63,
+          "base_fcf": 8107.6,
+          "rooms": 776,
+          "valuation": 112548.81,
+          "pv_cash_flows": 112548.81,
+          "implied_cap_rate": 0.0733,
+          "value_per_room": 1450371.26,
+          "cash_flows": [
+            {
+              "year": 1,
+              "noi": 8249.23,
+              "capex": 141.63,
+              "fcf": 8107.6,
+              "growth_rate": 0.0,
+              "cumulative_growth": 1.0,
+              "discount_factor": 1.0575,
+              "pv": 7666.76
+            },
+            {
+              "year": 2,
+              "noi": 8414.21,
+              "capex": 145.16,
+              "fcf": 8269.05,
+              "growth_rate": 0.02,
+              "cumulative_growth": 1.02,
+              "discount_factor": 1.1183,
+              "pv": 7394.27
+            },
+            {
+              "year": 3,
+              "noi": 8582.5,
+              "capex": 148.77,
+              "fcf": 8433.73,
+              "growth_rate": 0.02,
+              "cumulative_growth": 1.0404,
+              "discount_factor": 1.1826,
+              "pv": 7131.46
+            },
+            {
+              "year": 4,
+              "noi": 8839.97,
+              "capex": 151.75,
+              "fcf": 8688.23,
+              "growth_rate": 0.03,
+              "cumulative_growth": 1.0716,
+              "discount_factor": 1.2506,
+              "pv": 6947.2
+            },
+            {
+              "year": 5,
+              "noi": 9105.17,
+              "capex": 154.78,
+              "fcf": 8950.39,
+              "growth_rate": 0.03,
+              "cumulative_growth": 1.1038,
+              "discount_factor": 1.3225,
+              "pv": 6767.69
+            },
+            {
+              "year": 6,
+              "noi": 9378.33,
+              "capex": 157.88,
+              "fcf": 9220.45,
+              "growth_rate": 0.03,
+              "cumulative_growth": 1.1369,
+              "discount_factor": 1.3986,
+              "pv": 6592.8
+            },
+            {
+              "year": 7,
+              "noi": 9659.68,
+              "capex": 161.03,
+              "fcf": 9498.64,
+              "growth_rate": 0.03,
+              "cumulative_growth": 1.171,
+              "discount_factor": 1.479,
+              "pv": 6422.42
+            },
+            {
+              "year": 8,
+              "noi": 9949.47,
+              "capex": 164.25,
+              "fcf": 9785.21,
+              "growth_rate": 0.03,
+              "cumulative_growth": 1.2061,
+              "discount_factor": 1.564,
+              "pv": 6256.44
+            },
+            {
+              "year": 9,
+              "noi": 10247.95,
+              "capex": 167.54,
+              "fcf": 10080.41,
+              "growth_rate": 0.03,
+              "cumulative_growth": 1.2423,
+              "discount_factor": 1.654,
+              "pv": 6094.74
+            },
+            {
+              "year": 10,
+              "noi": 10555.39,
+              "capex": 170.89,
+              "fcf": 10384.5,
+              "growth_rate": 0.03,
+              "cumulative_growth": 1.2796,
+              "discount_factor": 1.7491,
+              "pv": 5937.2
+            },
+            {
+              "year": 11,
+              "noi": 10792.89,
+              "capex": 174.31,
+              "fcf": 10618.58,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.3084,
+              "discount_factor": 1.8496,
+              "pv": 5740.93
+            },
+            {
+              "year": 12,
+              "noi": 11035.73,
+              "capex": 177.79,
+              "fcf": 10857.93,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.3378,
+              "discount_factor": 1.956,
+              "pv": 5551.15
+            },
+            {
+              "year": 13,
+              "noi": 11284.03,
+              "capex": 181.35,
+              "fcf": 11102.68,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.3679,
+              "discount_factor": 2.0684,
+              "pv": 5367.64
+            },
+            {
+              "year": 14,
+              "noi": 11537.92,
+              "capex": 184.98,
+              "fcf": 11352.95,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.3987,
+              "discount_factor": 2.1874,
+              "pv": 5190.19
+            },
+            {
+              "year": 15,
+              "noi": 11797.53,
+              "capex": 188.68,
+              "fcf": 11608.85,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.4301,
+              "discount_factor": 2.3132,
+              "pv": 5018.61
+            },
+            {
+              "year": 16,
+              "noi": 12062.97,
+              "capex": 192.45,
+              "fcf": 11870.52,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.4623,
+              "discount_factor": 2.4462,
+              "pv": 4852.7
+            },
+            {
+              "year": 17,
+              "noi": 12334.39,
+              "capex": 196.3,
+              "fcf": 12138.09,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.4952,
+              "discount_factor": 2.5868,
+              "pv": 4692.28
+            },
+            {
+              "year": 18,
+              "noi": 12611.91,
+              "capex": 200.22,
+              "fcf": 12411.69,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.5289,
+              "discount_factor": 2.7356,
+              "pv": 4537.16
+            },
+            {
+              "year": 19,
+              "noi": 12895.68,
+              "capex": 204.23,
+              "fcf": 12691.45,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.5633,
+              "discount_factor": 2.8929,
+              "pv": 4387.17
+            }
+          ]
+        },
+        {
+          "name": "上海项目",
+          "remaining_years": 30.65,
+          "base_noi": 1790.99,
+          "base_capex": 38.92,
+          "base_fcf": 1752.07,
+          "rooms": 268,
+          "valuation": 32589.43,
+          "pv_cash_flows": 32589.43,
+          "implied_cap_rate": 0.055,
+          "value_per_room": 1216023.51,
+          "cash_flows": [
+            {
+              "year": 1,
+              "noi": 1790.99,
+              "capex": 38.92,
+              "fcf": 1752.07,
+              "growth_rate": 0.0,
+              "cumulative_growth": 1.0,
+              "discount_factor": 1.0575,
+              "pv": 1656.8
+            },
+            {
+              "year": 2,
+              "noi": 1808.9,
+              "capex": 39.89,
+              "fcf": 1769.01,
+              "growth_rate": 0.01,
+              "cumulative_growth": 1.01,
+              "discount_factor": 1.1183,
+              "pv": 1581.87
+            },
+            {
+              "year": 3,
+              "noi": 1845.08,
+              "capex": 40.88,
+              "fcf": 1804.2,
+              "growth_rate": 0.02,
+              "cumulative_growth": 1.0302,
+              "discount_factor": 1.1826,
+              "pv": 1525.61
+            },
+            {
+              "year": 4,
+              "noi": 1900.43,
+              "capex": 41.7,
+              "fcf": 1858.73,
+              "growth_rate": 0.03,
+              "cumulative_growth": 1.0611,
+              "discount_factor": 1.2506,
+              "pv": 1486.26
+            },
+            {
+              "year": 5,
+              "noi": 1957.44,
+              "capex": 42.53,
+              "fcf": 1914.91,
+              "growth_rate": 0.03,
+              "cumulative_growth": 1.0929,
+              "discount_factor": 1.3225,
+              "pv": 1447.93
+            },
+            {
+              "year": 6,
+              "noi": 2016.17,
+              "capex": 43.38,
+              "fcf": 1972.78,
+              "growth_rate": 0.03,
+              "cumulative_growth": 1.1257,
+              "discount_factor": 1.3986,
+              "pv": 1410.58
+            },
+            {
+              "year": 7,
+              "noi": 2076.65,
+              "capex": 44.25,
+              "fcf": 2032.4,
+              "growth_rate": 0.03,
+              "cumulative_growth": 1.1595,
+              "discount_factor": 1.479,
+              "pv": 1374.19
+            },
+            {
+              "year": 8,
+              "noi": 2138.95,
+              "capex": 45.13,
+              "fcf": 2093.82,
+              "growth_rate": 0.03,
+              "cumulative_growth": 1.1943,
+              "discount_factor": 1.564,
+              "pv": 1338.74
+            },
+            {
+              "year": 9,
+              "noi": 2203.12,
+              "capex": 46.04,
+              "fcf": 2157.08,
+              "growth_rate": 0.03,
+              "cumulative_growth": 1.2301,
+              "discount_factor": 1.654,
+              "pv": 1304.2
+            },
+            {
+              "year": 10,
+              "noi": 2269.21,
+              "capex": 46.96,
+              "fcf": 2222.25,
+              "growth_rate": 0.03,
+              "cumulative_growth": 1.267,
+              "discount_factor": 1.7491,
+              "pv": 1270.55
+            },
+            {
+              "year": 11,
+              "noi": 2320.27,
+              "capex": 47.9,
+              "fcf": 2272.37,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.2955,
+              "discount_factor": 1.8496,
+              "pv": 1228.56
+            },
+            {
+              "year": 12,
+              "noi": 2372.48,
+              "capex": 48.86,
+              "fcf": 2323.62,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.3247,
+              "discount_factor": 1.956,
+              "pv": 1187.96
+            },
+            {
+              "year": 13,
+              "noi": 2425.86,
+              "capex": 49.83,
+              "fcf": 2376.02,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.3545,
+              "discount_factor": 2.0684,
+              "pv": 1148.7
+            },
+            {
+              "year": 14,
+              "noi": 2480.44,
+              "capex": 50.83,
+              "fcf": 2429.61,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.385,
+              "discount_factor": 2.1874,
+              "pv": 1110.74
+            },
+            {
+              "year": 15,
+              "noi": 2536.25,
+              "capex": 51.85,
+              "fcf": 2484.4,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.4161,
+              "discount_factor": 2.3132,
+              "pv": 1074.03
+            },
+            {
+              "year": 16,
+              "noi": 2593.31,
+              "capex": 52.88,
+              "fcf": 2540.43,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.448,
+              "discount_factor": 2.4462,
+              "pv": 1038.54
+            },
+            {
+              "year": 17,
+              "noi": 2651.66,
+              "capex": 53.94,
+              "fcf": 2597.72,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.4806,
+              "discount_factor": 2.5868,
+              "pv": 1004.21
+            },
+            {
+              "year": 18,
+              "noi": 2711.33,
+              "capex": 55.02,
+              "fcf": 2656.31,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.5139,
+              "discount_factor": 2.7356,
+              "pv": 971.03
+            },
+            {
+              "year": 19,
+              "noi": 2772.33,
+              "capex": 56.12,
+              "fcf": 2716.21,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.5479,
+              "discount_factor": 2.8929,
+              "pv": 938.94
+            },
+            {
+              "year": 20,
+              "noi": 2834.71,
+              "capex": 57.24,
+              "fcf": 2777.47,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.5828,
+              "discount_factor": 3.0592,
+              "pv": 907.91
+            },
+            {
+              "year": 21,
+              "noi": 2898.49,
+              "capex": 58.39,
+              "fcf": 2840.1,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.6184,
+              "discount_factor": 3.2351,
+              "pv": 877.9
+            },
+            {
+              "year": 22,
+              "noi": 2963.71,
+              "capex": 59.55,
+              "fcf": 2904.15,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.6548,
+              "discount_factor": 3.4211,
+              "pv": 848.89
+            },
+            {
+              "year": 23,
+              "noi": 3030.39,
+              "capex": 60.75,
+              "fcf": 2969.64,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.692,
+              "discount_factor": 3.6178,
+              "pv": 820.83
+            },
+            {
+              "year": 24,
+              "noi": 3098.57,
+              "capex": 61.96,
+              "fcf": 3036.61,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.7301,
+              "discount_factor": 3.8259,
+              "pv": 793.71
+            },
+            {
+              "year": 25,
+              "noi": 3168.29,
+              "capex": 63.2,
+              "fcf": 3105.09,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.769,
+              "discount_factor": 4.0458,
+              "pv": 767.48
+            },
+            {
+              "year": 26,
+              "noi": 3239.58,
+              "capex": 64.46,
+              "fcf": 3175.11,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.8088,
+              "discount_factor": 4.2785,
+              "pv": 742.11
+            },
+            {
+              "year": 27,
+              "noi": 3312.47,
+              "capex": 65.75,
+              "fcf": 3246.71,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.8495,
+              "discount_factor": 4.5245,
+              "pv": 717.59
+            },
+            {
+              "year": 28,
+              "noi": 3387.0,
+              "capex": 67.07,
+              "fcf": 3319.93,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.8911,
+              "discount_factor": 4.7847,
+              "pv": 693.87
+            },
+            {
+              "year": 29,
+              "noi": 3463.21,
+              "capex": 68.41,
+              "fcf": 3394.8,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.9337,
+              "discount_factor": 5.0598,
+              "pv": 670.94
+            },
+            {
+              "year": 30,
+              "noi": 3541.13,
+              "capex": 69.78,
+              "fcf": 3471.35,
+              "growth_rate": 0.0225,
+              "cumulative_growth": 1.9772,
+              "discount_factor": 5.3507,
+              "pv": 648.76
+            }
+          ]
+        }
+      ],
+      "total_valuation": 145138.24,
+      "total_pv_cash_flows": 145138.24,
+      "kpis": {
+        "total_rooms": 1044,
+        "total_base_noi": 10040.22,
+        "implied_cap_rate": 0.0692,
+        "projects": [
+          {
+            "name": "广州项目",
+            "rooms": 776,
+            "value_per_room": 1450371.26,
+            "implied_cap_rate": 0.0733,
+            "base_noi": 8249.23
+          },
+          {
+            "name": "上海项目",
+            "rooms": 268,
+            "value_per_room": 1216023.51,
+            "implied_cap_rate": 0.055,
+            "base_noi": 1790.99
+          }
+        ]
+      },
+      "comparison": {
+        "dcf_valuation_billion": 14.51,
+        "asset_valuation_billion": 15.91,
+        "vs_asset_valuation": -1.4,
+        "fund_raise_billion": 13.2
+      }
+    },
+    "valuation_comparison": {
+      "dcf_valuation_billion": 14.5138,
+      "prospectus_valuation_billion": 15.91,
+      "difference_billion": -1.3962,
+      "difference_pct": -8.78,
+      "exceeds_threshold": true,
+      "threshold_pct": 5.0,
+      "investigation": {
+        "direction": "低于",
+        "causes": [
+          {
+            "factor": "增长率假设",
+            "contribution_pct": 60,
+            "description": "分段增长率与评估报告可能不完全一致"
+          },
+          {
+            "factor": "折现率微调",
+            "contribution_pct": 30,
+            "description": "评估报告可能使用略不同的折现率"
+          },
+          {
+            "factor": "收入/支出科目差异",
+            "contribution_pct": 10,
+            "description": "OTA收入、房产税原值等细节差异"
+          }
+        ],
+        "recommendation": "建议逐项核对增长率假设与评估报告原文"
+      }
+    }
+  },
+  "step4_sensitivity": {
+    "base_valuation": 145138.24,
+    "tornado": [
+      {
+        "param_name": "首年NOI/CF",
+        "param_key": "noicf_adjustment",
+        "base_value": 1.0,
+        "low_value": 0.9,
+        "high_value": 1.1,
+        "low_label": "0.90",
+        "high_label": "1.10",
+        "val_at_low": 130634.84,
+        "val_at_high": 159641.6,
+        "val_at_base": 145138.24,
+        "low_impact": -14503.4,
+        "high_impact": 14503.36,
+        "total_swing": 29006.76,
+        "total_swing_pct": 19.99
+      },
+      {
+        "param_name": "固定增长率",
+        "param_key": "fixed_growth",
+        "base_value": "分段增长",
+        "low_value": 0.005,
+        "high_value": 0.025,
+        "low_label": "0.5%",
+        "high_label": "2.5%",
+        "val_at_low": 121539.27,
+        "val_at_high": 144476.0,
+        "val_at_base": 145138.24,
+        "low_impact": -23598.97,
+        "high_impact": -662.24,
+        "total_swing": 22936.73,
+        "total_swing_pct": 15.8
+      },
+      {
+        "param_name": "折现率",
+        "param_key": "discount_rate",
+        "base_value": 0.0575,
+        "low_value": 0.051750000000000004,
+        "high_value": 0.06325000000000001,
+        "low_label": "5.18%",
+        "high_label": "6.33%",
+        "val_at_low": 153374.5,
+        "val_at_high": 137553.7,
+        "val_at_base": 145138.24,
+        "low_impact": 8236.26,
+        "high_impact": -7584.54,
+        "total_swing": 15820.8,
+        "total_swing_pct": 10.9
+      }
+    ],
+    "discount_rate_sensitivity": {
+      "parameter": "discount_rate",
+      "base_value": 0.0575,
+      "base_valuation": 145138.24,
+      "results": [
+        {
+          "value": 0.05,
+          "valuation": 156021.14,
+          "vs_base": 10882.9,
+          "vs_base_pct": 7.5
+        },
+        {
+          "value": 0.0525,
+          "valuation": 152260.82,
+          "vs_base": 7122.58,
+          "vs_base_pct": 4.91
+        },
+        {
+          "value": 0.055,
+          "valuation": 148635.11,
+          "vs_base": 3496.87,
+          "vs_base_pct": 2.41
+        },
+        {
+          "value": 0.0575,
+          "valuation": 145138.24,
+          "vs_base": 0.0,
+          "vs_base_pct": 0.0
+        },
+        {
+          "value": 0.06,
+          "valuation": 141764.37,
+          "vs_base": -3373.87,
+          "vs_base_pct": -2.32
+        },
+        {
+          "value": 0.0625,
+          "valuation": 138508.34,
+          "vs_base": -6629.9,
+          "vs_base_pct": -4.57
+        },
+        {
+          "value": 0.065,
+          "valuation": 135364.96,
+          "vs_base": -9773.28,
+          "vs_base_pct": -6.73
+        }
+      ]
+    },
+    "growth_sensitivity": {
+      "parameter": "fixed_growth",
+      "base_value": "分段增长",
+      "base_valuation": 145138.24,
+      "results": [
+        {
+          "value": 0.0,
+          "valuation": 116614.95,
+          "vs_base": -28523.29,
+          "vs_base_pct": -19.65
+        },
+        {
+          "value": 0.005,
+          "valuation": 121539.27,
+          "vs_base": -23598.97,
+          "vs_base_pct": -16.26
+        },
+        {
+          "value": 0.01,
+          "valuation": 126764.7,
+          "vs_base": -18373.54,
+          "vs_base_pct": -12.66
+        },
+        {
+          "value": 0.015,
+          "valuation": 132313.23,
+          "vs_base": -12825.01,
+          "vs_base_pct": -8.84
+        },
+        {
+          "value": 0.02,
+          "valuation": 138208.45,
+          "vs_base": -6929.79,
+          "vs_base_pct": -4.77
+        },
+        {
+          "value": 0.025,
+          "valuation": 144476.0,
+          "vs_base": -662.24,
+          "vs_base_pct": -0.46
+        },
+        {
+          "value": 0.03,
+          "valuation": 151143.56,
+          "vs_base": 6005.32,
+          "vs_base_pct": 4.14
+        }
+      ]
+    },
+    "noicf_sensitivity": {
+      "parameter": "noicf_adjustment",
+      "base_value": 1.0,
+      "base_valuation": 145138.24,
+      "results": [
+        {
+          "value": 0.85,
+          "valuation": 123383.13,
+          "vs_base": -21755.11,
+          "vs_base_pct": -14.99
+        },
+        {
+          "value": 0.9,
+          "valuation": 130634.84,
+          "vs_base": -14503.4,
+          "vs_base_pct": -9.99
+        },
+        {
+          "value": 0.95,
+          "valuation": 137886.51,
+          "vs_base": -7251.73,
+          "vs_base_pct": -5.0
+        },
+        {
+          "value": 1.0,
+          "valuation": 145138.24,
+          "vs_base": 0.0,
+          "vs_base_pct": 0.0
+        },
+        {
+          "value": 1.05,
+          "valuation": 152389.87,
+          "vs_base": 7251.63,
+          "vs_base_pct": 5.0
+        },
+        {
+          "value": 1.1,
+          "valuation": 159641.6,
+          "vs_base": 14503.36,
+          "vs_base_pct": 9.99
+        },
+        {
+          "value": 1.15,
+          "valuation": 166893.25,
+          "vs_base": 21755.01,
+          "vs_base_pct": 14.99
+        }
+      ]
+    },
+    "two_way_table": {
+      "param1": "discount_rate",
+      "param1_display": "折现率",
+      "values1": [
+        0.05,
+        0.055,
+        0.0575,
+        0.06,
+        0.065
+      ],
+      "param2": "fixed_growth",
+      "param2_display": "增长率",
+      "values2": [
+        0.005,
+        0.01,
+        0.015,
+        0.02,
+        0.025
+      ],
+      "table": [
+        [
+          129888.74,
+          135668.24,
+          141813.26,
+          148351.08,
+          155311.25
+        ],
+        [
+          124227.16,
+          129629.5,
+          135368.42,
+          141468.72,
+          147957.14
+        ],
+        [
+          121539.27,
+          126764.7,
+          132313.23,
+          138208.45,
+          144476.0
+        ],
+        [
+          118941.37,
+          123997.13,
+          129363.06,
+          135061.85,
+          141117.82
+        ],
+        [
+          114000.5,
+          118737.26,
+          123760.35,
+          129090.22,
+          134749.27
+        ]
+      ],
+      "base_valuation": 145138.24
+    },
+    "stress_test": {
+      "base_valuation": 145138.24,
+      "scenarios": [
+        {
+          "name": "乐观情景",
+          "description": "折现率下降+增长率上升",
+          "adjustments": {
+            "discount_rate": 0.055,
+            "fixed_growth": 0.02
+          },
+          "valuation": 141468.72,
+          "vs_base": -3669.52,
+          "vs_base_pct": -2.53,
+          "waterfall": {
+            "scenario_name": "乐观情景",
+            "description": "折现率下降+增长率上升",
+            "base_valuation": 145138.24,
+            "final_valuation": 141468.72,
+            "total_difference": -3669.52,
+            "total_difference_pct": -2.53,
+            "steps": [
+              {
+                "factor": "折现率",
+                "from_value": 0.0575,
+                "to_value": 0.055,
+                "valuation_impact": 3496.87,
+                "impact_pct": 2.41,
+                "explanation": "折现率降低至5.50%，导致估值增加3,497万元。折现率每变化25bp，估值变化约3-4%。"
+              },
+              {
+                "factor": "增长率",
+                "from_value": 0,
+                "to_value": 0.02,
+                "valuation_impact": -10426.66,
+                "impact_pct": -7.18,
+                "explanation": "增长率调整为固定2.0%，导致估值减少10,427万元。增长率通过影响未来各年NOI而影响总估值。"
+              }
+            ]
+          }
+        },
+        {
+          "name": "悲观情景",
+          "description": "折现率上升+增长率下降",
+          "adjustments": {
+            "discount_rate": 0.065,
+            "fixed_growth": 0.005
+          },
+          "valuation": 114000.5,
+          "vs_base": -31137.74,
+          "vs_base_pct": -21.45,
+          "waterfall": {
+            "scenario_name": "悲观情景",
+            "description": "折现率上升+增长率下降",
+            "base_valuation": 145138.24,
+            "final_valuation": 114000.5,
+            "total_difference": -31137.74,
+            "total_difference_pct": -21.45,
+            "steps": [
+              {
+                "factor": "折现率",
+                "from_value": 0.0575,
+                "to_value": 0.065,
+                "valuation_impact": -9773.28,
+                "impact_pct": -6.73,
+                "explanation": "折现率提高至6.50%，导致估值减少9,773万元。折现率每变化25bp，估值变化约3-4%。"
+              },
+              {
+                "factor": "增长率",
+                "from_value": 0,
+                "to_value": 0.005,
+                "valuation_impact": -13825.69,
+                "impact_pct": -9.53,
+                "explanation": "增长率调整为固定0.5%，导致估值减少13,826万元。增长率通过影响未来各年NOI而影响总估值。"
+              }
+            ]
+          }
+        },
+        {
+          "name": "压力测试",
+          "description": "极端不利条件",
+          "adjustments": {
+            "discount_rate": 0.07,
+            "noicf_adjustment": 0.85
+          },
+          "valuation": 110000.81,
+          "vs_base": -35137.43,
+          "vs_base_pct": -24.21,
+          "waterfall": {
+            "scenario_name": "压力测试",
+            "description": "极端不利条件",
+            "base_valuation": 145138.24,
+            "final_valuation": 110000.81,
+            "total_difference": -35137.43,
+            "total_difference_pct": -24.21,
+            "steps": [
+              {
+                "factor": "折现率",
+                "from_value": 0.0575,
+                "to_value": 0.07,
+                "valuation_impact": -15740.95,
+                "impact_pct": -10.85,
+                "explanation": "折现率提高至7.00%，导致估值减少15,741万元。折现率每变化25bp，估值变化约3-4%。"
+              },
+              {
+                "factor": "NOI/CF调整系数",
+                "from_value": 1.0,
+                "to_value": 0.85,
+                "valuation_impact": -6014.16,
+                "impact_pct": -4.14,
+                "explanation": "首年NOI/CF调整系数85%，导致估值减少6,014万元。NOI/CF的变化会线性传导至所有预测年份。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "custom_stress_test": null
+  },
+  "logs": [
+    "Step 1: 加载参数数据",
+    "  提取参数: 24个",
+    "Step 2: 历史vs预测逐项比对",
+    "  [广州项目] 所有科目在阈值内",
+    "  [上海项目] 所有科目在阈值内",
+    "Step 3: DCF建模",
+    "  总估值: 145,138.24万元 (14.51亿元)",
+    "  [WARN] 估值差异-8.8%超过5%阈值",
+    "Step 4: 敏感性分析",
+    "  完成敏感性分析: Tornado图 + 折现率/增长率/NOI单变量 + 双变量表 + 压力测试"
+  ]
+}
