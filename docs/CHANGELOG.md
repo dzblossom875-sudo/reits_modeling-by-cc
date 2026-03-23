@@ -2,6 +2,26 @@
 
 ---
 
+## 2026-03-24 (main.py Pipeline修复)
+
+### fix: 修复 --pipeline 参数直接运行
+- **Commit**: 待提交
+- **问题**: `main.py --pipeline` 未指定 `--data` 时进入交互模式，而非直接运行
+- **修复**:
+  - 调整参数优先级判断，使 `--pipeline` 可自动从项目配置获取数据路径
+  - 修正 `HotelREITsPipeline` 参数名 `output_dir` → `output_base`
+- **运行方式**:
+  ```bash
+  python main.py --project huazhu --pipeline
+  ```
+- **验证结果**:
+  - 广州项目NOI差异-4.1% [PASS]
+  - 上海项目NOI差异-12.0% [差异]
+  - 总估值: 138,213.48万元 (13.82亿元)
+  - 生成6张敏感性分析图表
+
+---
+
 ## 2026-03-24 (文档体系完善)
 
 ### docs: 创建核心项目文档体系

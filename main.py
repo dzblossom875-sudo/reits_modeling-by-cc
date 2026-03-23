@@ -264,7 +264,7 @@ class REITsModelingAgent:
         pipeline = HotelREITsPipeline(
             data_path=data_path,
             detailed_data_path=detailed_path,
-            output_dir=output_dir,
+            output_base=output_dir,
         )
 
         result = pipeline.run()
@@ -372,7 +372,13 @@ def main():
     # 确定输出目录：命令行参数 > 项目配置
     output_dir = args.output if args.output else str(config.get_output_path())
 
-    if args.interactive or (not args.file and not args.data):
+    if args.pipeline:
+        # Pipeline模式：自动从项目配置获取数据路径
+        data_path = args.data or str(config.get_data_path("extracted_params.json"))
+        detailed_path = args.detailed or str(config.get_data_path("extracted_params_detailed.json"))
+        REITsModelingAgent.run_hotel_pipeline(
+            data_path, detailed_path, output_dir, project_config=config)
+    elif args.interactive or (not args.file and not args.data):
         interactive_mode(project_config=config)
     elif args.pipeline and args.data:
         REITsModelingAgent.run_hotel_pipeline(

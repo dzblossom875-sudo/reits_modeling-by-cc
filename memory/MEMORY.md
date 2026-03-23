@@ -302,6 +302,21 @@ config.get_output_path("dcf_results.json", use_latest=True)
     - 总计: 70.04亿元 vs 招募说明书95.05亿元（-26.3%）
   - **Git Commit**: 96bffbc
 
+### 2026-03-24 (main.py Pipeline修复)
+- **[修复] main.py --pipeline 参数**: 修复直接运行逻辑
+  - **逻辑变更**:
+    1. 调整参数优先级判断，当使用 `--pipeline` 时自动从项目配置获取数据路径（无需显式指定 `--data`）
+    2. 修正 `HotelREITsPipeline` 初始化参数名：`output_dir` → `output_base`
+  - **避坑指南**: 参数判断逻辑应优先检查功能开关（如 --pipeline）再检查输入文件存在性
+  - **运行验证**:
+    ```bash
+    python main.py --project huazhu --pipeline
+    # 广州项目NOI差异-4.1% [PASS]
+    # 上海项目NOI差异-12.0% [差异]
+    # 总估值: 138,213.48万元 (13.82亿元)
+    ```
+  - **Git Commit**: 待提交
+
 ### 2026-03-23 (架构改造 Phase 3 完成)
 - **[重构] 清理硬编码项目值**: 从代码中移除所有项目特异性硬编码
   - **逻辑变更**:
@@ -330,8 +345,8 @@ config.get_output_path("dcf_results.json", use_latest=True)
 ## 单前状态
 
 - **最后操作工具**: A (Claude Code)
-- **最后 Commit**: `fb31ecc`
-- **待续事项**: 文档体系完善完成。已创建summary.md/workflow.md/decisions.md完善docs目录结构。核心功能完成（Phase 1-4多业态DCF模型）。下一步可选：优化mall模型参数使估值更接近招募说明书，或完善酒店数据提取。
+- **最后 Commit**: 待提交
+- **待续事项**: main.py --pipeline 修复完成，已可一键运行完整DCF建模流程。验证结果：广州差异-4.1%[PASS]，上海差异-12.0%，总估值13.82亿元。
 
 ---
 
