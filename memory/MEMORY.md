@@ -330,8 +330,8 @@ config.get_output_path("dcf_results.json", use_latest=True)
 ## 单前状态
 
 - **最后操作工具**: A (Claude Code)
-- **最后 Commit**: `e597d5f`
-- **待续事项**: 架构改造全部完成（Phase 1-4）并已归档。综合体多业态DCF模型已支持华润成都万象城(mall+hotel)合并计算。工作目录已清理，过时文件已删除，重要输出文件已归档。
+- **最后 Commit**: `fb31ecc`
+- **待续事项**: 文档体系完善完成。已创建summary.md/workflow.md/decisions.md完善docs目录结构。核心功能完成（Phase 1-4多业态DCF模型）。下一步可选：优化mall模型参数使估值更接近招募说明书，或完善酒店数据提取。
 
 ---
 
