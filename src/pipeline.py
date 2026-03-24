@@ -185,7 +185,13 @@ class HotelREITsPipeline:
                  output_base: str = "./output"):
         self.data_path = Path(data_path)
         self.detailed_path = Path(detailed_data_path) if detailed_data_path else None
-        self.historical_path = Path(historical_data_path) if historical_data_path else None
+
+        # 自动探测同目录下的历史财务数据文件
+        if historical_data_path:
+            self.historical_path = Path(historical_data_path)
+        else:
+            auto = self.data_path.parent / "historical_financial_3years.json"
+            self.historical_path = auto if auto.exists() else None
 
         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
         self.output_dir = Path(output_base) / f"run_{ts}"
@@ -610,8 +616,137 @@ class HotelREITsPipeline:
 
         self._generate_audit_report()
         self._generate_excel_model()
+        self._save_dashboard_files()
 
         return path
+
+    def _save_dashboard_files(self) -> None:
+        """
+        在项目级输出目录（run目录的父级）保存 noi_dashboard 所需的3个JSON文件。
+        切换 active_project 后，Dashboard 从 output/{project}/ 自动读取最新数据。
+        """
+        project_dir = self.output_dir.parent
+
+        # 1. historical_financial_3years.json — 从源文件直接复制
+        if self.historical_data:
+            out_path = project_dir / "historical_financial_3years.json"
+            with open(out_path, "w", encoding="utf-8") as f:
+                json.dump(self.historical_data, f, ensure_ascii=False, indent=2)
+            self.result.add_log(f"  [Dashboard] {out_path.name}")
+
+        # 2. noi_comparison_report.json — 从 DerivedNOI 转换格式
+        if self.dcf_model and self.dcf_model.derived_nois:
+            report = self._build_noi_report()
+            out_path = project_dir / "noi_comparison_report.json"
+            with open(out_path, "w", encoding="utf-8") as f:
+                json.dump(report, f, ensure_ascii=False, indent=2)
+            self.result.add_log(f"  [Dashboard] {out_path.name}")
+
+        # 3. dcf_noi_comparison.json — 合并历史/招募/推导数据
+        if self.dcf_model and self.extracted_data:
+            cmp = self._build_dcf_comparison()
+            out_path = project_dir / "dcf_noi_comparison.json"
+            with open(out_path, "w", encoding="utf-8") as f:
+                json.dump(cmp, f, ensure_ascii=False, indent=2)
+            self.result.add_log(f"  [Dashboard] {out_path.name}")
+
+    def _build_noi_report(self) -> Dict[str, Any]:
+        """将 DerivedNOI 列表转换为 noi_dashboard 所需的 detailed_calculations 格式"""
+        from datetime import date as _date
+        projects_out = []
+        for d in self.dcf_model.derived_nois:
+            rd = d.revenue_detail
+            ed = d.expense_detail
+            comm_rev = round((rd.get("commercial_rent") or 0) + (rd.get("commercial_mgmt") or 0), 2)
+            op_items = ed.get("operating_items", {})
+            projects_out.append({
+                "project_name": d.project_name,
+                "brand": "",
+                "total_rooms": 0,
+                "detailed_calculations": {
+                    "room_revenue": {"calculated": rd.get("room_revenue_excl_tax")},
+                    "ota_revenue": {"calculated": rd.get("ota_revenue")},
+                    "fb_revenue": {"calculated": rd.get("fb_revenue")},
+                    "other_revenue": {"calculated": rd.get("other_revenue")},
+                    "commercial_revenue": {"calculated": comm_rev},
+                    "total_hotel_revenue": {"calculated": round(d.hotel_revenue, 2)},
+                    "total_income": {
+                        "calculated": round(d.total_revenue, 2),
+                        # 招募说明书总收入未单独存档，noicf_2026 是不同科目，不做对比
+                        "prospectus": None,
+                        "difference": None,
+                        "diff_pct": None,
+                    },
+                    "operating_expenses": {
+                        "total_calculated": round(ed.get("operating_subtotal", 0), 2),
+                        "detail": {k: {"name": k, "value": round(v, 2)} for k, v in op_items.items()},
+                    },
+                    "property_expense": {"calculated": round(d.property_expense, 2)},
+                    "insurance": {"calculated": round(d.insurance_expense, 2)},
+                    "tax_vat": {"surcharge": None},
+                    "tax_property": {"total": None},
+                    "tax_land": {"total": None},
+                    "tax_total": {"calculated": round(d.tax_total, 2)},
+                    "management_fee": {
+                        "gop": round(ed.get("gop", 0), 2),
+                        "calculated": round(d.management_fee, 2),
+                    },
+                    "total_expenses": {"calculated": round(d.total_expense, 2)},
+                    "capex": {"value": round(d.capex, 2)},
+                    "noi": {
+                        "formula": "总收入 - 总费用 - Capex",
+                        "calculated": round(d.noi, 2),
+                        "note": "与招募说明书NOI/CF进行比对",
+                    },
+                },
+                "key_differences": {},
+            })
+        return {
+            "report_title": "NOI推导对比报告",
+            "fund_name": (self.extracted_data or {}).get("project_name", ""),
+            "comparison_date": str(_date.today()),
+            "projects": projects_out,
+        }
+
+    def _build_dcf_comparison(self) -> Dict[str, Any]:
+        """生成 dcf_noi_comparison.json：历史3年均值 / 招募说明书2026预测 / 推导差异"""
+        fin_data = self.extracted_data.get("financial_data", {})
+
+        # 历史3年平均
+        hist_avg: Dict[str, Any] = {}
+        if self.historical_data:
+            for proj_key, subjects in self.historical_data.items():
+                hist_avg[proj_key] = {
+                    k: v.get("3年平均")
+                    for k, v in subjects.items()
+                    if isinstance(v, dict) and "3年平均" in v
+                }
+
+        # 招募说明书2026预测（仅含noicf和capex两个确定字段）
+        forecast: Dict[str, Any] = {}
+        for proj_key, data in fin_data.items():
+            capex_list = data.get("capex_forecast", [0])
+            forecast[proj_key] = {
+                "年净收益": data.get("noicf_2026"),
+                "资本性支出": capex_list[0] if capex_list else None,
+            }
+
+        # 推导vs招募差异
+        diff: Dict[str, Any] = {}
+        for d in self.dcf_model.derived_nois:
+            diff[d.project_name] = {
+                "推导NOI": round(d.noi, 2),
+                "招募NOI_CF": round(d.prospectus_noicf, 2),
+                "差异万元": round(d.noi - d.prospectus_noicf, 2),
+                "差异率": f"{d.diff_pct * 100:+.2f}%",
+                "通过阈值": d.within_threshold,
+            }
+
+        return {
+            "历史3年平均": hist_avg,
+            "2026年预测(招募说明书)": forecast,
+            "差异分析": diff,
+        }
 
     def _generate_audit_report(self):
         """生成MD审计报告"""
