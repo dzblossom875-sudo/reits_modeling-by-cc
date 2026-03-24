@@ -50,7 +50,10 @@
       "year2_shanghai": 0.01,
       "year3": 0.02,
       "year4_10": 0.03,
-      "year11_plus": 0.0225
+      "year11_plus": 0.0225,
+      "project_overrides": {
+        "广州": {"2": 0.02}
+      }
     }
   },
   "source_pages": {

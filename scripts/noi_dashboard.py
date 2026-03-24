@@ -5,6 +5,7 @@ NOI推导过程可视化 Dashboard
 """
 import os
 import json
+import yaml
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
@@ -13,12 +14,74 @@ from plotly.subplots import make_subplots
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _ROOT = os.path.dirname(_HERE)
 
+
+def _resolve_output_dir() -> str:
+    """从 run_config.yaml 获取当前项目的输出目录，找不到则返回 output/ 根目录"""
+    config_path = os.path.join(_ROOT, "run_config.yaml")
+    if os.path.exists(config_path):
+        with open(config_path, encoding="utf-8") as f:
+            cfg = yaml.safe_load(f)
+        active = cfg.get("active_project", "")
+        proj_output = cfg.get("projects", {}).get(active, {}).get("output_dir", "")
+        if proj_output:
+            candidate = os.path.join(_ROOT, proj_output)
+            if os.path.exists(candidate):
+                return candidate
+    return os.path.join(_ROOT, "output")
+
+
+def _get_project_label() -> str:
+    """从 run_config.yaml 获取当前项目的显示名称"""
+    config_path = os.path.join(_ROOT, "run_config.yaml")
+    if os.path.exists(config_path):
+        with open(config_path, encoding="utf-8") as f:
+            cfg = yaml.safe_load(f)
+        active = cfg.get("active_project", "")
+        return cfg.get("projects", {}).get(active, {}).get("label", "REITs")
+    return "REITs"
+
+
+# ── 2. 数据加载 ───────────────────────────────────────────────
+@st.cache_data
+def load_data():
+    output_dir = _resolve_output_dir()
+
+    def find_file(filename):
+        """按优先级查找文件：项目目录 → 项目/latest/ → output/ 根目录"""
+        candidates = [
+            os.path.join(output_dir, filename),
+            os.path.join(output_dir, "latest", filename),
+            os.path.join(_ROOT, "output", filename),
+        ]
+        for p in candidates:
+            if os.path.exists(p):
+                return p
+        raise FileNotFoundError(
+            f"找不到数据文件: {filename}\n"
+            f"已查找目录: {output_dir} 及 output/ 根目录"
+        )
+
+    with open(find_file("historical_financial_3years.json"), encoding="utf-8") as f:
+        hist = json.load(f)
+    with open(find_file("noi_comparison_report.json"), encoding="utf-8") as f:
+        calc = json.load(f)
+    with open(find_file("dcf_noi_comparison.json"), encoding="utf-8") as f:
+        cmp = json.load(f)
+    return hist, calc, cmp
+
+
+hist_data, calc_data, cmp_data = load_data()
+
 # ── 1. 页面配置 ──────────────────────────────────────────────
 st.set_page_config(page_title="NOI推导对比分析", layout="wide", page_icon="🏨")
 
 st.sidebar.header("🎨 视觉设置")
 theme_mode = st.sidebar.radio("配色方案", ["Cloud Blue", "平安集团"], index=0)
-project_sel = st.sidebar.radio("项目选择", ["广州项目", "上海项目", "两者对比"], index=0)
+
+# 项目选择：从数据动态生成，支持任意项目数量
+_proj_keys = list(hist_data.keys())
+_sidebar_options = _proj_keys + (["两者对比"] if len(_proj_keys) > 1 else [])
+project_sel = st.sidebar.radio("项目选择", _sidebar_options, index=0)
 
 if theme_mode == "Cloud Blue":
     bg_color     = "#f2f6fb"
@@ -51,23 +114,6 @@ st.markdown(f"""
 [data-testid="stMetricValue"] {{font-size:1.6rem; color:{metric_color}; font-weight:700;}}
 .stMetric {{background:{bg_color}; padding:12px; border-radius:8px; border:1px solid {grid_color};}}
 </style>""", unsafe_allow_html=True)
-
-# ── 2. 数据加载 ───────────────────────────────────────────────
-@st.cache_data
-def load_data():
-    hist_path  = os.path.join(_ROOT, "output", "historical_financial_3years.json")
-    calc_path  = os.path.join(_ROOT, "output", "noi_comparison_report.json")
-    cmp_path   = os.path.join(_ROOT, "output", "dcf_noi_comparison.json")
-
-    with open(hist_path, encoding="utf-8") as f:
-        hist = json.load(f)
-    with open(calc_path, encoding="utf-8") as f:
-        calc = json.load(f)
-    with open(cmp_path, encoding="utf-8") as f:
-        cmp  = json.load(f)
-    return hist, calc, cmp
-
-hist_data, calc_data, cmp_data = load_data()
 
 # ── 3. 数据整理助手 ───────────────────────────────────────────
 def get_hist_years(proj_key):
@@ -486,12 +532,13 @@ def render_project(proj_key, proj_name, short):
 
 # ── 11. 双项目对比页面 ────────────────────────────────────────
 def render_dual():
-    projects = [("广州项目", "广州", "广州"), ("上海项目", "上海", "上海")]
+    # 从数据动态构建项目列表：key="广州项目", short="广州"
+    projects = [(k, k.replace("项目", ""), k.replace("项目", ""))
+                for k in hist_data.keys()]
 
     # Summary metrics
-    st.subheader("📊 双项目汇总对比")
-    cols = st.columns(4)
-    total_fcf_calc = total_fcf_prosp = 0
+    st.subheader("📊 多项目汇总对比")
+    cols = st.columns(max(len(projects) * 2, 2))
     for i, (pkey, pname, short) in enumerate(projects):
         dc    = get_calc_proj(pname)
         prosp = get_prosp_proj(pkey)
@@ -499,26 +546,23 @@ def render_dual():
         capex = dc.get("capex", {}).get("value", 0) or 0
         fcf   = noi - capex
         fp    = prosp.get("年净收益", 0) or 0
-        total_fcf_calc  += fcf
-        total_fcf_prosp += fp
         cols[i*2].metric(f"{short} 推导FCF", f"{fcf:,.0f} 万元")
         cols[i*2+1].metric(f"{short} 招募FCF", f"{fp:,.0f} 万元",
                            f"{(fcf-fp)/fp*100:+.1f}%" if fp else None)
 
     st.markdown("---")
-    col_gz, col_sh = st.columns(2)
-    with col_gz:
-        st.markdown("### 广州项目 (美居+全季, 776间)")
-        st.plotly_chart(make_waterfall("广州项目", "广州", "推导值"), use_container_width=True)
-        st.plotly_chart(make_hist_trend("广州项目", "广州"), use_container_width=True)
-    with col_sh:
-        st.markdown("### 上海项目 (桔子水晶, 268间)")
-        st.plotly_chart(make_waterfall("上海项目", "上海", "推导值"), use_container_width=True)
-        st.plotly_chart(make_hist_trend("上海项目", "上海"), use_container_width=True)
+    # 动态生成各项目列
+    proj_cols = st.columns(len(projects))
+    for col, (pkey, pname, short) in zip(proj_cols, projects):
+        with col:
+            st.markdown(f"### {pkey}")
+            st.plotly_chart(make_waterfall(pkey, pname, "推导值"), use_container_width=True)
+            st.plotly_chart(make_hist_trend(pkey, pname), use_container_width=True)
 
     # Side-by-side bar
-    st.markdown("**广州 vs 上海 — 关键指标对比**")
     items = ["营业收入(含税)", "运营成本合计", "税金及附加", "NOI", "年净收益(FCF)"]
+    proj_names_str = " vs ".join(short for _, _, short in projects)
+    st.markdown(f"**{proj_names_str} — 关键指标对比**")
     fig = go.Figure()
     for pkey, pname, short in projects:
         df = build_compare_df(pkey, pname)
@@ -536,12 +580,13 @@ def render_dual():
 
 
 # ── 12. 主渲染 ────────────────────────────────────────────────
-st.title("🏨 华住安住REIT — NOI推导过程对比分析")
+_project_label = _get_project_label()
+st.title(f"🏨 {_project_label} — NOI推导过程对比分析")
 st.caption("对比维度：历史财务数据（2023-2025）｜推导NOI（参数计算值）｜招募说明书预测（2026年）")
 
-if project_sel == "广州项目":
-    render_project("广州项目", "广州", "广州项目（美居+全季 · 776间）")
-elif project_sel == "上海项目":
-    render_project("上海项目", "上海", "上海项目（桔子水晶 · 268间）")
-else:
+if project_sel == "两者对比":
     render_dual()
+else:
+    # 从项目 key 派生 short_name（去掉"项目"后缀）
+    _short = project_sel.replace("项目", "")
+    render_project(project_sel, _short, project_sel)

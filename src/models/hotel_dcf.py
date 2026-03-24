@@ -47,8 +47,12 @@ class GrowthSchedule:
             growth_config.get("year4_10", 0.03),
             growth_config.get("year11_plus", 0.0225),
         ]
-        gz_year2 = growth_config.get("year2_guangzhou", 0.02)
-        schedule.project_overrides = {"广州": {2: gz_year2}}
+        # 读取数据文件中定义的项目专属覆盖率，key 名称由数据文件决定，不在代码中硬编码
+        overrides_raw = growth_config.get("project_overrides", {})
+        schedule.project_overrides = {
+            proj: {int(yr): rate for yr, rate in yr_rates.items()}
+            for proj, yr_rates in overrides_raw.items()
+        }
         return schedule
 
 
@@ -145,9 +149,11 @@ class HotelProjectDCF:
         self._cash_flows: Optional[List[ProjectCashFlow]] = None
 
     def _get_project_key(self) -> str:
-        for key in ["广州", "上海"]:
-            if key in self.config.name:
-                return key
+        # 从 growth_schedule.project_overrides 动态读取 key，不在代码中硬编码项目名
+        if self.growth_schedule:
+            for key in self.growth_schedule.project_overrides.keys():
+                if key in self.config.name:
+                    return key
         return ""
 
     def get_growth_rate(self, year: int) -> float:
