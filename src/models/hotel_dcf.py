@@ -357,6 +357,24 @@ class NOIDeriver:
         diff_pct = (noi - prospectus_noicf) / abs(prospectus_noicf) if prospectus_noicf != 0 else 0
         within = abs(diff_pct) <= cls.THRESHOLD
 
+        # --- 税金推导明细（用于审计报告） ---
+        tax_detail = exp.get("tax", {})
+        prop_tax = tax_detail.get("property_tax", {})
+        hotel_pt = prop_tax.get("hotel", {})
+        comm_pt = prop_tax.get("commercial", {})
+        land = tax_detail.get("land_use_tax", {})
+        hotel_pt_amt = hotel_pt.get("original_value", 0) * (1 - hotel_pt.get("deduction_rate", 0.3)) * hotel_pt.get("rate", 0.012)
+        comm_pt_amt = comm_pt.get("rental_base", comm_rent) * comm_pt.get("rate", 0.12)
+        land_tax = land.get("unit_rate", 0) * land.get("land_area", 0) / 10000
+
+        # --- 来源标签：从数据结构中读取，缺失则给默认分类 ---
+        fb_data = hotel.get("fb_revenue", {})
+        other_data = hotel.get("other_revenue", {})
+        ota_data = hotel.get("ota_revenue", {})
+        prop_exp_data = exp.get("property_expense", {})
+        ins_data = exp.get("insurance", {})
+        capex_source = project_detail.get("capex", {}).get("source", "招募说明书(资本支出预测)")
+
         return DerivedNOI(
             project_name=project_detail.get("name", ""),
             total_revenue=total_revenue,
@@ -375,36 +393,62 @@ class NOIDeriver:
             within_threshold=within,
             revenue_detail={
                 "room_revenue_excl_tax": round(room_rev, 2),
+                "room_revenue_source": "招募说明书",
+                "room_revenue_logic": f"ADR×房间数×OCC×365÷10000，再价税分离÷(1+6%VAT)",
                 "adr_incl_tax": round(adr_incl_tax, 2),
                 "adr_excl_tax_6pct": round(adr_excl_tax, 2),
                 "adr_vs_actual_diff": round(adr_excl_diff, 2),
                 "adr_vs_actual_diff_pct": round(adr_excl_diff_pct, 1),
                 "vat_rate": HOTEL_VAT_RATE,
                 "ota_revenue": round(ota_rev, 2),
+                "ota_revenue_source": "行业常识(历史为0，待确认)",
+                "ota_revenue_note": ota_data.get("assumption", ""),
                 "fb_revenue": round(fb_rev, 2),
+                "fb_revenue_source": "招募说明书/历史均值",
+                "fb_revenue_logic": f"客房收入×{fb_data.get('room_revenue_ratio', 0):.2%}，历史均值{fb_data.get('historical_avg_ratio', 0):.2%}",
                 "other_revenue": round(other_rev, 2),
+                "other_revenue_source": "用户假设",
+                "other_revenue_logic": other_data.get("assumption", "会员卡+会议+零售+其他"),
                 "commercial_rent": round(comm_rent, 2),
+                "commercial_rent_source": "招募说明书(不动产租赁合同)",
                 "commercial_mgmt": round(comm_mgmt, 2),
+                "commercial_mgmt_source": "招募说明书(商业物业服务费)",
             },
             expense_detail={
                 "cost_excl_dep": round(cost_excl_dep, 2),
                 "cost_source": cost_source,
                 "operating_items": {k: round(v, 2) for k, v in operating_items.items()},
+                "operating_items_source": op.get("calculation_method", "历史均值推算"),
                 "operating_subtotal": round(operating_subtotal, 2),
                 "property_expense": round(prop_exp, 2),
+                "property_expense_source": "行业常识",
+                "property_expense_logic": f"建筑面积{prop_exp_data.get('building_area', 0):,.0f}㎡×{prop_exp_data.get('unit_price_per_sqm', 0)}元/㎡/月×12",
                 "insurance": round(insurance, 2),
+                "insurance_source": ins_data.get("note", "用户假设"),
                 "hist_cost_2025": round(hist_cost_2025, 2),
                 "cost_vs_hist": round(cost_excl_dep - hist_cost_2025, 2) if hist_cost_2025 else None,
                 "cost_vs_hist_pct": round((cost_excl_dep / hist_cost_2025 - 1) * 100, 1) if hist_cost_2025 else None,
                 "gop": round(gop, 2),
                 "gop_margin": round(gop / total_revenue * 100, 1) if total_revenue else 0,
+                "gop_logic": "总收入 - 运营成本(REITs口径) - 税金及附加",
                 "tax_total": round(tax_total, 2),
                 "tax_source": tax_source,
+                "tax_source_page": "招募说明书 Page 166/186",
                 "tax_derived": round(derived_tax, 2),
                 "tax_derived_diff": round(tax_diff, 2),
                 "tax_derived_diff_pct": round(tax_diff_pct, 1),
+                "tax_derived_breakdown": {
+                    "hotel_property_tax": round(hotel_pt_amt, 2),
+                    "hotel_pt_logic": f"原值{hotel_pt.get('original_value',0):,.2f}万×(1-{hotel_pt.get('deduction_rate',0.3):.0%})×{hotel_pt.get('rate',0.012):.1%}，来源:{hotel_pt.get('source','招募说明书')}",
+                    "comm_property_tax": round(comm_pt_amt, 2),
+                    "comm_pt_logic": f"商业租金×{comm_pt.get('rate',0.12):.0%}(从租计征，行业常识)",
+                    "land_use_tax": round(land_tax, 2),
+                    "land_tax_logic": f"土地面积{land.get('land_area',0)}㎡×{land.get('unit_rate',0)}元/㎡÷10000，来源:{land.get('source','招募说明书')}",
+                },
                 "management_fee": round(mgmt_fee, 2),
                 "mgmt_source": mgmt_source,
+                "mgmt_note": exp.get("management_fee", {}).get("note", "酒店管理公司费率"),
+                "capex_source": capex_source,
             },
         )
 
