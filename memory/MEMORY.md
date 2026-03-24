@@ -302,6 +302,13 @@ config.get_output_path("dcf_results.json", use_latest=True)
     - 总计: 70.04亿元 vs 招募说明书95.05亿元（-26.3%）
   - **Git Commit**: 96bffbc
 
+### 2026-03-24 (Pipeline生成Dashboard数据文件)
+- **[新增] pipeline 自动生成 noi_dashboard 所需3个JSON文件**:
+  - **逻辑变更**: `_save_dashboard_files()` 在每次 `save_results()` 后运行，输出到 `output/{project}/`；`__init__` 自动探测历史数据文件，无需调用方传参；历史财务数据移入 `data/huazhu/`
+  - **避坑记录**: `total_income.prospectus` 不应填 `noicf_2026`（NOI≠总收入），无数据时填 None；`operating_expenses.detail` 的 key 名来自 `NOIDeriver` 的 `op_keys` 列表，需与 dashboard 的 get_calc_proj 逻辑兼容
+  - **数据流**: 新 pipeline 运行后，`output/{project}/` 下同时有 `pipeline_results.json`（完整结果）和3个 dashboard 文件（格式兼容旧版），dashboard 无需回退 `output/` 根目录
+  - **Git Commit**: `a31427d`
+
 ### 2026-03-24 (业态层硬编码清除 + Dashboard项目化)
 - **[修复] hotel_dcf.py 清除业态层项目名硬编码**:
   - **逻辑变更**: `GrowthSchedule.from_dict()` 改为读 `growth_rate.project_overrides` 字段；`_get_project_key()` 从 `project_overrides.keys()` 动态匹配，不再写死 ["广州","上海"]；项目名移至数据文件 `extracted_params.json`
@@ -357,7 +364,8 @@ config.get_output_path("dcf_results.json", use_latest=True)
 
 - **最后操作工具**: A (Claude Code)
 - **最后 Commit**: `53298b6`
-- **待续事项**: 业态层硬编码已清除，noi_dashboard 已项目化。下一步可考虑：让 pipeline 在 `output/{project}/` 下同步保存 noi_dashboard 所需的三个 JSON 文件（目前 dashboard 仍读 output/ 根目录的旧文件作 fallback）。
+- **最后 Commit**: `a31427d`
+- **待续事项**: noi_dashboard 数据链路已全部贯通。下一步可考虑：① 对 huarun_chengdu 做同样的历史数据归位（`data/huarun_chengdu/historical_financial_3years.json`）；② 在 dashboard 加一个「数据新鲜度」提示（显示最新 run 的时间戳）。
 
 ---
 

@@ -2,6 +2,21 @@
 
 ---
 
+## 2026-03-24 (Pipeline生成Dashboard数据文件)
+
+### feat: Pipeline 自动生成 noi_dashboard 所需3个JSON文件
+- **Commit**: `a31427d`
+- **背景**: noi_dashboard 依赖3个旧格式JSON文件，新pipeline只生成 pipeline_results.json，dashboard无法读取最新运行数据
+- **变更**:
+  - `HotelREITsPipeline.__init__()`: 自动探测 `data/{project}/historical_financial_3years.json`，无需显式传参
+  - `_save_dashboard_files()`: 每次 `save_results()` 后在 `output/{project}/` 写入3个文件
+  - `_build_noi_report()`: 将 `DerivedNOI` 转换为 `detailed_calculations` 格式
+  - `_build_dcf_comparison()`: 合并历史均值/招募预测/推导差异
+  - `data/huazhu/historical_financial_3years.json`: 历史财务数据归位到 `data/` 目录
+- **效果**: noi_dashboard 从 `output/huazhu/` 读最新数据，dashboard 与 pipeline 完全解耦
+
+---
+
 ## 2026-03-24 (业态层硬编码清除 + Dashboard项目化)
 
 ### fix: 消除 hotel_dcf.py 业态层硬编码 + noi_dashboard 路径项目化
