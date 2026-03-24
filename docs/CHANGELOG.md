@@ -2,6 +2,29 @@
 
 ---
 
+## 2026-03-24 (业态层硬编码清除 + Dashboard项目化)
+
+### fix: 消除 hotel_dcf.py 业态层硬编码 + noi_dashboard 路径项目化
+- **Commit**: `53298b6`
+- **问题1 — hotel_dcf.py 含华住专有项目名**:
+  - `GrowthSchedule.from_dict()` 硬编码 `{"广州": {2: 0.02}}` 写死在业态通用层
+  - `_get_project_key()` 硬编码 `["广州", "上海"]`，调试华润hotel时会误命中
+- **修复1**:
+  - `data/huazhu/extracted_params.json` 新增 `growth_rate.project_overrides` 字段，项目名移至数据层
+  - `from_dict()` 改为读 `project_overrides` 字段，key 由数据文件定义
+  - `_get_project_key()` 改为遍历 `project_overrides.keys()` 动态匹配
+- **问题2 — noi_dashboard.py 路径与项目名全部硬编码**:
+  - `load_data()` 硬编码 `output/` 根路径，无法区分项目
+  - 项目选择器写死 `["广州项目", "上海项目", "两者对比"]`
+  - `render_dual()` 硬编码项目列表和标题
+- **修复2**:
+  - `load_data()` 读 `run_config.yaml` 定位项目输出目录，三级 fallback（项目目录→latest→output根）
+  - 项目选择器从 `hist_data.keys()` 动态生成
+  - `render_dual()` 从 `hist_data.keys()` 动态构建项目列表
+  - 页面标题从 `run_config.label` 动态获取
+
+---
+
 ## 2026-03-24 (main.py Pipeline修复)
 
 ### fix: 修复 --pipeline 参数直接运行

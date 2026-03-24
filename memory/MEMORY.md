@@ -302,6 +302,17 @@ config.get_output_path("dcf_results.json", use_latest=True)
     - 总计: 70.04亿元 vs 招募说明书95.05亿元（-26.3%）
   - **Git Commit**: 96bffbc
 
+### 2026-03-24 (业态层硬编码清除 + Dashboard项目化)
+- **[修复] hotel_dcf.py 清除业态层项目名硬编码**:
+  - **逻辑变更**: `GrowthSchedule.from_dict()` 改为读 `growth_rate.project_overrides` 字段；`_get_project_key()` 从 `project_overrides.keys()` 动态匹配，不再写死 ["广州","上海"]；项目名移至数据文件 `extracted_params.json`
+  - **避坑记录**: 业态通用层（hotel_dcf.py）不得包含任何具体项目名；新增项目时只需在数据文件加 project_overrides 条目
+  - **Git Commit**: `53298b6`
+
+- **[修复] noi_dashboard.py 路径与项目选择项目化**:
+  - **逻辑变更**: `load_data()` 读 run_config.yaml 定位当前项目输出目录，三级 fallback 兜底；项目选择器从 `hist_data.keys()` 动态生成；`render_dual()` 和标题均从配置/数据动态生成，不再写死
+  - **避坑记录**: 三级 fallback 顺序：项目目录 → 项目/latest/ → output/ 根；切换项目只需改 run_config.yaml active_project，dashboard 自动跟随
+  - **Git Commit**: `53298b6`
+
 ### 2026-03-24 (main.py Pipeline修复)
 - **[修复] main.py --pipeline 参数**: 修复直接运行逻辑
   - **逻辑变更**:
@@ -342,11 +353,11 @@ config.get_output_path("dcf_results.json", use_latest=True)
 
 ---
 
-## 单前状态
+## 当前状态
 
 - **最后操作工具**: A (Claude Code)
-- **最后 Commit**: 待提交
-- **待续事项**: main.py --pipeline 修复完成，已可一键运行完整DCF建模流程。验证结果：广州差异-4.1%[PASS]，上海差异-12.0%，总估值13.82亿元。
+- **最后 Commit**: `53298b6`
+- **待续事项**: 业态层硬编码已清除，noi_dashboard 已项目化。下一步可考虑：让 pipeline 在 `output/{project}/` 下同步保存 noi_dashboard 所需的三个 JSON 文件（目前 dashboard 仍读 output/ 根目录的旧文件作 fallback）。
 
 ---
 

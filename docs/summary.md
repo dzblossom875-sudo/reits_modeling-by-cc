@@ -37,9 +37,8 @@ REITs_modeling/
 │   ├── huazhu/                   # 华住安住REIT
 │   └── huarun_chengdu/           # 华润成都万象城REIT
 ├── output/                       # 输出（按项目隔离）
-│   ├── huazhu_dcf_model/         # 华住项目DCF结果
-│   ├── dcf_model/                # DCF模型审计报告
-│   └── sensitivity_charts/       # 敏感性分析图表
+│   ├── huazhu/                   # 华住项目（run_xxx/ + latest/）
+│   └── huarun_chengdu/           # 华润项目（run_xxx/ + latest/）
 ├── scripts/                      # 辅助脚本
 │   ├── generate_sensitivity_charts.py
 │   ├── generate_waterfall_charts.py
