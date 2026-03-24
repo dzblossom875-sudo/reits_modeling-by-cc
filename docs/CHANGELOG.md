@@ -2,6 +2,32 @@
 
 ---
 
+## 2026-03-24 (输出路径迁移 + 审计报告增强)
+
+### feat: 华住输出路径迁移至"华住output 新框架" + 自动清理旧 run
+- **Commit**: `fb967b4`
+- **变更**:
+  - `run_config.yaml`: huazhu.output_dir 改为 `output/华住output 新框架`
+  - `src/pipeline.py`: 新增 `_cleanup_old_runs(keep=2)` — 每次 `save_results()` 后自动删除多余 `run_*` 目录，只保留最新2次
+- **效果**: 华住项目输出与其他项目目录隔离，磁盘不再积累历史运行产物
+
+### feat: 审计报告全量来源标注
+- **Commit**: `a5e8260`
+- **背景**: 审计报告缺乏每科目数据来源说明，无法判断哪些数字来自招募说明书、哪些是推导值
+- **变更**:
+  - `src/models/hotel_dcf.py`: `derive_project_noi()` 在 `revenue_detail`/`expense_detail` 追加来源字段
+    - 收入端: `room_revenue_source/logic`, `fb_revenue_source/logic`, `ota_source`, `other_source`
+    - 费用端: `operating_items_source`, `property_expense_logic`, `insurance_source`
+    - 税金: `tax_derived_breakdown`（房产税从价/从租/土地使用税三项明细+推导公式）
+    - 管理费: `mgmt_note`, `capex_source`
+  - `src/pipeline.py`: `_generate_audit_report()` 重构为4节结构
+    - Section 1.1: 数据来源分类说明表（招募说明书/历史均值/行业常识/用户假设）
+    - Section 1.2: 完整推导公式链（收入端→费用端→GOP→管理费→NOI）
+    - Section 1.3: NOI明细表新增"来源分类"和"推导说明"两列
+    - Section 4: 全量输入参数来源索引（DCF参数/收入/费用/资产信息4张子表）
+
+---
+
 ## 2026-03-24 (端口管理 + 启动器)
 
 ### feat: 固定端口分配 + Dashboard 启动器

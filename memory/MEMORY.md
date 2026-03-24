@@ -363,9 +363,8 @@ config.get_output_path("dcf_results.json", use_latest=True)
 ## 当前状态
 
 - **最后操作工具**: A (Claude Code)
-- **最后 Commit**: `53298b6`
-- **最后 Commit**: `186b6ff`
-- **待续事项**: 华住全流程已验证通畅。下一步：① huarun_chengdu 历史数据归位；② 对华润项目跑完整 pipeline 验证。
+- **最后 Commit**: `fb967b4`
+- **待续事项**: 华住全流程已验证通畅，审计报告全量来源标注完成，输出路径已迁移至"华住output 新框架"。下一步：① huarun_chengdu 历史数据归位；② 对华润项目跑完整 pipeline 验证。
 
 ---
 

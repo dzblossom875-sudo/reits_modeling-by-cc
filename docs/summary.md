@@ -1,7 +1,7 @@
 # REITs DCF建模项目 - 最终结论快照
 
 > **更新日期**: 2026-03-24
-> **最新 Commit**: `9bffde0`
+> **最新 Commit**: `fb967b4`
 
 ---
 
@@ -37,7 +37,7 @@ REITs_modeling/
 │   ├── huazhu/                   # 华住安住REIT
 │   └── huarun_chengdu/           # 华润成都万象城REIT
 ├── output/                       # 输出（按项目隔离）
-│   ├── huazhu/                   # 华住项目（run_xxx/ + latest/）
+│   ├── 华住output 新框架/          # 华住项目（run_xxx/，最多保留最新2次）
 │   └── huarun_chengdu/           # 华润项目（run_xxx/ + latest/）
 ├── scripts/                      # 辅助脚本
 │   ├── generate_sensitivity_charts.py
@@ -196,6 +196,8 @@ streamlit run scripts/noi_dashboard.py
 | Phase 4 | 2026-03-24 | 96bffbc | 多业态综合体DCF模型（mall+hotel） |
 | 归档 | 2026-03-24 | e597d5f | 清理旧代码，归档输出文件 |
 | 文档更新 | 2026-03-24 | 9bffde0 | 更新CHANGELOG与MEMORY |
+| 审计增强 | 2026-03-24 | a5e8260 | 审计报告全量来源标注（4类数据来源） |
+| 路径迁移 | 2026-03-24 | fb967b4 | 华住输出路径迁移 + 自动清理旧run |
 
 ---
 
