@@ -364,8 +364,8 @@ config.get_output_path("dcf_results.json", use_latest=True)
 
 - **最后操作工具**: A (Claude Code)
 - **最后 Commit**: `53298b6`
-- **最后 Commit**: `a31427d`
-- **待续事项**: noi_dashboard 数据链路已全部贯通。下一步可考虑：① 对 huarun_chengdu 做同样的历史数据归位（`data/huarun_chengdu/historical_financial_3years.json`）；② 在 dashboard 加一个「数据新鲜度」提示（显示最新 run 的时间戳）。
+- **最后 Commit**: `186b6ff`
+- **待续事项**: 华住全流程已验证通畅。下一步：① huarun_chengdu 历史数据归位；② 对华润项目跑完整 pipeline 验证。
 
 ---
 

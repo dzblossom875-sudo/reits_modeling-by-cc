@@ -2,6 +2,25 @@
 
 ---
 
+## 2026-03-24 (端口管理 + 启动器)
+
+### feat: 固定端口分配 + Dashboard 启动器
+- **Commit**: `ecc45f4`
+- **新增** `scripts/launch.py` — 统一 Dashboard 启动入口
+  - `python scripts/launch.py` → 当前项目 noi_dashboard
+  - `python scripts/launch.py dcf` → dcf_dashboard
+  - `python scripts/launch.py --project huarun_chengdu noi` → 跨项目启动
+  - `python scripts/launch.py list` → 列出所有端口分配
+- **端口规范** 写入 `run_config.yaml`（各项目 `ports` 字段）：
+  - huazhu: noi=8501 / dcf=8502
+  - huarun_chengdu: noi=8511 / dcf=8512
+
+### fix: launch.py 中文乱码
+- **Commit**: `186b6ff`
+- `sys.stdout.reconfigure(encoding="utf-8")` 修复 Windows GBK 终端乱码
+
+---
+
 ## 2026-03-24 (Pipeline生成Dashboard数据文件)
 
 ### feat: Pipeline 自动生成 noi_dashboard 所需3个JSON文件
