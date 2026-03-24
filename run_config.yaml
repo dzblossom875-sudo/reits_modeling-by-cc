@@ -5,7 +5,7 @@ projects:
   huazhu:
     asset_types: [hotel]
     data_dir: data/huazhu
-    output_dir: output/huazhu
+    output_dir: output/华住output 新框架
     label: "华住安住REIT"
     description: "酒店类REIT - 广州项目+上海项目"
     ports:

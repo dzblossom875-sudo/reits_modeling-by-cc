@@ -194,7 +194,9 @@ class HotelREITsPipeline:
             self.historical_path = auto if auto.exists() else None
 
         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-        self.output_dir = Path(output_base) / f"run_{ts}"
+        self._output_base = Path(output_base)
+        self._output_base.mkdir(parents=True, exist_ok=True)
+        self.output_dir = self._output_base / f"run_{ts}"
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.charts_dir = self.output_dir / "charts"
         self.charts_dir.mkdir(exist_ok=True)
@@ -617,8 +619,21 @@ class HotelREITsPipeline:
         self._generate_audit_report()
         self._generate_excel_model()
         self._save_dashboard_files()
+        self._cleanup_old_runs(keep=2)
 
         return path
+
+    def _cleanup_old_runs(self, keep: int = 2) -> None:
+        """保留最新 keep 次运行，删除更早的 run_* 目录"""
+        import shutil
+        runs = sorted(
+            [d for d in self._output_base.iterdir() if d.is_dir() and d.name.startswith("run_")],
+            key=lambda d: d.name
+        )
+        to_delete = runs[:-keep] if len(runs) > keep else []
+        for old in to_delete:
+            shutil.rmtree(old, ignore_errors=True)
+            self.result.add_log(f"  [清理] 删除旧运行: {old.name}")
 
     def _save_dashboard_files(self) -> None:
         """
