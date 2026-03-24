@@ -8,6 +8,9 @@ projects:
     output_dir: output/huazhu
     label: "华住安住REIT"
     description: "酒店类REIT - 广州项目+上海项目"
+    ports:
+      noi_dashboard: 8501
+      dcf_dashboard: 8502
 
   huarun_chengdu:
     asset_types: [mall, hotel]  # 综合体多业态
@@ -15,6 +18,9 @@ projects:
     output_dir: output/huarun_chengdu
     label: "华润成都万象城REIT"
     description: "商业综合体REIT - 成都万象城+木棉花酒店"
+    ports:
+      noi_dashboard: 8511
+      dcf_dashboard: 8512
 
 # 当前激活的项目（调试时只需修改这一行）
 # 可选值: huazhu, huarun_chengdu
