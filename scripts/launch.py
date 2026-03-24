@@ -14,6 +14,8 @@ import subprocess
 import yaml
 from pathlib import Path
 
+sys.stdout.reconfigure(encoding="utf-8")
+
 _ROOT = Path(__file__).parent.parent
 
 DASHBOARD_SCRIPTS = {
